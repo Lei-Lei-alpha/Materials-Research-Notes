@@ -71,4 +71,7 @@ collections:
 #   - vendor/gems/
 #   - vendor/ruby/
 
+plugins:
+  - jekyll-remote-theme
+
 remote_theme: sighingnow/jekyll-gitbook
