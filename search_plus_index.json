@@ -1,0 +1,41 @@
+{"/MAPI/2022-03-28-Single-crystal-growth/": {
+    "title": "MAPbX3 single crystal growth",
+    "keywords": "Lab Notes",
+    "url": "/MAPI/2022-03-28-Single-crystal-growth/",
+    "body": "Author: Lei Lei Date: 28-03-2022 Objectives Prepare MAPbX3 crystals for MuSR and impedance measurements using the method from Ref1. Preparation Thermometer Sand bath Solution preparation Chemical quantities         CH3NH3PbI3 PbI2 CH3NH3I GBL Quantity 6.915 g 2.385 g 10 mL CH3NH3PbBr3 PbBr2 CH3NH3Br DMF Quantity 4.5876 g 1.3996 g 10 mL The actual quantities of chemicals used are shown in Fig.1. Fig.1 The setup of crystal growth apparatus using sand bath within the glovebox. Temperatures GBL has a maximal solubility for MAPbI3 precursors at 60 °C1, and the solution is prepared and filtered under 60 °C. DMF has a maximal solubility for MAPbBr3 precursors at room temperature. Filtration The precursor solutions were filtered with a 0.22-0.25 μm PVDF syringe filter (Fig.2). Fig.2 Photograph of the syringe filter used. Crystal growth Apparatus The crystal growth used the retrograde solubility of MAPbX3 precursors as reported in Ref1. The apparatus setup is shown in Fig.3 which used sand bath instead of oil bath. Fig.3 The setup of crystal growth apparatus using sand bath within the glovebox. Clean vials The vials were cleaned by detergent and deionised water. Fig.4 The cleaned vials to be used for the growth of MAPbX3 crystals. MAPbBr3 growth First trial The temperature of the sand bath was 87.5 °C as shown in Fig.5. Fig.5 The cleaned vials to be used for the growth of MAPbX3 crystals. A MAPBr seed was added to the filtered precursor solution before the growth. The temperature rose to 89 °C at the beginning of crystal growth (19:40). Fig.6 Photograph of vials immersed in the sand bath for the growth of MAPbBr3 crystals from the precursor solution. The temperature was too high for growth, a lot of small crystallites form. The vials were taken out for overnight to allow the dissolve of these crystallites. A lower temperature was set for another trial. The second go Fig.7 Photograph of the crystallites formed due to the fast nuleation. The sand bath temperature was down to 75 °C and the vials containing the precursor solutions were placed into the bath. Fig.8 Photograph of vials immersed in the sand bath (75 °C) for the growth of MAPbBr3 crystals from the precursor solution. The temperature decreased to ~ 72 °C the second morning. For Further growth the temperature was increased to 82 °C. MAPbI3 growth"
+  },"/MAPI/2022-03-29-AIMD-simulation-with-efield/": {
+    "title": "AIMD simulation for MAPbI3 under electric filed",
+    "keywords": "Lab Notes",
+    "url": "/MAPI/2022-03-29-AIMD-simulation-with-efield/",
+    "body": "Structure optimisation of supercell with vacancies ### MA3ZnI3 structure MA3ZnI3 with different water contents AIMD simulation Start from structure optimisation. You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated. Jekyll requires blog post files to be named according to the following format: YEAR-MONTH-DAY-title.MARKUP Where YEAR is a four-digit number, MONTH and DAY are both two-digit numbers, and MARKUP is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works. Jekyll also offers powerful support for code snippets: def print_hi(name) puts \"Hi, #{name}\" end print_hi('Tom') #=&gt; prints 'Hi, Tom' to STDOUT. Check out the Jekyll docs for more info on how to get the most out of Jekyll. File all bugs/feature requests at Jekyll’s GitHub repo. If you have questions, you can ask them on Jekyll Talk."
+  },"/pages/contact/": {
+    "title": "Contact",
+    "keywords": "pages",
+    "url": "/pages/contact/",
+    "body": "Please contact me if you have any questions or suggestions on this project. Email: Lei.Lei@nottingham.ac.uk. Follow me on: Twiter Facebook"
+  },"/pages/markdown/": {
+    "title": "Markdown",
+    "keywords": "pages",
+    "url": "/pages/markdown/",
+    "body": "Please contact me if you have any questions or suggestions on this project. Email: Lei.Lei@nottingham.ac.uk. Follow me on: Twiter Facebook"
+  },"/pages/about/": {
+    "title": "About",
+    "keywords": "pages",
+    "url": "/pages/about/",
+    "body": "I am a PhD student in the University of Nottingham, this is my private Lab Notebook."
+  },"/pages/quick-start/": {
+    "title": "Quick Start",
+    "keywords": "pages",
+    "url": "/pages/quick-start/",
+    "body": "Markdown code block touch init.py Highlighted touch init.py"
+  },"/other/2022-03-28-facilities.html": {
+    "title": "Facilities",
+    "keywords": "Other",
+    "url": "/other/2022-03-28-facilities.html",
+    "body": "The facilities used."
+  },"/other/2022-03-28-Chemicals.html": {
+    "title": "Chemicals",
+    "keywords": "Other",
+    "url": "/other/2022-03-28-Chemicals.html",
+    "body": "The chemicals used."
+  }}
