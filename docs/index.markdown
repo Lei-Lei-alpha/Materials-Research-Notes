@@ -11,5 +11,5 @@ layout: home
 <p style="color:gray;">Type keyword on the upper left corner to search relavent entries.</p>
 
 <figure align = "center">
-<img src="/cage1.png" alt="cover" style="width:100%">
+<img src="img/cage1.png" alt="cover" style="width:100%">
 </figure>
