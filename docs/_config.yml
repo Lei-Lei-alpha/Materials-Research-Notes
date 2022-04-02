@@ -3,8 +3,10 @@ author: Lei Lei
 email: Lei.Lei@nottingham.ac.uk
 description: >- # this means to ignore newlines until "baseurl:"
   My private lab notes on materials science including several projects on perovskite structure materials and computational research.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/Materials-Research-Notes" # the subpath of your site, e.g. /blog
+url: "https://lei-lei-alpha.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
+repository: "Lei-Lei-alpha/Materials-Research-Notes" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
+
 twitter_username: leilei78814998
 github_username:  Lei-Lei-alpha
 
