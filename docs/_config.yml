@@ -36,9 +36,7 @@ permalink:      /:categories/:year-:month-:day-:title:output_ext
 
 # Define new collection
 collections:
-  - Templates
   - MAPI
-  - Fishmol
   - Notes
   - Protocols
   - Simulations
@@ -47,13 +45,7 @@ collections:
   pages:
     output: true
     permalink: /:collection/:path/
-  Templates:
-    output: true
-    permalink: /:collection/:path/
   MAPI:
-    output: true
-    permalink: /:collection/:path/
-  Fishmol:
     output: true
     permalink: /:collection/:path/
   Protocols:
