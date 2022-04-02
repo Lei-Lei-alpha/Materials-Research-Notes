@@ -70,3 +70,5 @@ collections:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+remote_theme: sighingnow/jekyll-gitbook
