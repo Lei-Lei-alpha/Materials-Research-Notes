@@ -1,0 +1,80 @@
+title: Lei's Lab Notes
+author: Lei Lei
+email: Lei.Lei@nottingham.ac.uk
+description: >- # this means to ignore newlines until "baseurl:"
+  My private lab notes on materials science including several projects on perovskite structure materials and computational research.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username: leilei78814998
+github_username:  Lei-Lei-alpha
+
+# Build settings
+syntax_highlighter_style: colorful
+toc:
+    enabled: true
+    h_min: 1
+    h_max: 3
+
+# markdown render engine.
+markdown:         kramdown
+kramdown:
+  auto_ids:               true
+  input:                  GFM
+  math_engine:            mathjax
+  smart_quotes:           lsquo,rsquo,ldquo,rdquo
+  toc_levels:             1..6
+  syntax_highlighter:     rouge
+  syntax_highlighter_opts:
+    guess_lang:           true
+
+syntax_highlighter_style: colorful
+
+markdown_ext:     markdown,mkdown,mkdn,mkd,md
+
+# Permalinks
+permalink:      /:categories/:year-:month-:day-:title:output_ext
+
+# Define new collection
+collections:
+  - Templates
+  - MAPI
+  - Fishmol
+  - Notes
+  - Protocols
+  - Simulations
+
+collections:
+  pages:
+    output: true
+    permalink: /:collection/:path/
+  Templates:
+    output: true
+    permalink: /:collection/:path/
+  MAPI:
+    output: true
+    permalink: /:collection/:path/
+  Fishmol:
+    output: true
+    permalink: /:collection/:path/
+  Protocols:
+    output: true
+    permalink: /:collection/:path/
+  Notes:
+    output: true
+    permalink: /:collection/:path/
+  Simulations:
+    output: true
+    permalink: /:collection/:path/
+
+#
+# exclude:
+#   - .sass-cache/
+#   - .jekyll-cache/
+#   - gemfiles/
+#   - Gemfile
+#   - Gemfile.lock
+#   - node_modules/
+#   - vendor/bundle/
+#   - vendor/cache/
+#   - vendor/gems/
+#   - vendor/ruby/

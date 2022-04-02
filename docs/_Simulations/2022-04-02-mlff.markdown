@@ -1,0 +1,84 @@
+---
+layout: post
+title:  Machine learning force field
+author: Lei Lei
+date:   2022-04-02 14:34:07 +0100
+category: Lab Notes
+---
+## Follow the official instructions to install
+The version installed is 9.1
+
+## 1. Acquire the code
+
+For users, the preferred method is to download a release (use the versioned tarballs, `cp2k-X.Y.tar.bz2`). For developers, the preferred method is to download from Git.
+
+{% highlight shell %}
+git clone -b support/v9.1 https://github.com/cp2k/cp2k.git cp2k
+{% endhighlight %}
+
+For more details on downloading CP2K, see <https://www.cp2k.org/download>.
+
+## 2. Install prerequisites
+
+The easiest way to build CP2K with all of its dependencies is as a [Docker container].
+
+Alternatively, the toolchain script can also be run directly.
+
+For a complete introduction to the toolchain script, see the README.
+
+The basic steps are:
+
+- Read toolchain installation options:
+
+{% highlight shell %}
+cd tools/toolchain/
+./install_cp2k_toolchain.sh --help
+{% endhighlight %}
+
+- Launch toolchain script (example option choice)
+
+{% highlight shell %}
+./install_cp2k_toolchain.sh --with-gcc=system --with-cmake=system --with-libxsmm=install \
+--with-openblas=system --with-spfft=system --with-spla=system --with-elpa=system --with-scalapack=system
+{% endhighlight %}
+
+Note: the current toolchain has problem on installing a working SpFFT-1.0.5. To escape the error, install it mannually to system path and use `--with-spfft=system` flag.
+
+To mannually install SpFFT-1.0.5, refer to the installation instructions on github repo [eth-cscs/SpFFT](https://github.com/eth-cscs/SpFFT). The command I used was
+
+{% highlight shell %}
+cmake SpFFT-1.0.5 -DSPFFT_OMP=ON -DSPFFT_MPI=ON -DSPFFT_GPU_BACKEND=OFF \
+-DSPFFT_SINGLE_PRECISION=OFF -DCMAKE_INSTALL_PREFIX=/usr/local
+sudo make  install
+{% endhighlight %}
+
+The same error happened for SpLA-1.5.2, the lib was mannually installed:
+
+{% highlight shell %}
+cmake spla-1.5.2 -DSPLA_OMP=ON -DSPLA_GPU_BACKEND=OFF -DCMAKE_INSTALL_PREFIX=/usr/local
+sudo make  install
+{% endhighlight %}
+
+
+## 3. Build CP2K following the instructions
+- Now copy:
+  cp /mnt/d/softwares/cp2k/cp2k/tools/toolchain/install/arch/* to the cp2k/arch/ directory
+
+{% highlight shell %}
+cp /mnt/d/softwares/cp2k/cp2k/tools/toolchain/install/arch/* /mnt/d/softwares/cp2k/cp2k/arch/
+source /mnt/d/softwares/cp2k/cp2k/tools/toolchain/install/setup
+{% endhighlight %}
+
+To use the installed tools and libraries and cp2k version
+compiled with it you will first need to execute at the prompt:
+
+{% highlight shell %}
+source /mnt/d/softwares/cp2k/cp2k/tools/toolchain/install/setup
+{% endhighlight %}
+
+To build CP2K you should change directory:
+
+{% highlight shell %}
+cd /mnt/d/softwares/cp2k/cp2k
+make -j 4 ARCH=local VERSION="ssmp sdbg psmp pdbg"
+{% endhighlight %}
