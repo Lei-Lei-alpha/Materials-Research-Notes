@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "MAPbX3 single crystal growth"
+title:  "Solid hydrogen storage materials: interstitial hydrides"
 author: Lei Lei
 date:   2022-03-28 18:44:07 +0100
 category: Lab Notes

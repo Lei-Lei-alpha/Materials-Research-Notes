@@ -5,9 +5,9 @@
                 <section class="normal markdown-section">
 
                     {% if page.title %}
-                        <h1 id="{{ page.id }}">{{ page.title | escape }}</h1>
+                        <h1 id="{{ page.id }}" style="border-style: solid solid solid solid; border-width: 0px 0px 2px 0px; border-color: black black #F1F0F0 black;">{{ page.title | escape }}</h1>
                     {% else %}
-                        <h1 id="{{ page.id }}">{{ site.title | escape }}</h1>
+                        <h1 id="{{ page.id }}" style="border-style: solid solid solid solid; border-width: 0px 0px 2px 0px; border-color: black black #F1F0F0 black;">{{ site.title | escape }}</h1>
                     {% endif %}
 
                     {{ content }}

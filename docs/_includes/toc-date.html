@@ -17,7 +17,8 @@
             <li class="divider"></li>
 
             {% for collection in site.collections %}
-                <!-- <p>{{ collection.label }}</p> -->
+            <p style="font-size: 120%; font-weight: 600;">{{ collection.label | split: "-" | last }}</p>
+            <hr>
                 {% if collection.output %}
                     {% assign reversed_posts = site[collection.label] | reverse %}
 
@@ -42,9 +43,6 @@
             {% endfor %}
 
             <li>
-                <a href="https://github.com/Lei-Lei-alpha/Lab_Notes/fork" target="blank" class="labnote-link">
-                    Fork me on GitHub!
-                </a>
             </li>
         </ul>
     </nav>

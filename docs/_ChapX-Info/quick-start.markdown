@@ -4,11 +4,12 @@ author: Lei Lei
 category: pages
 layout: post
 ---
+
 Markdown code block
 
-```Shell
+~~~ shell
 touch init.py
-```
+~~~
 
 Highlighted
 

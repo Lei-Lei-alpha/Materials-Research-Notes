@@ -1,6 +1,6 @@
-title: Lei's Lab Notes
+title: Lei's Notes
 author: Lei Lei
-email: Lei.Lei@nottingham.ac.uk
+email: Lei.Lei2@nottingham.ac.uk
 description: >- # this means to ignore newlines until "baseurl:"
   My private lab notes on materials science including several projects on perovskite structure materials and computational research.
 baseurl: "/Materials-Research-Notes" # the subpath of your site, e.g. /blog
@@ -31,32 +31,32 @@ kramdown:
 
 syntax_highlighter_style: colorful
 
-markdown_ext:     markdown,mkdown,mkdn,mkd,md
+markdown_ext:     markdown, mkdown, mkdn, mkd, md
+
+plugins:
+  - jekyll-diagrams
 
 # Permalinks
-permalink:      /:categories/:year-:month-:day-:title:output_ext
+# permalink:      /:categories/:year-:month-:day-:title:output_ext
 
 # Define new collection
 collections:
-  - MAPI
-  - Notes
-  - Protocols
-  - Simulations
+  - Chap1-Coding
+  - Chap2-MatNotes
+  - Chap3-HSTORE
+  - ChapX-Info
 
 collections:
-  pages:
+  Chap1-Coding:
     output: true
     permalink: /:collection/:path/
-  MAPI:
+  Chap2-MatNotes:
     output: true
     permalink: /:collection/:path/
-  Protocols:
+  Chap3-HSTORE:
     output: true
     permalink: /:collection/:path/
-  Notes:
-    output: true
-    permalink: /:collection/:path/
-  Simulations:
+  ChapX-Info:
     output: true
     permalink: /:collection/:path/
 

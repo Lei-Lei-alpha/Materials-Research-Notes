@@ -20,6 +20,7 @@
 
 .book-body .body-inner .page-wrapper {
     min-height: calc(100% - 46px);
+    text-align: justify;
 }
 
 .book-body .body-inner .page-wrapper .page-inner {
