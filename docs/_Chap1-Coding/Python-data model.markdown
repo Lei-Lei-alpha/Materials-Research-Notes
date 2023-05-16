@@ -1,7 +1,7 @@
 ---
 title: Python - data structures
 author: Lei Lei
-category: pages
+category: notes
 layout: post
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Python practical tricks
 author: Lei Lei
-category: pages
+category: notes
 layout: post
 ---
 

@@ -44,6 +44,7 @@ collections:
   - Chap1-Coding
   - Chap2-MatNotes
   - Chap3-HSTORE
+  - Chap4-Visualisation
   - ChapX-Info
 
 collections:
@@ -54,6 +55,9 @@ collections:
     output: true
     permalink: /:collection/:path/
   Chap3-HSTORE:
+    output: true
+    permalink: /:collection/:path/
+  Chap4-Visualisation:
     output: true
     permalink: /:collection/:path/
   ChapX-Info:

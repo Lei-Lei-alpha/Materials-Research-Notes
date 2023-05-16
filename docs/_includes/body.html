@@ -10,6 +10,10 @@
                         <h1 id="{{ page.id }}" style="border-style: solid solid solid solid; border-width: 0px 0px 2px 0px; border-color: black black #F1F0F0 black;">{{ site.title | escape }}</h1>
                     {% endif %}
 
+                    {% capture content %}
+                    {% include fancy-tables.liquid html=content %}
+                    {% endcapture %}
+                    
                     {{ content }}
                 </section>
             </div>

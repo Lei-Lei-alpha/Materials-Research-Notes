@@ -2,10 +2,9 @@
 layout: post
 title:  "Concepts and methods in computational materials science"
 author: Lei Lei
-date:   2023-05-12 10:44:07 +0000
-category: Lab Notes
+category: notes
 ---
-<hr>
+
 > Author: Lei Lei<br>
 Date: 28-03-2022
 
