@@ -11,7 +11,7 @@ layout: post
 ```python
 #on: the key (common column names) of the two dataframes;
 #how: inner (keep common values only), outer: keep all values
-df=pd.merge(df1, df2, how="inner",on="wavelength")
+df = pd.merge(df1, df2, how="inner",on="wavelength")
 ```
 
 ### Concatenate
@@ -65,7 +65,7 @@ df = pd.DataFrame({'points': [25, 12, 15, 14, 19, 23],
 #view DataFrame
 df
 
-        points    assists    rebounds
+points    assists    rebounds
 0    25    5    11
 1    12    7    8
 2    15    7    10
@@ -85,7 +85,7 @@ df = df.assign(steals=[2, 2, 4, 7, 4, 1])
 #view DataFrame
 df
 
-        points    assists    rebounds steals
+points    assists    rebounds steals
 0    25    5    11     2
 1    12    7    8     2
 2    15    7    10     4
@@ -106,7 +106,7 @@ df = df.assign(steals=[2, 2, 4, 7, 4, 1],
 #view DataFrame
 df
 
-    points    assists    rebounds steals    blocks
+points    assists    rebounds steals    blocks
 0    25    5    11     2    0
 1    12    7    8     2    1
 2    15    7    10     4    1
@@ -146,7 +146,7 @@ df.insert(2, 'steals', [2, 2, 4, 7, 4, 1])
 #view DataFrame
 df
 
-        points    assists    steals    rebounds
+points    assists    steals    rebounds
 0    25    5    2    11
 1    12    7    2    8
 2    15    7    4    10
@@ -155,20 +155,11 @@ df
 5    23    9    1    5
 ```
 
-## Index & Slicing
-
-### Slicing
-
-```python
-#select the values after row 209
-df=df1.iloc[209:]
-#select
-df=df1.iloc[156:190]
-```
+## Index, filtering & slicing
 
 ### Reset index
 
-[doc]([pandas.DataFrame.reset_index — pandas 1.2.4 documentation (pydata.org)](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.reset_index.html))
+[pandas.DataFrame.reset_index — pandas 1.2.4 documentation (pydata.org)](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.reset_index.html)
 
 ```python
 df.reset_index(drop=True)
@@ -178,6 +169,35 @@ df.reset_index(drop=True)
 
 ```python
 df = pd.read_excel(file, header=0, index_col=0)
+```
+
+### Select specified columns:
+
+```python
+df.filter(["species","bill_length_mm"])
+```
+
+### Filtering a column by multiple conditions:
+
+```python
+dataFrame.loc[(dataFrame['Salary']>=100000) & (dataFrame['Age']< 40) & (dataFrame['JOB'].str.startswith('D')),
+             ['Name','JOB']]
+```
+
+```python
+# Select the data by condition: 449.75<data['e loss']<470.25
+data[(449.75<data['e loss']) & (data['e loss']<470.25)]
+# Select the data by condition: data['e loss'] <  449.75or data['e loss'] > 470.25
+data[(449.75<data['e loss']) | (data['e loss']<470.25)]
+```
+
+### Slicing
+
+```python
+#select the values after row 209
+df=df1.iloc[209:]
+#select
+df=df1.iloc[156:190]
 ```
 
 ## File I/O
@@ -250,4 +270,3 @@ To set the library that is used to write the Excel file, you can pass the engin
 ```python
 df1.to_excel('output1.xlsx', engine='xlsxwriter')
 ```
-

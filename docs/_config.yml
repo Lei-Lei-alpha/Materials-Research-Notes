@@ -42,22 +42,30 @@ plugins:
 # Define new collection
 collections:
   - Chap1-Coding
-  - Chap2-MatNotes
-  - Chap3-HSTORE
-  - Chap4-Visualisation
+  - Chap2-ML
+  - Chap3-MatNotes
+  - Chap4-HSTORE
+  - Chap5-Visualisation
+  - Chap6-sys_ssh
   - ChapX-Info
 
 collections:
   Chap1-Coding:
     output: true
     permalink: /:collection/:path/
-  Chap2-MatNotes:
+  Chap2-ML:
     output: true
     permalink: /:collection/:path/
-  Chap3-HSTORE:
+  Chap3-MatNotes:
     output: true
     permalink: /:collection/:path/
-  Chap4-Visualisation:
+  Chap4-HSTORE:
+    output: true
+    permalink: /:collection/:path/
+  Chap5-Visualisation:
+    output: true
+    permalink: /:collection/:path/
+  Chap6-sys_ssh:
     output: true
     permalink: /:collection/:path/
   ChapX-Info:
