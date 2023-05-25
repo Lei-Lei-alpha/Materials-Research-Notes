@@ -272,3 +272,274 @@ Specifically, you learned:
 *   The history of boosting in learning theory and AdaBoost.
 *   How the gradient boosting algorithm works with a loss function, weak learners and an additive model.
 *   How to improve the performance of gradient boosting with regularization.
+
+
+***
+
+# Tomonori Masui' post
+
+> Cliped from Towards Data Science [**All You Need to Know about Gradient Boosting Algorithm − Part 1. Regression**](https://towardsdatascience.com/all-you-need-to-know-about-gradient-boosting-algorithm-part-1-regression-2520a34a502)
+
+Section 1. Algorithm with an Example
+-------
+
+Gradient boosting is one of the most popular machine learning algorithms for tabular datasets. It is powerful enough to find any nonlinear relationship between your model target and features and has great usability that can deal with missing values, outliers, and high cardinality categorical values on your features without any special treatment. While you can build barebone gradient boosting trees using some popular libraries such as [XGBoost](https://xgboost.readthedocs.io/en/stable/) or [LightGBM](https://lightgbm.readthedocs.io/en/latest/) without knowing any details of the algorithm, you still want to know how it works when you start tuning hyper-parameters, customizing the loss functions, etc., to get better quality on your model.
+
+This article aims to provide you with all the details about the algorithm, specifically its regression algorithm, including its math and Python code from scratch. If you are more interested in the classification algorithm, please look at [Part 2](https://medium.com/p/d3ed8f56541e).
+
+Gradient boosting is one of the variants of ensemble methods where you create multiple weak models and combine them to get better performance as a whole.
+
+In this section, we are building gradient boosting regression trees step by step using the below sample which has a nonlinear relationship between $x$ and $y$ to intuitively understand how it works (all the pictures below are created by the author).
+
+<div style = "text-align:center;">
+<figure>
+<img src="https://miro.medium.com/v2/resize:fit:550/1*SZdrLzQaXBxSoTgRMtSxig.png" >
+<figcaption>Sample for a regression problem.</figcaption>
+</figure>
+</div>
+
+The first step is making a very naive prediction on the target $y$. We make the initial prediction $F_0$ as an overall average of $y$:
+
+<div style = "text-align:center;">
+<figure>
+<img src="https://miro.medium.com/v2/resize:fit:550/1*Cff0iDWUiC_-TnWzwUm_Vg.png" >
+<figcaption>Initial prediction: $F_0 = \text{mean}(y)$.</figcaption>
+</figure>
+</div>
+
+You might feel using the mean for the prediction is silly, but don’t worry. We will improve our prediction as we add more weak models to it.
+
+To improve our prediction, we will focus on the residuals (i.e. prediction errors) from the first step because that is what we want to minimize to get a better prediction. The residuals $r₁$ are shown as the vertical blue lines in the figure below.
+
+<div style = "text-align:center;">
+<figure>
+<img src="https://miro.medium.com/v2/resize:fit:600/1*32xSZb7FIIxwFQeq9MKCgQ.png" >
+</figure>
+</div>
+
+To minimize these residuals, we are building a regression tree model with $x$ as its feature and the residuals $r_1 = y − \text{mean}(y)$ as its target. The reasoning behind that is if we can find some patterns between $x$ and $r_1$ by building the additional weak model, we can reduce the residuals by utilizing it.
+
+To simplify the demonstration, we are building very simple trees each of that only has one split and two terminal nodes which is called “stump”. Please note that gradient boosting trees usually have a little deeper trees such as ones with 8 to 32 terminal nodes.
+
+Here we are creating the first tree predicting the residuals with two different values $\gamma _1 = {6.0, − 5.9}$(we are using $\gamma$ (gamma) to denotes the prediction).
+
+![](https://miro.medium.com/v2/resize:fit:700/1*N3FYNWBEUO1bVZo4BulWIQ.png)
+
+This prediction $\gamma _1$ is added to our initial prediction $F_0$ to reduce the residuals. In fact, gradient boosting algorithm does not simply add $\gamma$ to $F$ as it makes the model overfit to the training data. Instead, $\gamma$ is scaled down by **learning rate** $\nu$ which ranges between 0 and 1, and then added to $F$.
+
+$$
+F_1 = F_0 + \nu \cdot \gamma _1
+$$
+
+In this example, we use a relatively big learning rate $\nu = 0.9$ to make the optimization process easier to understand, but it is usually supposed to be a much smaller value such as 0.1.
+
+After the update, our combined prediction $F_1$ becomes:
+
+$$
+F_1 = \begin{cases}
+   F_0 + \nu \cdot 6.0 &\text{if } x \leq 49.5 \\
+   F_0 - \nu \cdot 5.9 &\text{otherwise}
+\end{cases}
+$$
+
+Now, the updated residuals $r_2$ looks like this:
+
+<div style = "text-align:center;">
+<figure>
+<img src="https://miro.medium.com/v2/resize:fit:600/1*L9GpEucS0n4VvveK0ssI-A.png" >
+</figure>
+</div>
+
+In the next step, we are creating a regression tree again using the same $x$ as the feature and the updated residuals $r_2$ as its target. Here is the created tree:
+
+<div style = "text-align:center;">
+<figure>
+<img src="https://miro.medium.com/v2/resize:fit:700/1*iVz3E-vN4EVNk1zUtd0pIg.png" >
+</figure>
+</div>
+
+
+Then, we are updating our previous combined prediction $F_1$ with the new tree prediction $\gamma _2$.
+
+<div style = "text-align:center;">
+<figure>
+<img src="https://miro.medium.com/v2/resize:fit:600/1*7dtSxqYLS8teaSV7Zv7uUA.png" >
+</figure>
+</div>
+
+We iterate these steps until the model prediction stops improving. The figures below show the optimization process from 0 to 6 iterations.
+
+<div style = "text-align:center;">
+<figure>
+<img src="https://miro.medium.com/v2/resize:fit:700/1*KmFFQVKyDPAD5Qu66hHbxg.png" >
+</figure>
+</div>
+
+You can see the combined prediction $F_m$ is getting more closer to our target $y$ as we add more trees into the combined model. This is how gradient boosting works to predict complex targets by combining multiple weak models.
+
+Section 2. Math
+------
+
+In this section, we are diving into the math details of the algorithm. Here is the whole algorithm in math formulas.
+
+![](https://miro.medium.com/v2/resize:fit:700/1*dIHrPFBT2fmXuTXMb-3_Xw.png)Source: adapted from [Wikipedia](https://en.wikipedia.org/wiki/Gradient_boosting) and [Friedman’s paper](https://jerryfriedman.su.domains/ftp/trebst.pdf)
+
+Let’s demystify this line by line.
+
+### Step 1
+
+![](https://miro.medium.com/v2/resize:fit:700/1*1eTixNM_JzslkPWU4FkX2Q.png)
+
+The first step is creating an initial constant value prediction $F_0$. $L$ is the loss function and it is squared loss in our regression case.
+
+![](https://miro.medium.com/v2/resize:fit:400/1*KXf-q-8lmgXP940-io2SVw.png)
+
+$argmin$ means we are searching for the value $\gamma$ that minimizes $\sum L(y_i, \gamma)$. Let’s compute the value $\gamma$ by using our actual loss function. To find $\gamma$ that minimizes $ΣL$, we are taking a derivative of $\sum L$ with respect to $\gamma$.
+
+![](https://miro.medium.com/v2/resize:fit:500/1*5Q49z-ig1Jwz5jZn9iBf_g.png)
+
+And we are finding $\gamma$ that makes $\frac {\partial \sum L} {\gamma}$ equal to 0.
+
+![](https://miro.medium.com/v2/resize:fit:500/1*oLI_LaZ6wfMz5N6BYuReFw.png)
+
+It turned out that the value $\gamma$ that minimizes $ΣL$ is the mean of $y$. This is why we used $y$ mean for our initial prediction $F₀$ in the last section.
+
+![](https://miro.medium.com/v2/resize:fit:500/1*sf2bYf2JIJvZj6iovFusqg.png)
+
+### Step2
+
+![](https://miro.medium.com/v2/resize:fit:700/1*DQq-_GpOmE0tIiuU240kvA.png)
+
+The whole step2 processes from 2–1 to 2–4 are iterated $M$ times. $M$ denotes the number of trees we are creating and the small $m$ represents the index of each tree.
+
+#### Step 2–1
+
+![](https://miro.medium.com/v2/resize:fit:700/1*EwcvjKDxy_GuzKfOQdKabg.png)
+
+We are calculating residuals $r_i 𝑚$ by taking a derivative of the loss function with respect to the previous prediction $F_{m-1}$ and multiplying it by −1. As you can see in the subscript index, $r_i m$ is computed for each single sample $i$. Some of you might be wondering why we are calling this $rᵢ𝑚$ residuals. This value is actually **negative gradient** that gives us guidance on the directions ($+/−$) and the magnitude in which the loss function can be minimized. You will see why we are calling it residuals shortly. By the way, this technique where you use a gradient to minimize the loss on your model is very similar to g[radient descent](https://en.wikipedia.org/wiki/Gradient_descent) technique which is typically used to optimize neural networks. (In fact, they are slightly different from each other. If you are interested, please look at [this article](https://explained.ai/gradient-boosting/descent.html) detailing that topic.)
+
+Let’s compute the residuals here. $F{m-1}$ in the equation means the prediction from the previous step. In this first iteration, it is $F_0$. We are solving the equation for residuals $r_i 𝑚$.
+
+![](https://miro.medium.com/v2/resize:fit:550/1*Y_1bsDKl-zoKtmZU4GnA7g.png)
+
+We can take 2 out of it as it is just a constant. That leaves us $r_{im} = y_i − F_{m-1}$. You might now see why we call it residuals. This also gives us interesting insight that the negative gradient that provides us the direction and the magnitude to which the loss is minimized is actually just residuals.
+
+#### Step 2–2
+
+![](https://miro.medium.com/v2/resize:fit:700/1*3WRZuGsljLPAWeKZ9c3r2Q.png)
+
+$j$ represents a terminal node (i.e. leave) in the tree, $m$ denotes the tree index, and capital $J$ means the total number of leaves.
+
+#### Step 2–3
+
+![](https://miro.medium.com/v2/resize:fit:700/1*FM9KvlIC70j-8UsIvPFtoA.png)
+
+We are searching for $\gamma _{jm}$ that minimizes the loss function on each terminal node $j$. $\sum x_i R_{jm} L$ means we are aggregating the loss on all the sample $x_i$s that belong to the terminal node $R_{im}$. Let’s plugin the loss function into the equation.
+
+![](https://miro.medium.com/v2/resize:fit:650/1*6OkG6PP31DEjj391-TIjMw.png)
+
+Then, we are finding $\gamma _{jm}$ that makes the derivative of $\sum (*)$ equals zero.
+
+![](https://miro.medium.com/v2/resize:fit:550/1*Wln5S6Jmu9HOtvFGgBEArQ.png)
+
+Please note that $n_j$ means the number of samples in the terminal node $j$. This means the optimal $\gamma _{jm}$ that minimizes the loss function is the average of the residuals $r_{im}$ in the terminal node $R_j m$. In other words, $\gamma _{jm}$ is the regular prediction values of regression trees that are the average of the target values (in our case, residuals) in each terminal node.
+
+### Step 2–4
+
+![](https://miro.medium.com/v2/resize:fit:700/1*YvLO78g0uMntR3T6vVqOpA.png)
+
+In the final step, we are updating the prediction of the combined model $F_m$. $\gamma _{jm} 1(x ∈ R_{jm})$ means that we pick the value $\gamma _{im}$ if a given $x$ falls in a terminal node $R_{jm}$. As all the terminal nodes are exclusive, any given single $x$ falls into only a single terminal node and corresponding $\gammaⱼ𝑚$ is added to the previous prediction $F_{m-1}_$ and it makes updated prediction $F_m$.
+
+As mentioned in the previous section, $\nu$ is learning rate ranging between 0 and 1 which controls the degree of contribution of the additional tree prediction $\gamma$ to the combined prediction $F_m$. A smaller learning rate reduces the effect of the additional tree prediction, but it basically also reduces the chance of the model overfitting to the training data.
+
+Now we have gone through the whole steps. To get the best model performance, we want to iterate step 2 $M$ times, which means adding $M$ trees to the combined model. In reality, you might often want to add more than 100 trees to get the best model performance.
+
+Some of you might feel that all those maths are unnecessarily complex as the previous section showed the basic idea in a much simpler way without all those complications. The reason behind it is that gradient boosting is designed to be able to deal with any loss functions as long as it is differentiable and the maths we reviewed is a generalized form of gradient boosting algorithm with that flexibility. That makes the formula a little complex, but it is the beauty of the algorithm as it has huge flexibility and convenience to work on a variety of types of problems. For example, if your problem requires absolute loss instead of squared loss, you can just replace the loss function and the whole algorithm works as it is as defined above. In fact, popular gradient boosting implementations such as [XGBoost](https://xgboost.readthedocs.io/en/stable/) or [LightGBM](https://lightgbm.readthedocs.io/en/latest/) have a wide variety of loss functions, so you can choose whatever loss functions that suit your problem (see the various loss functions available in [XGBoost](https://xgboost.readthedocs.io/en/stable/parameter.html#learning-task-parameters) or [LightGBM](https://lightgbm.readthedocs.io/en/latest/Parameters.html#objective)).
+
+## Section 3. Code
+
+In this section, we are translating the maths we just reviewed into a viable python code to help us understand the algorithm further. The code is mostly derived from [Matt Bowers’ implementation](https://blog.mattbowers.dev/gradient-boosting-machine-from-scratch#Implementation), so all credit goes to his work. We are using `DecisionTreeRegressor` from scikit-learn to build trees which helps us just focus on the gradient boosting algorithm itself instead of the tree algorithm. We are imitating scikit-learn style implementation where you train the model with `fit` method and make predictions with `predict` method.
+
+~~~ python
+class CustomGradientBoostingRegressor:
+    
+    def __init__(self, learning_rate, n_estimators, max_depth=1):
+        self.learning_rate = learning_rate
+        self.n_estimators = n_estimators
+        self.max_depth = max_depth
+        self.trees = []
+        
+    def fit(self, X, y):
+        
+        self.F0 = y.mean()
+        Fm = self.F0
+        
+        for _ in range(self.n_estimators):
+            r = y - Fm
+            tree = DecisionTreeRegressor(max_depth=self.max_depth, random_state=0)
+            tree.fit(X, r)
+            gamma = tree.predict(X)
+            Fm += self.learning_rate * gamma
+            self.trees.append(tree)
+            
+    def predict(self, X):
+        
+        Fm = self.F0
+        
+        for i in range(self.n_estimators):
+            Fm += self.learning_rate * self.trees[i].predict(X)
+            
+        return Fm
+~~~
+
+Please note that all the trained trees are stored in `self.trees` list object and it is retrieved when we make predictions with `predict` method.
+
+Next, we are checking if our `CustomGradientBoostingRegressor` performs as the same as `GradientBoostingRegressor` from scikit-learn by looking at their RMSE on our data.
+
+~~~ python
+
+from sklearn.ensemble import GradientBoostingRegressor
+from sklearn.metrics import mean_squared_error
+
+custom_gbm = CustomGradientBoostingRegressor(
+    n_estimators=20, 
+    learning_rate=0.1, 
+    max_depth=1
+)
+custom_gbm.fit(x, y)
+custom_gbm_rmse = mean_squared_error(y, custom_gbm.predict(x), squared=False)
+print(f"Custom GBM RMSE:{custom_gbm_rmse:.15f}")
+
+sklearn_gbm = GradientBoostingRegressor(
+    n_estimators=20, 
+    learning_rate=0.1, 
+    max_depth=1
+)
+sklearn_gbm.fit(x, y)
+sklearn_gbm_rmse = mean_squared_error(y, sklearn_gbm.predict(x), squared=False)
+print(f"Scikit-learn GBM RMSE:{sklearn_gbm_rmse:.15f}")
+~~~
+
+<div style = "text-align:center;">
+<figure>
+<img src="https://miro.medium.com/v2/resize:fit:380/1*kymwIZbu0JXMPhvaNU3OcQ.png" >
+</figure>
+</div>
+
+As you can see in the output above, both models have exactly the same RMSE.
+
+The algorithm we have reviewed in this post is just one of the options of gradient boosting algorithm that is specific to regression problems with squared loss. If you are also interested in the classification algorithm, please look at Part 2.
+
+There are also some other great resources if you want further details of the algorithm:
+
+*   **StatQuest, Gradient Boost** [**Part1**](https://www.youtube.com/watch?v=3CC4N4z3GJc&t=1s) **and** [**Part 2**](https://www.youtube.com/watch?v=2xudPOBz-vs)  
+    This is a YouTube video explaining GB regression algorithm with great visuals in a beginner-friendly way.
+*   **Terence Parr and Jeremy Howard,** [**How to explain gradient boosting**](https://explained.ai/gradient-boosting/index.html)This article also focuses on GB regression. It explains how the algorithms differ between squared loss and absolute loss.
+*   **Jerome Friedman,** [**Greedy Function Approximation: A Gradient Boosting Machine**](https://statweb.stanford.edu/~jhf/ftp/trebst.pdf)This is the original paper from Friedman. While it is a little hard to understand, it surely shows the flexibility of the algorithm where he shows a generalized algorithm that can deal with any types of problem having a differentiable loss function.
+
+You can also look at the full Python code in the Google Colab link or the Github link below.
+
+*   Jerome Friedman, [Greedy Function Approximation: A Gradient Boosting Machine](https://statweb.stanford.edu/~jhf/ftp/trebst.pdf)
+*   Terence Parr and Jeremy Howard, [How to explain gradient boosting](https://explained.ai/gradient-boosting/index.html)
+*   Matt Bowers, [How to Build a Gradient Boosting Machine from Scratch](https://blog.mattbowers.dev/gradient-boosting-machine-from-scratch)
+*   Wikipedia, [Gradient boosting](https://en.wikipedia.org/wiki/Gradient_boosting)
