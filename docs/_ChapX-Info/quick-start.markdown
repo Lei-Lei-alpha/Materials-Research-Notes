@@ -5,13 +5,18 @@ category: pages
 layout: post
 ---
 
-Markdown code block
+This notebook is created by using the `gitbook` template created using `jekyll`. Some files are modified and the style is slightly changed from the original version.
+
+The notes are written in the [`kramdown`](https://kramdown.gettalong.org/syntax.html) variant of `markdown`.
+
+
+Markdown code block.
 
 ~~~ shell
 touch init.py
 ~~~
 
-Highlighted
+Highlighted using [`Liquid`](https://shopify.github.io/liquid/) template language.
 
 {% highlight shell %}
 touch init.py

@@ -3,6 +3,7 @@ title: Python practical tricks
 author: Lei Lei
 category: notes
 layout: post
+tags: [Python]
 ---
 
 ## Processing Files
@@ -197,4 +198,109 @@ status = subprocess.check_output('copy source.txt destination.txt', shell=True)
 
 * * *
 
+## List, tuple and dict
 
+### Remove all occurences of an element
+
+[Remove all occurrences of a value from a list?](https://stackoverflow.com/questions/1157106/remove-all-occurrences-of-a-value-from-a-list)
+
+Functional approach:
+
+**Python 3.x**
+
+```python
+>>> x = [1,2,3,2,2,2,3,4]
+>>> list(filter((2).__ne__, x))
+[1, 3, 3, 4]
+```
+
+### Sort list of dicts
+
+#### Sort by values
+
+> Source: [stackoverflow.com](https://stackoverflow.com/questions/72899/how-to-sort-a-list-of-dictionaries-by-a-value-of-the-dictionary-in-python)
+
+The [`sorted()`](https://docs.python.org/library/functions.html#sorted) function takes a `key=` parameter
+
+``` python
+newlist = sorted(list_to_be_sorted, key=lambda d: d['name']) 
+```
+
+Alternatively, you can use [`operator.itemgetter`](https://docs.python.org/library/operator.html#operator.itemgetter) instead of defining the function yourself
+
+``` python
+from operator import itemgetter
+newlist = sorted(list_to_be_sorted, key=itemgetter('name')) 
+```
+
+For completeness, add `reverse=True` to sort in descending order
+
+``` python
+newlist = sorted(list_to_be_sorted, key=itemgetter('name'), reverse=True) 
+```
+
+#### Sort by key names
+
+> Source: [stackoverflow.com](https://stackoverflow.com/questions/38644055/sort-list-of-dictionaries-based-on-keys)
+
+Just use `sorted` using a list like `[key1 in dict, key2 in dict, ...]` as the key to sort by. Remember to reverse the result, since `True` (i.e. key is in dict) is sorted after `False`.
+
+```
+>>> dicts = [{1:2, 3:4}, {3:4}, {5:6, 7:8}]
+>>> keys = [5, 3, 1]
+>>> sorted(dicts, key=lambda d: [k in d for k in keys], reverse=True)
+[{5: 6, 7: 8}, {1: 2, 3: 4}, {3: 4}] 
+```
+
+This is using _all_ the keys to break ties, i.e. in above example, there are two dicts that have the key `3`, but one also has the key `1`, so this one is sorted second.
+
+## Variables
+
+### Create dynamic variable names
+
+#### Using `for` loop
+
+The creation of a dynamic variable name in Python can be achieved with the help of iteration.
+
+Along with the `for` loop, the `globals()` function will also be used in this method.
+
+The `globals()` method in Python provides the output as a dictionary of the current global symbol table.
+
+The following code uses the `for` loop and the `globals()` method to create a dynamic variable name in Python.
+
+```python
+for n in range(0, 7):
+    globals()['strg%s' % n] = 'Hello'
+# strg0 = 'Hello', strg1 = 'Hello' ... strg6 = 'Hello'
+
+for x in range(0, 7):
+    globals()[f"variable1{x}"] = f"Hello the variable number {x}!"
+
+
+print(variable5)
+```
+
+Output:
+
+```bash
+Hello from variable number 5!
+```
+
+#### Using a dictionary
+
+A dictionary is one of the four built-in data-types provided by Python along with tuple, list, and set. It is used to store data in the form of key: value pairs. A dictionary is both ordered (in Python 3.7 and above) and mutable. It is written with curly brackets `{}`. In addition to this, dictionaries cannot have any duplicates.
+
+A dictionary has both a key and value, so it is easy to create a dynamic variable name using dictionaries.
+
+The following code uses a dictionary to create a dynamic variable name in python.
+
+```python
+var = "a"
+val = 4
+dict1 = {var: val}
+print(dict1["a"])
+```
+
+Although the creation of a dynamic variable name is possible in Python, It is needless and unnecessary as data in Python is created dynamically. Python references the objects in the code. If the reference of the object exists, then the object itself exists.
+
+Creating a variable in this way is not recommended.
