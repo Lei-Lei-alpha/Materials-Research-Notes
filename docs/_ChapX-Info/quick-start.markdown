@@ -5,7 +5,7 @@ category: pages
 layout: post
 ---
 
-This notebook is created by using the `gitbook` template created using `jekyll`. Some files are modified and the style is slightly changed from the original version.
+This notebook is created by using the [`gitbook`](https://sighingnow.github.io/jekyll-gitbook/) theme created using [`jekyll`](https://jekyllrb.com/). Some files are modified and the style is slightly changed from the original version.
 
 The notes are written in the [`kramdown`](https://kramdown.gettalong.org/syntax.html) variant of `markdown`.
 

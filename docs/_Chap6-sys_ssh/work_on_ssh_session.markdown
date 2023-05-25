@@ -1,5 +1,5 @@
 ---
-title: Bash Git & SSH tricks
+title: Bash, Git & SSH tricks
 author: Lei Lei
 category: notes
 layout: post
