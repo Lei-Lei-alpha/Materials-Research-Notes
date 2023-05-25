@@ -200,7 +200,7 @@ status = subprocess.check_output('copy source.txt destination.txt', shell=True)
 
 ## List, tuple and dict
 
-### Remove all occurences of an element
+### Remove all occurences of an element from a list
 
 [Remove all occurrences of a value from a list?](https://stackoverflow.com/questions/1157106/remove-all-occurrences-of-a-value-from-a-list)
 
@@ -253,6 +253,26 @@ Just use `sorted` using a list like `[key1 in dict, key2 in dict, ...]` as the k
 ```
 
 This is using _all_ the keys to break ties, i.e. in above example, there are two dicts that have the key `3`, but one also has the key `1`, so this one is sorted second.
+
+### Remove a key from a dict
+
+> Source: [stackoverflow.com](https://stackoverflow.com/questions/11277432/how-can-i-remove-a-key-from-a-python-dictionary)
+
+To delete a key regardless of whether it is in the dictionary, use the two-argument form of [`dict.pop()`](http://docs.python.org/library/stdtypes.html#dict.pop):
+
+``` python
+my_dict.pop('key', None) 
+```
+
+This will return `my_dict[key]` if `key` exists in the dictionary, and `None` otherwise. If the second parameter is not specified (i.e. `my_dict.pop('key')`) and `key` does not exist, a `KeyError` is raised.
+
+To delete a key that is guaranteed to exist, you can also use
+
+``` python
+del my_dict['key'] 
+```
+
+This will raise a `KeyError` if the key is not in the dictionary.
 
 ## Variables
 
