@@ -272,26 +272,3 @@ Specifically, you learned:
 *   The history of boosting in learning theory and AdaBoost.
 *   How the gradient boosting algorithm works with a loss function, weak learners and an additive model.
 *   How to improve the performance of gradient boosting with regularization.
-
-Do you have any questions about the gradient boosting algorithm or about this post? Ask your questions in the comments and I will do my best to answer.
-
-Discover The Algorithm Winning Competitions!
---------------------------------------------
-
-[![](https://machinelearningmastery.com/wp-content/uploads/2022/11/XGBP-220.png)](https://machinelearningmastery.com/xgboost-with-python/)
-
-#### Develop Your Own XGBoost Models in Minutes
-
-...with just a few lines of Python
-
-Discover how in my new Ebook:  
-[XGBoost With Python](https://machinelearningmastery.com/xgboost-with-python/)
-
-It covers **self-study tutorials** like:  
-_Algorithm Fundamentals_, _Scaling_, _Hyperparameters_, and much more...
-
-#### Bring The Power of XGBoost To Your Own Projects
-
-Skip the Academics. Just Results.
-
-[See What's Inside](https://machinelearningmastery.com/xgboost-with-python/)
