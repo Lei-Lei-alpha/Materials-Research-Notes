@@ -241,7 +241,7 @@ Another approach is called breakDown, which is implemented in the `breakDown` R 
 
 ***
 
-SHAP (SHapley Additive exPlanations)
+SHAP (SHapley Additive Explanations)
 ----------------------------------------------------------
 
 > Contents cliped from the book **Interpretable Machine Learning** - _A Guide for Making Black Box Models Explainable_
@@ -259,11 +259,15 @@ I recommend reading the chapters on [Shapley values](shapley.html#shapley) and [
 
 The goal of SHAP is to explain the prediction of an instance x by computing the contribution of each feature to the prediction. The SHAP explanation method computes Shapley values from coalitional game theory. The feature values of a data instance act as players in a coalition. Shapley values tell us how to fairly distribute the “payout” (= the prediction) among the features. A player can be an individual feature value, e.g. for tabular data. A player can also be a group of feature values. For example to explain an image, pixels can be grouped to superpixels and the prediction distributed among them. One innovation that SHAP brings to the table is that the Shapley value explanation is represented as an additive feature attribution method, a linear model. That view connects LIME and Shapley values. SHAP specifies the explanation as:
 
-$$g(z')=\phi_0+\sum_{j=1}^M\phi_jz_j'$$
+$$
+g(z')=\phi_0+\sum_{j=1}^M\phi_jz_j'
+$$
 
 where g is the explanation model, $z'\in\{0,1\}^M$ is the coalition vector, M is the maximum coalition size and $\phi_j\in\mathbb{R}$ is the feature attribution for a feature j, the Shapley values. What I call “coalition vector” is called “simplified features” in the SHAP paper. I think this name was chosen, because for e.g. image data, the images are not represented on the pixel level, but aggregated to superpixels. I believe it is helpful to think about the z’s as describing coalitions: In the coalition vector, an entry of 1 means that the corresponding feature value is “present” and 0 that it is “absent”. This should sound familiar to you if you know about Shapley values. To compute Shapley values, we simulate that only some feature values are playing (“present”) and some are not (“absent”). The representation as a linear model of coalitions is a trick for the computation of the $\phi$’s. For x, the instance of interest, the coalition vector x’ is a vector of all 1’s, i.e. all feature values are “present”. The formula simplifies to:
 
-$$g(x')=\phi_0+\sum_{j=1}^M\phi_j$$
+$$
+g(x')=\phi_0+\sum_{j=1}^M\phi_j
+$$
 
 You can find this formula in similar notation in the [Shapley value](shapley.html#shapley) chapter. More about the actual estimation comes later. Let us first talk about the properties of the $\phi$’s before we go into the details of their estimation.
 
