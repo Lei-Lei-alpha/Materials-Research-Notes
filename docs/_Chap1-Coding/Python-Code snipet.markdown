@@ -162,14 +162,14 @@ def apply_kernel2(sources, sqdist, kern_size, n, mask):
             mask[ind_i,ind_j] *= mask_kernel
 
 
-def dist_v7(sources, n, kernel_size,method):
+def dist_v7(sources, n, kernel_size, method):
     sources = np.asfortranarray(sources) #for memory contiguity
     kernel_size = min(kernel_size, n//2)
     kernel_size = max(kernel_size, 1)
     sqdist = np.full((n,n), 10*n**2, dtype=np.int32) #preallocate with a huge distance (>max**2)
     mask   = np.ones((n,n), dtype=bool)              #which points have not been reached?
     #main code
-    if (method==1):
+    if (method == 1):
         apply_kernel1(sources, sqdist, kernel_size, n, mask)
     else:
         apply_kernel2(sources, sqdist, kernel_size, n, mask)

@@ -155,7 +155,7 @@ points    assists    steals    rebounds
 5    23    9    1    5
 ```
 
-## Index, filtering & slicing
+## Index, slicing, filtering & sorting
 
 ### Reset index
 
@@ -198,6 +198,13 @@ data[(449.75<data['e loss']) | (data['e loss']<470.25)]
 df=df1.iloc[209:]
 #select
 df=df1.iloc[156:190]
+```
+
+### Sorting
+
+```python
+df_sort = df.sort_values(by = 'column_1')
+df_sort = df.sort_values(by = ['column_1', 'column_2'])
 ```
 
 ## File I/O
