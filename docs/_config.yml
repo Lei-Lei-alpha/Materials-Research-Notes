@@ -45,8 +45,9 @@ collections:
   - Chap2-ML
   - Chap3-MatNotes
   - Chap4-HSTORE
-  - Chap5-Visualisation
-  - Chap6-sys_ssh
+  - Chap5-CompMat
+  - Chap6-Visualisation
+  - Chap7-sys_ssh
   - ChapX-Info
 
 collections:
@@ -62,10 +63,13 @@ collections:
   Chap4-HSTORE:
     output: true
     permalink: /:collection/:path/
-  Chap5-Visualisation:
+  Chap5-CompMat:
     output: true
     permalink: /:collection/:path/
-  Chap6-sys_ssh:
+  Chap6-Visualisation:
+    output: true
+    permalink: /:collection/:path/
+  Chap7-sys_ssh:
     output: true
     permalink: /:collection/:path/
   ChapX-Info:
