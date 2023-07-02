@@ -33,9 +33,6 @@ syntax_highlighter_style: colorful
 
 markdown_ext:     markdown, mkdown, mkdn, mkd, md
 
-plugins:
-  - jekyll-diagrams
-
 # Permalinks
 # permalink:      /:categories/:year-:month-:day-:title:output_ext
 
@@ -91,5 +88,6 @@ collections:
 
 plugins:
   - jekyll-remote-theme
+  - jekyll-diagrams
 
 remote_theme: sighingnow/jekyll-gitbook
