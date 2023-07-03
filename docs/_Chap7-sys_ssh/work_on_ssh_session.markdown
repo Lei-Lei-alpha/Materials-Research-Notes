@@ -42,3 +42,9 @@ Find files modified within the last 7 days
 ``` bash
 find . -type f -mtime -7 -print
 ```
+
+## Print tail of multiple files
+
+```bash
+
+```
