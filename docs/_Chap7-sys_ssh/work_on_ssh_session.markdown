@@ -46,5 +46,5 @@ find . -type f -mtime -7 -print
 ## Print tail of multiple files
 
 ```bash
-
+tail ./*/vasp.log
 ```

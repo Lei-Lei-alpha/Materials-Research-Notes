@@ -155,6 +155,31 @@ points    assists    steals    rebounds
 5    23    9    1    5
 ```
 
+## Data
+
+### Replace values
+
+~~~python
+# Replace a Single Value
+df['Age'] = df['Age'].replace(23, 99)
+
+# Replace Multiple Values
+df['Age'] = df['Age'].replace([23, 45], [99, 999])
+
+# Also works in the Entire DataFrame
+df = df.replace(23, 99)
+df = df.replace([23, 45], [99, 999])
+
+# Replace Multiple Values with a Single Value
+df['Age'] = df['Age'].replace([23, 45, 35], 99)
+
+# Using a Dictionary (Dict is passed into to_replace=)
+df['Age'] = df['Age'].replace({23:99, 45:999})
+
+# Using a Dictionary for Column Replacements (key:value = column:value)
+df = df.replace({'Name': 'Jane', 'Age': 45}, 99)
+~~~
+
 ## Index, slicing, filtering & sorting
 
 ### Reset index
