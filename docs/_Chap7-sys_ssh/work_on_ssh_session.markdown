@@ -43,6 +43,11 @@ Find files modified within the last 7 days
 find . -type f -mtime -7 -print
 ```
 
+Delete files found and print the file name
+~~~bash
+find . -name slurm*.out -delete -print
+~~~
+
 ## Print tail of multiple files
 
 ```bash
