@@ -1,0 +1,1123 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head><meta charset="UTF-8">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"><title>ML - Gradient Boosting Algorithm · Lei&#39;s Notes</title><meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="description" content="My private lab notes on materials science including several projects on perovskite structure materials and computational research."><meta name="generator" content="Jekyll (using style of GitBook)"><meta name="author" content="Lei Lei"><link rel="stylesheet" href="/Materials-Research-Notes/gitbook/style.css">
+<link rel="stylesheet" href="/Materials-Research-Notes/gitbook/gitbook-plugin-fontsettings/website.css">
+<link rel="stylesheet" href="/Materials-Research-Notes/gitbook/gitbook-plugin-search-pro/search.css">
+<link rel="stylesheet" href="/Materials-Research-Notes/gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+
+<link rel="stylesheet" href="/Materials-Research-Notes/gitbook/rouge/colorful.css">
+
+<link rel="stylesheet" href="/Materials-Research-Notes/gitbook/custom.css">
+
+<meta name="HandheldFriendly" content="true"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/Materials-Research-Notes/gitbook/images/apple-touch-icon-precomposed-152.png">
+<link rel="shortcut icon" href="/Materials-Research-Notes/gitbook/images/favicon.ico" type="image/x-icon">
+
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        svg: {
+            fontCache: 'global'
+        }
+    };
+</script>
+
+            <link rel="prev" href="/Materials-Research-Notes/" />
+        
+
+        
+            <link rel="next" href="/Materials-Research-Notes/Chap2-ML/Out_liers/" />
+        
+    </head>
+    <body>
+        <div class="book"><div class="book-summary">
+    <div id="book-search-input" role="search">
+        <input type="text" placeholder="Type to search" />
+    </div>
+    <nav role="navigation">
+        <ul class="summary">
+            
+            <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes">
+            
+                <a href="/Materials-Research-Notes/" style="font-size: 165%; font-weight: bold;">
+                    Lei&#39;s Notes
+                </a>
+            </li>
+
+            <li class="divider"></li>
+
+            
+                
+                <p style="font-size: 120%; font-weight: 600; text-indent:10px;">Coding</p>
+                <hr>
+                    
+
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap1-Coding/python-sequences/">
+                        
+                            <a href="/Materials-Research-Notes/Chap1-Coding/python-sequences/">
+                                Python - sequences
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap1-Coding/numpy-tricks/">
+                        
+                            <a href="/Materials-Research-Notes/Chap1-Coding/numpy-tricks/">
+                                Numpy - practical tricks and code snipets
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap1-Coding/Vim_cheatsheet/">
+                        
+                            <a href="/Materials-Research-Notes/Chap1-Coding/Vim_cheatsheet/">
+                                Vim Cheatsheet
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap1-Coding/Python-tricks/">
+                        
+                            <a href="/Materials-Research-Notes/Chap1-Coding/Python-tricks/">
+                                Python practical tricks
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap1-Coding/Python-data%20model/">
+                        
+                            <a href="/Materials-Research-Notes/Chap1-Coding/Python-data%20model/">
+                                Python - data structures
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap1-Coding/Python-Code%20snipet/">
+                        
+                            <a href="/Materials-Research-Notes/Chap1-Coding/Python-Code%20snipet/">
+                                Python - useful snippets for materials science
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                    <li class="divider"></li>
+                
+            
+                
+                <p style="font-size: 120%; font-weight: 600; text-indent:10px;">ML</p>
+                <hr>
+                    
+
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap2-ML/SHAP/">
+                        
+                            <a href="/Materials-Research-Notes/Chap2-ML/SHAP/">
+                                SHAP
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap2-ML/Pytorch_tricks/">
+                        
+                            <a href="/Materials-Research-Notes/Chap2-ML/Pytorch_tricks/">
+                                Pytorch tricks
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap2-ML/Out_liers/">
+                        
+                            <a href="/Materials-Research-Notes/Chap2-ML/Out_liers/">
+                                ML - handle outliers
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter active" data-level="1.2" data-path="/Materials-Research-Notes/Chap2-ML/GBR/">
+                        
+                            <a href="/Materials-Research-Notes/Chap2-ML/GBR/">
+                                ML - Gradient Boosting Algorithm
+                            </a>
+                            
+                                
+                                    <ul><li><a href="#introduction">Introduction</a></li><li><a href="#the-origin-of-boosting">The Origin of Boosting</a><ul><li><a href="#adaboost-the-first-boosting-algorithm">AdaBoost the First Boosting Algorithm</a></li><li><a href="#generalization-of-adaboost-as-gradient-boosting">Generalization of AdaBoost as Gradient Boosting</a></li></ul></li><li><a href="#how-gradient-boosting-works">How Gradient Boosting Works</a><ul><li><a href="#1-loss-function">1. Loss Function</a></li><li><a href="#2-weak-learner">2. Weak Learner</a></li><li><a href="#3-additive-model">3. Additive Model</a></li></ul></li><li><a href="#improvements-to-basic-gradient-boosting">Improvements to Basic Gradient Boosting</a><ul><li><a href="#1-tree-constraints">1. Tree Constraints</a></li><li><a href="#2weightedupdates">2. Weighted Updates</a></li><li><a href="#3-stochastic-gradient-boosting">3. Stochastic Gradient Boosting</a></li><li><a href="#4-penalized-gradient-boosting">4. Penalized Gradient Boosting</a></li></ul></li><li><a href="#gradient-boosting-resources">Gradient Boosting Resources</a><ul><li><a href="#gradient-boostingvideos">Gradient Boosting Videos</a></li><li><a href="#gradient-boosting-in-textbooks">Gradient Boosting in Textbooks</a></li><li><a href="#gradient-boosting-papers">Gradient Boosting Papers</a></li><li><a href="#gradient-boosting-slides">Gradient Boosting Slides</a></li><li><a href="#gradient-boostingweb-pages">Gradient Boosting Web Pages</a></li></ul></li><li><a href="#summary">Summary</a></li><li><a href="#section-1-algorithm-with-an-example">Section 1. Algorithm with an Example</a></li><li><a href="#section-2-math">Section 2. Math</a><ul><li><a href="#step-1">Step 1</a></li><li><a href="#step2">Step2</a></li><li><a href="#step-24">Step 2–4</a></li></ul></li><li><a href="#section-3-code">Section 3. Code</a></li></ul>
+
+                                
+                            
+                        </li>
+                    
+                    <li class="divider"></li>
+                
+            
+                
+                <p style="font-size: 120%; font-weight: 600; text-indent:10px;">MatNotes</p>
+                <hr>
+                    
+
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap3-MatNotes/2023-05-12-Comp_Mat_Concep/">
+                        
+                            <a href="/Materials-Research-Notes/Chap3-MatNotes/2023-05-12-Comp_Mat_Concep/">
+                                Concepts and methods in computational materials science
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                    <li class="divider"></li>
+                
+            
+                
+                <p style="font-size: 120%; font-weight: 600; text-indent:10px;">HSTORE</p>
+                <hr>
+                    
+
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap4-HSTORE/2023-05-12-interstitial-hydrides/">
+                        
+                            <a href="/Materials-Research-Notes/Chap4-HSTORE/2023-05-12-interstitial-hydrides/">
+                                Solid hydrogen storage materials: interstitial hydrides
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap4-HSTORE/2022-03-29-AIMD-simulation-with-efield/">
+                        
+                            <a href="/Materials-Research-Notes/Chap4-HSTORE/2022-03-29-AIMD-simulation-with-efield/">
+                                AIMD simulation for MAPbI3 under electric filed
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                    <li class="divider"></li>
+                
+            
+                
+                <p style="font-size: 120%; font-weight: 600; text-indent:10px;">CompMat</p>
+                <hr>
+                    
+
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap5-CompMat/VASP-tricks/">
+                        
+                            <a href="/Materials-Research-Notes/Chap5-CompMat/VASP-tricks/">
+                                VASP errors and practical tricks
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                    <li class="divider"></li>
+                
+            
+                
+                <p style="font-size: 120%; font-weight: 600; text-indent:10px;">Visualisation</p>
+                <hr>
+                    
+
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap6-Visualisation/pandas_tricks/">
+                        
+                            <a href="/Materials-Research-Notes/Chap6-Visualisation/pandas_tricks/">
+                                Pandas tricks
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap6-Visualisation/matplotlib_tricks/">
+                        
+                            <a href="/Materials-Research-Notes/Chap6-Visualisation/matplotlib_tricks/">
+                                Matplotlib tricks
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap6-Visualisation/example_codes/">
+                        
+                            <a href="/Materials-Research-Notes/Chap6-Visualisation/example_codes/">
+                                Matplotlib quick examples
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap6-Visualisation/Jupyter/jupyter_tricks/">
+                        
+                            <a href="/Materials-Research-Notes/Chap6-Visualisation/Jupyter/jupyter_tricks/">
+                                Jupyter Notebook Tricks
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                    <li class="divider"></li>
+                
+            
+                
+                <p style="font-size: 120%; font-weight: 600; text-indent:10px;">sys_ssh</p>
+                <hr>
+                    
+
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap7-sys_ssh/work_on_ssh_session/">
+                        
+                            <a href="/Materials-Research-Notes/Chap7-sys_ssh/work_on_ssh_session/">
+                                Bash, Git &amp; SSH tricks
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                    <li class="divider"></li>
+                
+            
+                
+                <p style="font-size: 120%; font-weight: 600; text-indent:10px;">Info</p>
+                <hr>
+                    
+
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/ChapX-Info/quick-start/">
+                        
+                            <a href="/Materials-Research-Notes/ChapX-Info/quick-start/">
+                                Quick Start
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/ChapX-Info/about/">
+                        
+                            <a href="/Materials-Research-Notes/ChapX-Info/about/">
+                                About
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                    <li class="divider"></li>
+                
+            
+                
+            
+        </ul>
+    </nav>
+</div><div class="book-body">
+                <div class="book-header" role="navigation">
+                    <!-- Title -->
+                    <h1>
+                        <i class="fa fa-circle-o-notch fa-spin"></i>
+                        
+                            <a href="." >ML - Gradient Boosting Algorithm</a>
+                        
+                    </h1>
+                </div>
+
+                <div class="body-inner"><div class="page-wrapper" tabindex="-1" role="main">
+    <div class="page-inner">
+        <div id="book-search-results">
+            <div class="search-noresults">
+                <section class="normal markdown-section">
+
+                    
+                        <h1 id="/Chap2-ML/GBR" style="border-style: solid solid solid solid; border-width: 0px 0px 2px 0px; border-color: black black #F1F0F0 black;">ML - Gradient Boosting Algorithm</h1>
+                    
+
+                    
+                    
+                    
+                    
+
+<h2 id="introduction">Introduction</h2>
+<p>Gradient boosting is one of the variants of ensemble methods where you create multiple weak models and combine them to get better performance as a whole.</p>
+
+<blockquote>
+  <p><a href="https://machinelearningmastery.com/gentle-introduction-gradient-boosting-algorithm-machine-learning/">machinelearningmastery.com</a></p>
+</blockquote>
+
+<p>Gradient boosting is one of the most powerful techniques for building predictive models.</p>
+
+<h2 id="the-origin-of-boosting">The Origin of Boosting</h2>
+
+<p>The idea of boosting came out of the idea of whether a weak learner can be modified to become better.</p>
+
+<p>Michael Kearns articulated the goal as the “<em>Hypothesis Boosting Problem</em>” stating the goal from a practical standpoint as:</p>
+
+<blockquote>
+  <p>… an efficient algorithm for converting relatively poor hypotheses into very good hypotheses</p>
+</blockquote>
+
+<p>— <a href="https://www.cis.upenn.edu/~mkearns/papers/boostnote.pdf">Thoughts on Hypothesis Boosting</a> [PDF], 1988</p>
+
+<p>A weak hypothesis or weak learner is defined as one whose performance is at least slightly better than random chance.</p>
+
+<p>These ideas built upon Leslie Valiant’s  work on distribution free or <a href="https://en.wikipedia.org/wiki/Probably_approximately_correct_learning">Probably Approximately Correct</a> (PAC) learning, a framework for investigating the complexity of machine learning problems.</p>
+
+<p>Hypothesis boosting was the idea of filtering observations, leaving those observations that the weak learner can handle and focusing on developing new weak learns to handle the remaining difficult observations.</p>
+
+<blockquote>
+  <p>The idea is to use the weak learning method several times to get a succession of hypotheses, each one refocused on the examples that the previous ones found difficult and misclassified. … Note, however, it is not obvious at all how this can be done</p>
+</blockquote>
+
+<p>— <a href="https://amzn.to/3g4YDva">Probably Approximately Correct: Nature’s Algorithms for Learning and Prospering in a Complex World</a>, page 152, 2013</p>
+
+<h3 id="adaboost-the-first-boosting-algorithm">AdaBoost the First Boosting Algorithm</h3>
+
+<p>The first realization of boosting that saw great success in application was <a href="https://machinelearningmastery.com/boosting-and-adaboost-for-machine-learning/">Adaptive Boosting or AdaBoost</a> for short.</p>
+
+<blockquote>
+  <p>Boosting refers to this general problem of producing a very accurate prediction rule by combining rough and moderately inaccurate rules-of-thumb.</p>
+</blockquote>
+
+<p>— <a href="http://www.face-rec.org/algorithms/Boosting-Ensemble/decision-theoretic_generalization.pdf">A decision-theoretic generalization of on-line learning and an application to boosting</a> [PDF], 1995</p>
+
+<p>The weak learners in AdaBoost are decision trees with a single split, called decision stumps for their shortness.</p>
+
+<p>AdaBoost works by weighting the observations, putting more weight on difficult to classify instances and less on those already handled well. New weak learners are added sequentially that focus their training on the more difficult patterns.</p>
+
+<blockquote>
+  <p>This means that samples that are difficult to classify receive increasing larger weights until the algorithm identifies a model that correctly classifies these samples</p>
+</blockquote>
+
+<p>— <a href="https://amzn.to/3iFPHhq">Applied Predictive Modeling</a>, 2013</p>
+
+<p>Predictions are made by majority vote of the weak learners’ predictions, weighted by their individual accuracy. The most successful form of the AdaBoost algorithm was for binary classification problems and was called AdaBoost.M1.</p>
+
+<p>You can learn more about the AdaBoost algorithm in the post:</p>
+
+<ul>
+  <li><a href="https://machinelearningmastery.com/boosting-and-adaboost-for-machine-learning/">Boosting and AdaBoost for Machine Learning</a>.</li>
+</ul>
+
+<h3 id="generalization-of-adaboost-as-gradient-boosting">Generalization of AdaBoost as Gradient Boosting</h3>
+
+<p>AdaBoost and related algorithms were recast in a statistical framework first by Breiman calling them ARCing algorithms.</p>
+
+<blockquote>
+  <p>Arcing is an acronym for Adaptive Reweighting and Combining. Each step in an arcing algorithm consists of a weighted minimization followed by a recomputation of [the classifiers] and [weighted input].</p>
+</blockquote>
+
+<p>— <a href="https://www.stat.berkeley.edu/~breiman/games.pdf">Prediction Games and Arching Algorithms</a> [PDF], 1997</p>
+
+<p>This framework was further developed by Friedman and called Gradient Boosting Machines. Later called just gradient boosting or gradient tree boosting.</p>
+
+<p>The statistical framework cast boosting as a numerical optimization problem where the objective is to minimize the loss of the model by adding weak learners using a gradient descent like procedure.</p>
+
+<p>This class of algorithms were described as a stage-wise additive model. This is because one new weak learner is added at a time and existing weak learners in the model are frozen and left unchanged.</p>
+
+<blockquote>
+  <p>Note that this stagewise strategy is different from stepwise approaches that readjust previously entered terms when new ones are added.</p>
+</blockquote>
+
+<p>— <a href="https://statweb.stanford.edu/~jhf/ftp/trebst.pdf">Greedy Function Approximation: A Gradient Boosting Machine</a> [PDF], 1999</p>
+
+<p>The generalization allowed arbitrary differentiable loss functions to be used, expanding the technique beyond binary classification problems to support regression, multi-class classification and more.</p>
+
+<h2 id="how-gradient-boosting-works">How Gradient Boosting Works</h2>
+
+<p>Gradient boosting involves three elements:</p>
+
+<ol>
+  <li>A loss function to be optimized.</li>
+  <li>A weak learner to make predictions.</li>
+  <li>An additive model to add weak learners to minimize the loss function.</li>
+</ol>
+
+<h3 id="1-loss-function">1. Loss Function</h3>
+
+<p>The loss function used depends on the type of problem being solved.</p>
+
+<p>It must be differentiable, but many standard loss functions are supported and you can define your own.</p>
+
+<p>For example, regression may use a squared error and classification may use logarithmic loss.</p>
+
+<p>A benefit of the gradient boosting framework is that a new boosting algorithm does not have to be derived for each loss function that may want to be used, instead, it is a generic enough framework that any differentiable loss function can be used.</p>
+
+<h3 id="2-weak-learner">2. Weak Learner</h3>
+
+<p>Decision trees are used as the weak learner in gradient boosting.</p>
+
+<p>Specifically regression trees are used that output real values for splits and whose output can be added together, allowing subsequent models outputs to be added and “correct” the residuals in the predictions.</p>
+
+<p>Trees are constructed in a greedy manner, choosing the best split points based on purity scores like Gini or to minimize the loss.</p>
+
+<p>Initially, such as in the case of AdaBoost, very short decision trees were used that only had a single split, called a decision stump. Larger trees can be used generally with 4-to-8 levels.</p>
+
+<p>It is common to constrain the weak learners in specific ways, such as a maximum number of layers, nodes, splits or leaf nodes.</p>
+
+<p>This is to ensure that the learners remain weak, but can still be constructed in a greedy manner.</p>
+
+<h3 id="3-additive-model">3. Additive Model</h3>
+
+<p>Trees are added one at a time, and existing trees in the model are not changed.</p>
+
+<p>A gradient descent procedure is used to minimize the loss when adding trees.</p>
+
+<p>Traditionally, gradient descent is used to minimize a set of parameters, such as the coefficients in a regression equation or weights in a neural network. After calculating error or loss, the weights are updated to minimize that error.</p>
+
+<p>Instead of parameters, we have weak learner sub-models or more specifically decision trees. After calculating the loss, to perform the gradient descent procedure, we must add a tree to the model that reduces the loss (i.e. follow the gradient). We do this by parameterizing the tree, then modify the parameters of the tree and move in the right direction by (reducing the residual loss.</p>
+
+<p>Generally this approach is called functional gradient descent or gradient descent with functions.</p>
+
+<blockquote>
+  <p>One way to produce a weighted combination of classifiers which optimizes [the cost] is by gradient descent in function space</p>
+</blockquote>
+
+<p>— <a href="http://papers.nips.cc/paper/1766-boosting-algorithms-as-gradient-descent.pdf">Boosting Algorithms as Gradient Descent in Function Space</a> [PDF], 1999</p>
+
+<p>The output for the new tree is then added to the output of the existing sequence of trees in an effort to correct or improve the final output of the model.</p>
+
+<p>A fixed number of trees are added or training stops once loss reaches an acceptable level or no longer improves on an external validation dataset.</p>
+
+<h2 id="improvements-to-basic-gradient-boosting">Improvements to Basic Gradient Boosting</h2>
+
+<p>Gradient boosting is a greedy algorithm and can overfit a training dataset quickly.</p>
+
+<p>It can benefit from regularization methods that penalize various parts of the algorithm and generally improve the performance of the algorithm by reducing overfitting.</p>
+
+<p>In this this section we will look at 4 enhancements to basic gradient boosting:</p>
+
+<ol>
+  <li>Tree Constraints</li>
+  <li>Shrinkage</li>
+  <li>Random sampling</li>
+  <li>Penalized Learning</li>
+</ol>
+
+<h3 id="1-tree-constraints">1. Tree Constraints</h3>
+
+<p>It is important that the weak learners have skill but remain weak.</p>
+
+<p>There are a number of ways that the trees can be constrained.</p>
+
+<p>A good general heuristic is that the more constrained tree creation is, the more trees you will need in the model, and the reverse, where less constrained individual trees, the fewer trees that will be required.</p>
+
+<p>Below are some constraints that can be imposed on the construction of decision trees:</p>
+
+<ul>
+  <li><strong>Number of trees</strong>, generally adding more trees to the model can be very slow to overfit. The advice is to keep adding trees until no further improvement is observed.</li>
+  <li><strong>Tree depth</strong>, deeper trees are more complex trees and shorter trees are preferred. Generally, better results are seen with 4-8 levels.</li>
+  <li><strong>Number of nodes or number of leaves</strong>, like depth, this can constrain the size of the tree, but is not constrained to a symmetrical structure if other constraints are used.</li>
+  <li><strong>Number of observations per split</strong> imposes a minimum constraint on the amount of training data at a training node before a split can be considered</li>
+  <li><strong>Minimim improvement to loss</strong> is a constraint on the improvement of any split added to a tree.</li>
+</ul>
+
+<h3 id="2weightedupdates">2. Weighted Updates</h3>
+
+<p>The predictions of each tree are added together sequentially.</p>
+
+<p>The contribution of each tree to this sum can be weighted to slow down the learning by the algorithm. This weighting is called a shrinkage or a learning rate.</p>
+
+<blockquote>
+  <p>Each update is simply scaled by the value of the “learning rate parameter v”</p>
+</blockquote>
+
+<p>— <a href="https://statweb.stanford.edu/~jhf/ftp/trebst.pdf">Greedy Function Approximation: A Gradient Boosting Machine</a> [PDF], 1999</p>
+
+<p>The effect is that learning is slowed down, in turn require more trees to be added to the model, in turn taking longer to train, providing a configuration trade-off between the number of trees and learning rate.</p>
+
+<blockquote>
+  <p>Decreasing the value of v [the learning rate] increases the best value for M [the number of trees].</p>
+</blockquote>
+
+<p>— <a href="https://statweb.stanford.edu/~jhf/ftp/trebst.pdf">Greedy Function Approximation: A Gradient Boosting Machine</a> [PDF], 1999</p>
+
+<p>It is common to have small values in the range of 0.1 to 0.3, as well as values less than 0.1.</p>
+
+<blockquote>
+  <p>Similar to a learning rate in stochastic optimization, shrinkage reduces the influence of each individual tree and leaves space for future trees to improve the model.</p>
+</blockquote>
+
+<p>— <a href="https://statweb.stanford.edu/~jhf/ftp/stobst.pdf">Stochastic Gradient Boosting</a> [PDF], 1999</p>
+
+<h3 id="3-stochastic-gradient-boosting">3. Stochastic Gradient Boosting</h3>
+
+<p>A big insight into bagging ensembles and random forest was allowing trees to be greedily created from subsamples of the training dataset.</p>
+
+<p>This same benefit can be used to reduce the correlation between the trees in the sequence in gradient boosting models.</p>
+
+<p>This variation of boosting is called stochastic gradient boosting.</p>
+
+<blockquote>
+  <p>at each iteration a subsample of the training data is drawn at random (without replacement) from the full training dataset. The randomly selected subsample is then used, instead of the full sample, to fit the base learner.</p>
+</blockquote>
+
+<p>— <a href="https://statweb.stanford.edu/~jhf/ftp/stobst.pdf">Stochastic Gradient Boosting</a> [PDF], 1999</p>
+
+<p>A few variants of stochastic boosting that can be used:</p>
+
+<ul>
+  <li>Subsample rows before creating each tree.</li>
+  <li>Subsample columns before creating each tree</li>
+  <li>Subsample columns before considering each split.</li>
+</ul>
+
+<p>Generally, aggressive sub-sampling such as selecting only 50% of the data has shown to be beneficial.</p>
+
+<blockquote>
+  <p>According to user feedback, using column sub-sampling prevents over-fitting even more so than the traditional row sub-sampling</p>
+</blockquote>
+
+<p>— <a href="https://arxiv.org/abs/1603.02754">XGBoost: A Scalable Tree Boosting System</a>, 2016</p>
+
+<h3 id="4-penalized-gradient-boosting">4. Penalized Gradient Boosting</h3>
+
+<p>Additional constraints can be imposed on the parameterized trees in addition to their structure.</p>
+
+<p>Classical decision trees like CART are not used as weak learners, instead a modified form called a regression tree is used that has numeric values in the leaf nodes (also called terminal nodes). The values in the leaves of the trees can be called weights in some literature.</p>
+
+<p>As such, the leaf weight values of the trees can be regularized using popular regularization functions, such as:</p>
+
+<ul>
+  <li>L1 regularization of weights.</li>
+  <li>L2 regularization of weights.</li>
+</ul>
+
+<blockquote>
+  <p>The additional regularization term helps to smooth the final learnt weights to avoid over-fitting. Intuitively, the regularized objective will tend to select a model employing simple and predictive functions.</p>
+</blockquote>
+
+<p>— <a href="https://arxiv.org/abs/1603.02754">XGBoost: A Scalable Tree Boosting System</a>, 2016</p>
+
+<h2 id="gradient-boosting-resources">Gradient Boosting Resources</h2>
+
+<p>Gradient boosting is a fascinating algorithm and I am sure you want to go deeper.</p>
+
+<p>This section lists various resources that you can use to learn more about the gradient boosting algorithm.</p>
+
+<h3 id="gradient-boostingvideos">Gradient Boosting Videos</h3>
+
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=wPqtzj5VZus">Gradient Boosting Machine Learning</a>, Trevor Hastie, 2014</li>
+  <li><a href="https://www.youtube.com/watch?v=sRktKszFmSk">Gradient Boosting</a>, Alexander Ihler, 2012</li>
+  <li><a href="https://www.youtube.com/watch?v=WZvPUGNJg18">GBM</a>, John Mount, 2015</li>
+  <li><a href="https://www.youtube.com/watch?v=UHBmv7qCey4">Learning: Boosting</a>, MIT 6.034 Artificial Intelligence, 2010</li>
+  <li><a href="https://www.youtube.com/watch?v=0IhraqUVJ_E">xgboost: An R package for Fast and Accurate Gradient Boosting</a>, 2016</li>
+  <li><a href="https://www.youtube.com/watch?v=Vly8xGnNiWs">XGBoost: A Scalable Tree Boosting System</a>, Tianqi Chen, 2016</li>
+</ul>
+
+<h3 id="gradient-boosting-in-textbooks">Gradient Boosting in Textbooks</h3>
+
+<ul>
+  <li>Section 8.2.3 Boosting, page 321, <a href="https://amzn.to/3gYt0V9">An Introduction to Statistical Learning: with Applications in R</a>.</li>
+  <li>Section 8.6 Boosting, page 203, <a href="https://amzn.to/3iFPHhq">Applied Predictive Modeling</a>.</li>
+  <li>Section 14.5 Stochastic Gradient Boosting, page 390, <a href="https://amzn.to/3iFPHhq">Applied Predictive Modeling</a>.</li>
+  <li>Section 16.4 Boosting, page 556, <a href="https://amzn.to/3iFRTWc">Machine Learning: A Probabilistic Perspective</a></li>
+  <li>Chapter 10 Boosting and Additive Trees, page 337, <a href="https://amzn.to/31SA3bt">The Elements of Statistical Learning: Data Mining, Inference, and Prediction</a></li>
+</ul>
+
+<h3 id="gradient-boosting-papers">Gradient Boosting Papers</h3>
+
+<ul>
+  <li><a href="http://www.cis.upenn.edu/~mkearns/papers/boostnote.pdf">Thoughts on Hypothesis Boosting</a> [PDF], Michael Kearns, 1988</li>
+  <li><a href="http://cns.bu.edu/~gsc/CN710/FreundSc95.pdf">A decision-theoretic generalization of on-line learning and an application to boosting</a> [PDF], 1995</li>
+  <li><a href="http://statistics.berkeley.edu/sites/default/files/tech-reports/486.pdf">Arcing the edge</a> [PDF], 1998</li>
+  <li><a href="https://statweb.stanford.edu/~jhf/ftp/stobst.pdf">Stochastic Gradient Boosting</a> [PDF], 1999</li>
+  <li><a href="http://maths.dur.ac.uk/~dma6kp/pdf/face_recognition/Boosting/Mason99AnyboostLong.pdf">Boosting Algorithms as Gradient Descent in Function Space</a> [PDF], 1999</li>
+</ul>
+
+<h3 id="gradient-boosting-slides">Gradient Boosting Slides</h3>
+
+<ul>
+  <li><a href="http://homes.cs.washington.edu/~tqchen/pdf/BoostedTree.pdf">Introduction to Boosted Trees</a>, 2014</li>
+  <li><a href="http://www.chengli.io/tutorials/gradient_boosting.pdf">A Gentle Introduction to Gradient Boosting</a>, Cheng Li</li>
+</ul>
+
+<h3 id="gradient-boostingweb-pages">Gradient Boosting Web Pages</h3>
+
+<ul>
+  <li><a href="https://en.wikipedia.org/wiki/Boosting_(machine_learning)">Boosting (machine learning)</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Gradient_boosting">Gradient boosting</a></li>
+  <li><a href="http://scikit-learn.org/stable/modules/ensemble.html#gradient-tree-boosting">Gradient Tree Boosting in scikit-learn</a></li>
+</ul>
+
+<h2 id="summary">Summary</h2>
+
+<p>In this post you discovered the gradient boosting algorithm for predictive modeling in machine learning.</p>
+
+<p>Specifically, you learned:</p>
+
+<ul>
+  <li>The history of boosting in learning theory and AdaBoost.</li>
+  <li>How the gradient boosting algorithm works with a loss function, weak learners and an additive model.</li>
+  <li>How to improve the performance of gradient boosting with regularization.</li>
+</ul>
+
+<hr />
+
+<h1 id="tomonori-masui-post">Tomonori Masui’ post</h1>
+
+<blockquote>
+  <p>Cliped from Towards Data Science <a href="https://towardsdatascience.com/all-you-need-to-know-about-gradient-boosting-algorithm-part-1-regression-2520a34a502"><strong>All You Need to Know about Gradient Boosting Algorithm − Part 1. Regression</strong></a></p>
+</blockquote>
+
+<h2 id="section-1-algorithm-with-an-example">Section 1. Algorithm with an Example</h2>
+
+<p>Gradient boosting is one of the most popular machine learning algorithms for tabular datasets. It is powerful enough to find any nonlinear relationship between your model target and features and has great usability that can deal with missing values, outliers, and high cardinality categorical values on your features without any special treatment. While you can build barebone gradient boosting trees using some popular libraries such as <a href="https://xgboost.readthedocs.io/en/stable/">XGBoost</a> or <a href="https://lightgbm.readthedocs.io/en/latest/">LightGBM</a> without knowing any details of the algorithm, you still want to know how it works when you start tuning hyper-parameters, customizing the loss functions, etc., to get better quality on your model.</p>
+
+<p>This article aims to provide you with all the details about the algorithm, specifically its regression algorithm, including its math and Python code from scratch. If you are more interested in the classification algorithm, please look at <a href="https://medium.com/p/d3ed8f56541e">Part 2</a>.</p>
+
+<p>Gradient boosting is one of the variants of ensemble methods where you create multiple weak models and combine them to get better performance as a whole.</p>
+
+<p>In this section, we are building gradient boosting regression trees step by step using the below sample which has a nonlinear relationship between $x$ and $y$ to intuitively understand how it works (all the pictures below are created by the author).</p>
+
+<div style="text-align:center;">
+<figure>
+<img src="https://miro.medium.com/v2/resize:fit:550/1*SZdrLzQaXBxSoTgRMtSxig.png" />
+<figcaption>Sample for a regression problem.</figcaption>
+</figure>
+</div>
+
+<p>The first step is making a very naive prediction on the target $y$. We make the initial prediction $F_0$ as an overall average of $y$:</p>
+
+<div style="text-align:center;">
+<figure>
+<img src="https://miro.medium.com/v2/resize:fit:550/1*Cff0iDWUiC_-TnWzwUm_Vg.png" />
+<figcaption>Initial prediction: $F_0 = \text{mean}(y)$.</figcaption>
+</figure>
+</div>
+
+<p>You might feel using the mean for the prediction is silly, but don’t worry. We will improve our prediction as we add more weak models to it.</p>
+
+<p>To improve our prediction, we will focus on the residuals (i.e. prediction errors) from the first step because that is what we want to minimize to get a better prediction. The residuals $r₁$ are shown as the vertical blue lines in the figure below.</p>
+
+<div style="text-align:center;">
+<figure>
+<img src="https://miro.medium.com/v2/resize:fit:600/1*32xSZb7FIIxwFQeq9MKCgQ.png" />
+</figure>
+</div>
+
+<p>To minimize these residuals, we are building a regression tree model with $x$ as its feature and the residuals $r_1 = y − \text{mean}(y)$ as its target. The reasoning behind that is if we can find some patterns between $x$ and $r_1$ by building the additional weak model, we can reduce the residuals by utilizing it.</p>
+
+<p>To simplify the demonstration, we are building very simple trees each of that only has one split and two terminal nodes which is called “stump”. Please note that gradient boosting trees usually have a little deeper trees such as ones with 8 to 32 terminal nodes.</p>
+
+<p>Here we are creating the first tree predicting the residuals with two different values $\gamma _1 = {6.0, − 5.9}$(we are using $\gamma$ (gamma) to denotes the prediction).</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:700/1*N3FYNWBEUO1bVZo4BulWIQ.png" alt="" /></p>
+
+<p>This prediction $\gamma _1$ is added to our initial prediction $F_0$ to reduce the residuals. In fact, gradient boosting algorithm does not simply add $\gamma$ to $F$ as it makes the model overfit to the training data. Instead, $\gamma$ is scaled down by <strong>learning rate</strong> $\nu$ which ranges between 0 and 1, and then added to $F$.</p>
+
+\[F_1 = F_0 + \nu \cdot \gamma _1\]
+
+<p>In this example, we use a relatively big learning rate $\nu = 0.9$ to make the optimization process easier to understand, but it is usually supposed to be a much smaller value such as 0.1.</p>
+
+<p>After the update, our combined prediction $F_1$ becomes:</p>
+
+\[F_1 = \begin{cases}
+   F_0 + \nu \cdot 6.0 &amp;\text{if } x \leq 49.5 \\
+   F_0 - \nu \cdot 5.9 &amp;\text{otherwise}
+\end{cases}\]
+
+<p>Now, the updated residuals $r_2$ looks like this:</p>
+
+<div style="text-align:center;">
+<figure>
+<img src="https://miro.medium.com/v2/resize:fit:600/1*L9GpEucS0n4VvveK0ssI-A.png" />
+</figure>
+</div>
+
+<p>In the next step, we are creating a regression tree again using the same $x$ as the feature and the updated residuals $r_2$ as its target. Here is the created tree:</p>
+
+<div style="text-align:center;">
+<figure>
+<img src="https://miro.medium.com/v2/resize:fit:700/1*iVz3E-vN4EVNk1zUtd0pIg.png" />
+</figure>
+</div>
+
+<p>Then, we are updating our previous combined prediction $F_1$ with the new tree prediction $\gamma _2$.</p>
+
+<div style="text-align:center;">
+<figure>
+<img src="https://miro.medium.com/v2/resize:fit:600/1*7dtSxqYLS8teaSV7Zv7uUA.png" />
+</figure>
+</div>
+
+<p>We iterate these steps until the model prediction stops improving. The figures below show the optimization process from 0 to 6 iterations.</p>
+
+<div style="text-align:center;">
+<figure>
+<img src="https://miro.medium.com/v2/resize:fit:700/1*KmFFQVKyDPAD5Qu66hHbxg.png" />
+</figure>
+</div>
+
+<p>You can see the combined prediction $F_m$ is getting more closer to our target $y$ as we add more trees into the combined model. This is how gradient boosting works to predict complex targets by combining multiple weak models.</p>
+
+<h2 id="section-2-math">Section 2. Math</h2>
+
+<p>In this section, we are diving into the math details of the algorithm. Here is the whole algorithm in math formulas.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:700/1*dIHrPFBT2fmXuTXMb-3_Xw.png" alt="" />Source: adapted from <a href="https://en.wikipedia.org/wiki/Gradient_boosting">Wikipedia</a> and <a href="https://jerryfriedman.su.domains/ftp/trebst.pdf">Friedman’s paper</a></p>
+
+<p>Let’s demystify this line by line.</p>
+
+<h3 id="step-1">Step 1</h3>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:700/1*1eTixNM_JzslkPWU4FkX2Q.png" alt="" /></p>
+
+<p>The first step is creating an initial constant value prediction $F_0$. $L$ is the loss function and it is squared loss in our regression case.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:400/1*KXf-q-8lmgXP940-io2SVw.png" alt="" /></p>
+
+<p>$argmin$ means we are searching for the value $\gamma$ that minimizes $\sum L(y_i, \gamma)$. Let’s compute the value $\gamma$ by using our actual loss function. To find $\gamma$ that minimizes $ΣL$, we are taking a derivative of $\sum L$ with respect to $\gamma$.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:500/1*5Q49z-ig1Jwz5jZn9iBf_g.png" alt="" /></p>
+
+<p>And we are finding $\gamma$ that makes $\frac {\partial \sum L} {\gamma}$ equal to 0.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:500/1*oLI_LaZ6wfMz5N6BYuReFw.png" alt="" /></p>
+
+<p>It turned out that the value $\gamma$ that minimizes $ΣL$ is the mean of $y$. This is why we used $y$ mean for our initial prediction $F₀$ in the last section.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:500/1*sf2bYf2JIJvZj6iovFusqg.png" alt="" /></p>
+
+<h3 id="step2">Step2</h3>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:700/1*DQq-_GpOmE0tIiuU240kvA.png" alt="" /></p>
+
+<p>The whole step2 processes from 2–1 to 2–4 are iterated $M$ times. $M$ denotes the number of trees we are creating and the small $m$ represents the index of each tree.</p>
+
+<h4 id="step-21">Step 2–1</h4>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:700/1*EwcvjKDxy_GuzKfOQdKabg.png" alt="" /></p>
+
+<p>We are calculating residuals $r_i 𝑚$ by taking a derivative of the loss function with respect to the previous prediction $F_{m-1}$ and multiplying it by −1. As you can see in the subscript index, $r_i m$ is computed for each single sample $i$. Some of you might be wondering why we are calling this $rᵢ𝑚$ residuals. This value is actually <strong>negative gradient</strong> that gives us guidance on the directions ($+/−$) and the magnitude in which the loss function can be minimized. You will see why we are calling it residuals shortly. By the way, this technique where you use a gradient to minimize the loss on your model is very similar to g<a href="https://en.wikipedia.org/wiki/Gradient_descent">radient descent</a> technique which is typically used to optimize neural networks. (In fact, they are slightly different from each other. If you are interested, please look at <a href="https://explained.ai/gradient-boosting/descent.html">this article</a> detailing that topic.)</p>
+
+<p>Let’s compute the residuals here. $F{m-1}$ in the equation means the prediction from the previous step. In this first iteration, it is $F_0$. We are solving the equation for residuals $r_i 𝑚$.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:550/1*Y_1bsDKl-zoKtmZU4GnA7g.png" alt="" /></p>
+
+<p>We can take 2 out of it as it is just a constant. That leaves us $r_{im} = y_i − F_{m-1}$. You might now see why we call it residuals. This also gives us interesting insight that the negative gradient that provides us the direction and the magnitude to which the loss is minimized is actually just residuals.</p>
+
+<h4 id="step-22">Step 2–2</h4>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:700/1*3WRZuGsljLPAWeKZ9c3r2Q.png" alt="" /></p>
+
+<p>$j$ represents a terminal node (i.e. leave) in the tree, $m$ denotes the tree index, and capital $J$ means the total number of leaves.</p>
+
+<h4 id="step-23">Step 2–3</h4>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:700/1*FM9KvlIC70j-8UsIvPFtoA.png" alt="" /></p>
+
+<p>We are searching for $\gamma <em>{jm}$ that minimizes the loss function on each terminal node $j$. $\sum x_i R</em>{jm} L$ means we are aggregating the loss on all the sample $x_i$s that belong to the terminal node $R_{im}$. Let’s plugin the loss function into the equation.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:650/1*6OkG6PP31DEjj391-TIjMw.png" alt="" /></p>
+
+<p>Then, we are finding $\gamma _{jm}$ that makes the derivative of $\sum (*)$ equals zero.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:550/1*Wln5S6Jmu9HOtvFGgBEArQ.png" alt="" /></p>
+
+<p>Please note that $n_j$ means the number of samples in the terminal node $j$. This means the optimal $\gamma <em>{jm}$ that minimizes the loss function is the average of the residuals $r</em>{im}$ in the terminal node $R_j m$. In other words, $\gamma _{jm}$ is the regular prediction values of regression trees that are the average of the target values (in our case, residuals) in each terminal node.</p>
+
+<h3 id="step-24">Step 2–4</h3>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:700/1*YvLO78g0uMntR3T6vVqOpA.png" alt="" /></p>
+
+<p>In the final step, we are updating the prediction of the combined model $F_m$. $\gamma <em>{jm} 1(x ∈ R</em>{jm})$ means that we pick the value $\gamma <em>{im}$ if a given $x$ falls in a terminal node $R</em>{jm}$. As all the terminal nodes are exclusive, any given single $x$ falls into only a single terminal node and corresponding $\gammaⱼ𝑚$ is added to the previous prediction $F_{m-1}_$ and it makes updated prediction $F_m$.</p>
+
+<p>As mentioned in the previous section, $\nu$ is learning rate ranging between 0 and 1 which controls the degree of contribution of the additional tree prediction $\gamma$ to the combined prediction $F_m$. A smaller learning rate reduces the effect of the additional tree prediction, but it basically also reduces the chance of the model overfitting to the training data.</p>
+
+<p>Now we have gone through the whole steps. To get the best model performance, we want to iterate step 2 $M$ times, which means adding $M$ trees to the combined model. In reality, you might often want to add more than 100 trees to get the best model performance.</p>
+
+<p>Some of you might feel that all those maths are unnecessarily complex as the previous section showed the basic idea in a much simpler way without all those complications. The reason behind it is that gradient boosting is designed to be able to deal with any loss functions as long as it is differentiable and the maths we reviewed is a generalized form of gradient boosting algorithm with that flexibility. That makes the formula a little complex, but it is the beauty of the algorithm as it has huge flexibility and convenience to work on a variety of types of problems. For example, if your problem requires absolute loss instead of squared loss, you can just replace the loss function and the whole algorithm works as it is as defined above. In fact, popular gradient boosting implementations such as <a href="https://xgboost.readthedocs.io/en/stable/">XGBoost</a> or <a href="https://lightgbm.readthedocs.io/en/latest/">LightGBM</a> have a wide variety of loss functions, so you can choose whatever loss functions that suit your problem (see the various loss functions available in <a href="https://xgboost.readthedocs.io/en/stable/parameter.html#learning-task-parameters">XGBoost</a> or <a href="https://lightgbm.readthedocs.io/en/latest/Parameters.html#objective">LightGBM</a>).</p>
+
+<h2 id="section-3-code">Section 3. Code</h2>
+
+<p>In this section, we are translating the maths we just reviewed into a viable python code to help us understand the algorithm further. The code is mostly derived from <a href="https://blog.mattbowers.dev/gradient-boosting-machine-from-scratch#Implementation">Matt Bowers’ implementation</a>, so all credit goes to his work. We are using <code class="language-plaintext highlighter-rouge">DecisionTreeRegressor</code> from scikit-learn to build trees which helps us just focus on the gradient boosting algorithm itself instead of the tree algorithm. We are imitating scikit-learn style implementation where you train the model with <code class="language-plaintext highlighter-rouge">fit</code> method and make predictions with <code class="language-plaintext highlighter-rouge">predict</code> method.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CustomGradientBoostingRegressor</span><span class="p">:</span>
+    
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">learning_rate</span><span class="p">,</span> <span class="n">n_estimators</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">learning_rate</span> <span class="o">=</span> <span class="n">learning_rate</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">n_estimators</span> <span class="o">=</span> <span class="n">n_estimators</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">max_depth</span> <span class="o">=</span> <span class="n">max_depth</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">trees</span> <span class="o">=</span> <span class="p">[]</span>
+        
+    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        
+        <span class="bp">self</span><span class="p">.</span><span class="n">F0</span> <span class="o">=</span> <span class="n">y</span><span class="p">.</span><span class="n">mean</span><span class="p">()</span>
+        <span class="n">Fm</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">F0</span>
+        
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">n_estimators</span><span class="p">):</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">Fm</span>
+            <span class="n">tree</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="bp">self</span><span class="p">.</span><span class="n">max_depth</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">tree</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+            <span class="n">gamma</span> <span class="o">=</span> <span class="n">tree</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+            <span class="n">Fm</span> <span class="o">+=</span> <span class="bp">self</span><span class="p">.</span><span class="n">learning_rate</span> <span class="o">*</span> <span class="n">gamma</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">trees</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span>
+            
+    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        
+        <span class="n">Fm</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">F0</span>
+        
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">n_estimators</span><span class="p">):</span>
+            <span class="n">Fm</span> <span class="o">+=</span> <span class="bp">self</span><span class="p">.</span><span class="n">learning_rate</span> <span class="o">*</span> <span class="bp">self</span><span class="p">.</span><span class="n">trees</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+            
+        <span class="k">return</span> <span class="n">Fm</span>
+</code></pre></div></div>
+
+<p>Please note that all the trained trees are stored in <code class="language-plaintext highlighter-rouge">self.trees</code> list object and it is retrieved when we make predictions with <code class="language-plaintext highlighter-rouge">predict</code> method.</p>
+
+<p>Next, we are checking if our <code class="language-plaintext highlighter-rouge">CustomGradientBoostingRegressor</code> performs as the same as <code class="language-plaintext highlighter-rouge">GradientBoostingRegressor</code> from scikit-learn by looking at their RMSE on our data.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">GradientBoostingRegressor</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
+
+<span class="n">custom_gbm</span> <span class="o">=</span> <span class="n">CustomGradientBoostingRegressor</span><span class="p">(</span>
+    <span class="n">n_estimators</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> 
+    <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> 
+    <span class="n">max_depth</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span>
+<span class="n">custom_gbm</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">custom_gbm_rmse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">custom_gbm</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">squared</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Custom GBM RMSE:</span><span class="si">{</span><span class="n">custom_gbm_rmse</span><span class="p">:.</span><span class="mi">15</span><span class="n">f</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+
+<span class="n">sklearn_gbm</span> <span class="o">=</span> <span class="n">GradientBoostingRegressor</span><span class="p">(</span>
+    <span class="n">n_estimators</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> 
+    <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> 
+    <span class="n">max_depth</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span>
+<span class="n">sklearn_gbm</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">sklearn_gbm_rmse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">sklearn_gbm</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">squared</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Scikit-learn GBM RMSE:</span><span class="si">{</span><span class="n">sklearn_gbm_rmse</span><span class="p">:.</span><span class="mi">15</span><span class="n">f</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div style="text-align:center;">
+<figure>
+<img src="https://miro.medium.com/v2/resize:fit:380/1*kymwIZbu0JXMPhvaNU3OcQ.png" />
+</figure>
+</div>
+
+<p>As you can see in the output above, both models have exactly the same RMSE.</p>
+
+<p>The algorithm we have reviewed in this post is just one of the options of gradient boosting algorithm that is specific to regression problems with squared loss. If you are also interested in the classification algorithm, please look at Part 2.</p>
+
+<p>There are also some other great resources if you want further details of the algorithm:</p>
+
+<ul>
+  <li><strong>StatQuest, Gradient Boost</strong> <a href="https://www.youtube.com/watch?v=3CC4N4z3GJc&amp;t=1s"><strong>Part1</strong></a> <strong>and</strong> <a href="https://www.youtube.com/watch?v=2xudPOBz-vs"><strong>Part 2</strong></a><br />
+This is a YouTube video explaining GB regression algorithm with great visuals in a beginner-friendly way.</li>
+  <li><strong>Terence Parr and Jeremy Howard,</strong> <a href="https://explained.ai/gradient-boosting/index.html"><strong>How to explain gradient boosting</strong></a>This article also focuses on GB regression. It explains how the algorithms differ between squared loss and absolute loss.</li>
+  <li><strong>Jerome Friedman,</strong> <a href="https://statweb.stanford.edu/~jhf/ftp/trebst.pdf"><strong>Greedy Function Approximation: A Gradient Boosting Machine</strong></a>This is the original paper from Friedman. While it is a little hard to understand, it surely shows the flexibility of the algorithm where he shows a generalized algorithm that can deal with any types of problem having a differentiable loss function.</li>
+</ul>
+
+<p>You can also look at the full Python code in the Google Colab link or the Github link below.</p>
+
+<ul>
+  <li>Jerome Friedman, <a href="https://statweb.stanford.edu/~jhf/ftp/trebst.pdf">Greedy Function Approximation: A Gradient Boosting Machine</a></li>
+  <li>Terence Parr and Jeremy Howard, <a href="https://explained.ai/gradient-boosting/index.html">How to explain gradient boosting</a></li>
+  <li>Matt Bowers, <a href="https://blog.mattbowers.dev/gradient-boosting-machine-from-scratch">How to Build a Gradient Boosting Machine from Scratch</a></li>
+  <li>Wikipedia, <a href="https://en.wikipedia.org/wiki/Gradient_boosting">Gradient boosting</a></li>
+</ul>
+                    
+                </section>
+            </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div></div>
+    </div>
+</div>
+
+                        <a href="/Materials-Research-Notes/" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Lei's Notes">
+                            <i class="fa fa-angle-left"></i>
+                        </a>
+                    
+
+                    
+                        <a href="/Materials-Research-Notes/Chap2-ML/Out_liers/" class="navigation navigation-next navigation-unique" aria-label="Next page: ML - handle outliers">
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    
+                </div>
+            </div>
+
+            <script>
+            var gitbook = gitbook || [];
+            gitbook.push(function() {
+                gitbook.page.hasChanged({
+    "page": {
+        "title": "Introduction",
+        "level": "1.1",
+        "depth": 1,
+        
+        "next": {
+            "title": "ML - handle outliers",
+            "level": "1.2",
+            "depth": 1,
+            "path": "_Chap2-ML/Out_liers.markdown",
+            "ref": "_Chap2-ML/Out_liers.markdown",
+            "articles": []
+        },
+        
+        "dir": "ltr"
+    },    "config": {
+        "plugins": ["fontsettings", "highlight", "livereload", "lunr", "search", "sharing", "theme-default", "livereload"],
+        "styles": {
+            "ebook": "styles/ebook.css",
+            "epub": "styles/epub.css",
+            "mobi": "styles/mobi.css",
+            "pdf": "styles/pdf.css",
+            "print": "styles/print.css",
+            "website": "styles/website.css"
+        },
+        "pluginsConfig": {
+            "fontsettings": {
+                "family": "sans",
+                "size": 2,
+                "theme": "white"
+            },
+            "highlight": {},
+            "livereload": {},
+            "lunr": {
+                "ignoreSpecialCharacters": false,
+                "maxIndexSize": 1000000
+            },
+            "search": {},
+            "sharing": {
+                "all": ["facebook", "google", "twitter", "weibo", "instapaper"],
+                "facebook": true,
+                "google": false,
+                "instapaper": false,
+                "twitter": true,
+                "vk": false,
+                "weibo": false
+            },
+            "theme-default": {
+                "showLevel": false,
+                "styles": {
+                    "ebook": "styles/ebook.css",
+                    "epub": "styles/epub.css",
+                    "mobi": "styles/mobi.css",
+                    "pdf": "styles/pdf.css",
+                    "print": "styles/print.css",
+                    "website": "styles/website.css"
+                }
+            }
+        },
+        "theme": "default",
+        "author": "Tao He",
+        "pdf": {
+            "pageNumbers": true,
+            "fontSize": 12,
+            "fontFamily": "Arial",
+            "paperSize": "a4",
+            "chapterMark": "pagebreak",
+            "pageBreaksBefore": "/",
+            "margin": {
+                "right": 62,
+                "left": 62,
+                "top": 56,
+                "bottom": 56
+            }
+        },
+        "structure": {
+            "langs": "LANGS.md",
+            "readme": "README.md",
+        },
+        "variables": {},
+        "title": "Lei's Notes",
+        "language": "en",
+        "gitbook": "*"
+    },
+    "file": {
+        "path": "_Chap2-ML/GBR.markdown",
+        "mtime": "",
+        "type": "markdown"
+    },
+    "gitbook": {
+        "version": "",
+        "time": "2023-08-17 12:02:06 +0100"
+    },
+    "basePath": "/Materials-Research-Notes",
+    "book": {
+        "language": ""
+    }
+});
+            });
+            </script>
+        </div><script src="/Materials-Research-Notes/gitbook/gitbook.js"></script>
+<script src="/Materials-Research-Notes/gitbook/theme.js"></script>
+
+<script src="/Materials-Research-Notes/gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+<script src="/Materials-Research-Notes/gitbook/gitbook-plugin-sharing/buttons.js"></script>
+
+<!-- <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+<script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+<script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+<script src="../gitbook/gitbook-plugin-search/search.js"></script> -->
+
+<script src="/Materials-Research-Notes/gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+<script src="/Materials-Research-Notes/gitbook/gitbook-plugin-search-pro/search.js"></script>
+
+<script src="/Materials-Research-Notes/gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</body>
+</html>

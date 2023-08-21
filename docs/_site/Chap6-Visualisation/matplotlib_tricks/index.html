@@ -1,0 +1,722 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head><meta charset="UTF-8">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"><title>Matplotlib tricks · Lei&#39;s Notes</title><meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="description" content="My private lab notes on materials science including several projects on perovskite structure materials and computational research."><meta name="generator" content="Jekyll (using style of GitBook)"><meta name="author" content="Lei Lei"><link rel="stylesheet" href="/Materials-Research-Notes/gitbook/style.css">
+<link rel="stylesheet" href="/Materials-Research-Notes/gitbook/gitbook-plugin-fontsettings/website.css">
+<link rel="stylesheet" href="/Materials-Research-Notes/gitbook/gitbook-plugin-search-pro/search.css">
+<link rel="stylesheet" href="/Materials-Research-Notes/gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+
+<link rel="stylesheet" href="/Materials-Research-Notes/gitbook/rouge/colorful.css">
+
+<link rel="stylesheet" href="/Materials-Research-Notes/gitbook/custom.css">
+
+<meta name="HandheldFriendly" content="true"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/Materials-Research-Notes/gitbook/images/apple-touch-icon-precomposed-152.png">
+<link rel="shortcut icon" href="/Materials-Research-Notes/gitbook/images/favicon.ico" type="image/x-icon">
+
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        svg: {
+            fontCache: 'global'
+        }
+    };
+</script>
+
+            <link rel="prev" href="/Materials-Research-Notes/Chap6-Visualisation/example_codes/" />
+        
+
+        
+            <link rel="next" href="/Materials-Research-Notes/Chap6-Visualisation/pandas_tricks/" />
+        
+    </head>
+    <body>
+        <div class="book"><div class="book-summary">
+    <div id="book-search-input" role="search">
+        <input type="text" placeholder="Type to search" />
+    </div>
+    <nav role="navigation">
+        <ul class="summary">
+            
+            <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes">
+            
+                <a href="/Materials-Research-Notes/" style="font-size: 165%; font-weight: bold;">
+                    Lei&#39;s Notes
+                </a>
+            </li>
+
+            <li class="divider"></li>
+
+            
+                
+                <p style="font-size: 120%; font-weight: 600; text-indent:10px;">Coding</p>
+                <hr>
+                    
+
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap1-Coding/python-sequences/">
+                        
+                            <a href="/Materials-Research-Notes/Chap1-Coding/python-sequences/">
+                                Python - sequences
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap1-Coding/numpy-tricks/">
+                        
+                            <a href="/Materials-Research-Notes/Chap1-Coding/numpy-tricks/">
+                                Numpy - practical tricks and code snipets
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap1-Coding/Vim_cheatsheet/">
+                        
+                            <a href="/Materials-Research-Notes/Chap1-Coding/Vim_cheatsheet/">
+                                Vim Cheatsheet
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap1-Coding/Python-tricks/">
+                        
+                            <a href="/Materials-Research-Notes/Chap1-Coding/Python-tricks/">
+                                Python practical tricks
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap1-Coding/Python-data%20model/">
+                        
+                            <a href="/Materials-Research-Notes/Chap1-Coding/Python-data%20model/">
+                                Python - data structures
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap1-Coding/Python-Code%20snipet/">
+                        
+                            <a href="/Materials-Research-Notes/Chap1-Coding/Python-Code%20snipet/">
+                                Python - useful snippets for materials science
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                    <li class="divider"></li>
+                
+            
+                
+                <p style="font-size: 120%; font-weight: 600; text-indent:10px;">ML</p>
+                <hr>
+                    
+
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap2-ML/SHAP/">
+                        
+                            <a href="/Materials-Research-Notes/Chap2-ML/SHAP/">
+                                SHAP
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap2-ML/Pytorch_tricks/">
+                        
+                            <a href="/Materials-Research-Notes/Chap2-ML/Pytorch_tricks/">
+                                Pytorch tricks
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap2-ML/Out_liers/">
+                        
+                            <a href="/Materials-Research-Notes/Chap2-ML/Out_liers/">
+                                ML - handle outliers
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap2-ML/GBR/">
+                        
+                            <a href="/Materials-Research-Notes/Chap2-ML/GBR/">
+                                ML - Gradient Boosting Algorithm
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                    <li class="divider"></li>
+                
+            
+                
+                <p style="font-size: 120%; font-weight: 600; text-indent:10px;">MatNotes</p>
+                <hr>
+                    
+
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap3-MatNotes/2023-05-12-Comp_Mat_Concep/">
+                        
+                            <a href="/Materials-Research-Notes/Chap3-MatNotes/2023-05-12-Comp_Mat_Concep/">
+                                Concepts and methods in computational materials science
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                    <li class="divider"></li>
+                
+            
+                
+                <p style="font-size: 120%; font-weight: 600; text-indent:10px;">HSTORE</p>
+                <hr>
+                    
+
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap4-HSTORE/2023-05-12-interstitial-hydrides/">
+                        
+                            <a href="/Materials-Research-Notes/Chap4-HSTORE/2023-05-12-interstitial-hydrides/">
+                                Solid hydrogen storage materials: interstitial hydrides
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap4-HSTORE/2022-03-29-AIMD-simulation-with-efield/">
+                        
+                            <a href="/Materials-Research-Notes/Chap4-HSTORE/2022-03-29-AIMD-simulation-with-efield/">
+                                AIMD simulation for MAPbI3 under electric filed
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                    <li class="divider"></li>
+                
+            
+                
+                <p style="font-size: 120%; font-weight: 600; text-indent:10px;">CompMat</p>
+                <hr>
+                    
+
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap5-CompMat/VASP-tricks/">
+                        
+                            <a href="/Materials-Research-Notes/Chap5-CompMat/VASP-tricks/">
+                                VASP errors and practical tricks
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                    <li class="divider"></li>
+                
+            
+                
+                <p style="font-size: 120%; font-weight: 600; text-indent:10px;">Visualisation</p>
+                <hr>
+                    
+
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap6-Visualisation/pandas_tricks/">
+                        
+                            <a href="/Materials-Research-Notes/Chap6-Visualisation/pandas_tricks/">
+                                Pandas tricks
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter active" data-level="1.2" data-path="/Materials-Research-Notes/Chap6-Visualisation/matplotlib_tricks/">
+                        
+                            <a href="/Materials-Research-Notes/Chap6-Visualisation/matplotlib_tricks/">
+                                Matplotlib tricks
+                            </a>
+                            
+                                
+                                    <ul><li><a href="#formatting--styling">Formatting &amp; Styling</a><ul><li><a href="#set-tick-font-size">Set tick font size</a></li><li><a href="#set-italic">Set italic</a></li><li><a href="#set-subscript">Set subscript</a></li><li><a href="#set-y-axis-log">Set y axis log</a></li><li><a href="#set-axis-range">Set axis range</a></li><li><a href="#hide-axis-ticks-and-tick-labels">Hide axis ticks and tick labels</a></li><li><a href="#hide-axis">Hide axis</a></li><li><a href="#set-the-separation-between-tick-labels-and-axis-labels">Set the separation between tick labels and axis labels</a></li><li><a href="#set-the-spearation-between-ticks-and-tick-labels">Set the spearation between ticks and tick labels</a></li><li><a href="#set-ticks">Set ticks</a></li><li><a href="#set-axes-positions">Set axes positions</a></li><li><a href="#adjust-spacing-between-subplots">Adjust spacing between subplots</a></li><li><a href="#use-math-format-tick-labels">Use math format tick labels</a></li><li><a href="#vertical-lines">Vertical lines</a></li><li><a href="#create-colourmaps">Create colourmaps</a></li></ul></li></ul>
+
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap6-Visualisation/example_codes/">
+                        
+                            <a href="/Materials-Research-Notes/Chap6-Visualisation/example_codes/">
+                                Matplotlib quick examples
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap6-Visualisation/Jupyter/jupyter_tricks/">
+                        
+                            <a href="/Materials-Research-Notes/Chap6-Visualisation/Jupyter/jupyter_tricks/">
+                                Jupyter Notebook Tricks
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                    <li class="divider"></li>
+                
+            
+                
+                <p style="font-size: 120%; font-weight: 600; text-indent:10px;">sys_ssh</p>
+                <hr>
+                    
+
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap7-sys_ssh/work_on_ssh_session/">
+                        
+                            <a href="/Materials-Research-Notes/Chap7-sys_ssh/work_on_ssh_session/">
+                                Bash, Git &amp; SSH tricks
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                    <li class="divider"></li>
+                
+            
+                
+                <p style="font-size: 120%; font-weight: 600; text-indent:10px;">Info</p>
+                <hr>
+                    
+
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/ChapX-Info/quick-start/">
+                        
+                            <a href="/Materials-Research-Notes/ChapX-Info/quick-start/">
+                                Quick Start
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/ChapX-Info/about/">
+                        
+                            <a href="/Materials-Research-Notes/ChapX-Info/about/">
+                                About
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                    <li class="divider"></li>
+                
+            
+                
+            
+        </ul>
+    </nav>
+</div><div class="book-body">
+                <div class="book-header" role="navigation">
+                    <!-- Title -->
+                    <h1>
+                        <i class="fa fa-circle-o-notch fa-spin"></i>
+                        
+                            <a href="." >Matplotlib tricks</a>
+                        
+                    </h1>
+                </div>
+
+                <div class="body-inner"><div class="page-wrapper" tabindex="-1" role="main">
+    <div class="page-inner">
+        <div id="book-search-results">
+            <div class="search-noresults">
+                <section class="normal markdown-section">
+
+                    
+                        <h1 id="/Chap6-Visualisation/matplotlib_tricks" style="border-style: solid solid solid solid; border-width: 0px 0px 2px 0px; border-color: black black #F1F0F0 black;">Matplotlib tricks</h1>
+                    
+
+                    
+                    
+                    
+                    
+
+<h2 id="formatting--styling">Formatting &amp; Styling</h2>
+
+<h3 id="set-tick-font-size">Set tick font size</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="p">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">xlabels</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span> <span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nb">set</span><span class="p">(</span><span class="n">ax</span><span class="p">.</span><span class="n">get_xticklabels</span><span class="p">(),</span> <span class="n">fontsize</span><span class="o">=</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s">'x'</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span> <span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="set-italic">Set italic</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">'$\it{text you want to show in italics}$'</span><span class="p">)</span>  
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="set-subscript">Set subscript</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span>
+<span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplots</span><span class="p">()</span>  
+<span class="n">ax</span><span class="p">.</span><span class="nb">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="sa">r</span><span class="s">'This is an expression $\mathregular{e^{\sin(\omega\phi)}}$'</span><span class="p">,</span>  
+ <span class="n">xlabel</span><span class="o">=</span><span class="s">'meters $\mathregular{10^1}$'</span><span class="p">,</span> <span class="c1"># superscript  
+</span> <span class="n">ylabel</span><span class="o">=</span><span class="sa">r</span><span class="s">'Hertz $\mathregular{(\frac{1}{s})}$'</span><span class="p">)</span>  
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="set-y-axis-log">Set y axis log</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="p">.</span><span class="n">yscale</span><span class="p">(</span><span class="s">"log"</span><span class="p">,</span><span class="n">base</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="set-axis-range">Set axis range</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ax</span><span class="p">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">25</span><span class="p">,</span><span class="mi">50</span><span class="p">])</span>
+</code></pre></div></div>
+
+<h3 id="hide-axis-ticks-and-tick-labels">Hide axis ticks and tick labels</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="p">.</span><span class="n">xticks</span><span class="p">([])</span>  
+<span class="n">plt</span><span class="p">.</span><span class="n">yticks</span><span class="p">([])</span>
+</code></pre></div></div>
+
+<h3 id="hide-axis">Hide axis</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ax</span><span class="p">.</span><span class="n">spines</span><span class="p">[</span><span class="s">'top'</span><span class="p">].</span><span class="n">set_visible</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">spines</span><span class="p">[</span><span class="s">'right'</span><span class="p">].</span><span class="n">set_visible</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">spines</span><span class="p">[</span><span class="s">'bottom'</span><span class="p">].</span><span class="n">set_linewidth</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">spines</span><span class="p">[</span><span class="s">'left'</span><span class="p">].</span><span class="n">set_linewidth</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="set-the-separation-between-tick-labels-and-axis-labels">Set the separation between tick labels and axis labels</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ax</span><span class="p">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">labelpad</span><span class="o">=-</span><span class="mf">0.3</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="set-the-spearation-between-ticks-and-tick-labels">Set the spearation between ticks and tick labels</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="p">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s">'both'</span><span class="p">,</span> <span class="n">pad</span> <span class="o">=-</span><span class="mf">0.3</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="set-ticks">Set ticks</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="p">.</span><span class="n">yticks</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+
+<span class="c1"># the following code set the xtick interval to 10
+</span><span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="n">MultipleLocator</span>
+<span class="n">majorLocator</span> <span class="o">=</span> <span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">xaxis</span><span class="p">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">majorLocator</span><span class="p">)</span>
+
+<span class="c1"># or alternatively
+</span><span class="n">ax</span><span class="p">.</span><span class="n">xaxis</span><span class="p">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+</code></pre></div></div>
+
+<h3 id="set-axes-positions">Set axes positions</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="p">.</span><span class="n">axes</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="p">[</span><span class="mf">0.26</span><span class="p">,</span><span class="mf">0.21</span><span class="p">,</span> <span class="mf">0.70</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">])</span>
+</code></pre></div></div>
+
+<h3 id="adjust-spacing-between-subplots">Adjust spacing between subplots</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  
+<span class="n">fig</span><span class="p">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">h_pad</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+
+<span class="c1"># importing packages 
+</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span> 
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span> 
+<span class="err">  </span>
+<span class="c1"># create data 
+</span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span> 
+<span class="err">  </span>
+<span class="c1"># making subplots 
+</span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> 
+<span class="err">  </span>
+<span class="c1"># set data with subplots and plot 
+</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">].</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> 
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">].</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span> 
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">].</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="p">)</span> 
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">].</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="p">)</span> 
+<span class="err">  </span>
+<span class="c1"># set the spacing between subplots 
+</span><span class="n">plt</span><span class="p">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> 
+<span class="err">                    </span><span class="n">bottom</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span><span class="err"> </span> 
+<span class="err">                    </span><span class="n">right</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span><span class="err"> </span> 
+<span class="err">                    </span><span class="n">top</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span><span class="err"> </span> 
+<span class="err">                    </span><span class="n">wspace</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span><span class="err"> </span> 
+<span class="err">                    </span><span class="n">hspace</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span> 
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="use-math-format-tick-labels">Use math format tick labels</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ax</span><span class="p">.</span><span class="n">ticklabel_format</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s">'y'</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s">'sci'</span><span class="p">,</span> <span class="n">scilimits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="n">useMathText</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="vertical-lines">Vertical lines</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Thick red horizontal line at y=0 that spans the xrange.
+</span><span class="n">ax</span><span class="p">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'#d62728'</span><span class="p">)</span>
+<span class="c1"># Horizontal line at y=1 that spans the xrange.
+</span><span class="n">ax</span><span class="p">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># Vertical line at x=1 that spans the yrange.
+</span><span class="n">ax</span><span class="p">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># Thick blue vertical line at x=0 that spans the upper quadrant of the yrange.
+</span><span class="n">ax</span><span class="p">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'#1f77b4'</span><span class="p">)</span>
+<span class="c1"># Default hline at y=.5 that spans the middle half of the axes.
+</span><span class="n">ax</span><span class="p">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="p">.</span><span class="mi">5</span><span class="p">,</span> <span class="n">xmin</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span>
+<span class="c1"># Infinite black line going through (0, 0) to (1, 1).
+</span><span class="n">ax</span><span class="p">.</span><span class="n">axline</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s">'k'</span><span class="p">)</span>
+<span class="c1"># 50%-gray rectangle spanning the axes' width from y=0.25 to y=0.75.
+</span><span class="n">ax</span><span class="p">.</span><span class="n">axhspan</span><span class="p">(</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s">'0.5'</span><span class="p">)</span>
+<span class="c1"># Green rectangle spanning the axes' height from x=1.25 to x=1.55.
+</span><span class="n">ax</span><span class="p">.</span><span class="n">axvspan</span><span class="p">(</span><span class="mf">1.25</span><span class="p">,</span> <span class="mf">1.55</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s">'#2ca02c'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="create-colourmaps">Create colourmaps</h3>
+
+<p><em>Since the methods used in other answers seems quite complicated for such easy task, here is a new answer:</em></p>
+
+<p>Instead of a <code class="language-plaintext highlighter-rouge">ListedColormap</code>, which produces a discrete colormap, you may use a <code class="language-plaintext highlighter-rouge">LinearSegmentedColormap</code>. This can easily be created from a list using the <code class="language-plaintext highlighter-rouge">from_list</code> method.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.colors</span>
+
+<span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">c</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="mi">4</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">norm</span><span class="o">=</span><span class="n">plt</span><span class="p">.</span><span class="n">Normalize</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">LinearSegmentedColormap</span><span class="p">.</span><span class="n">from_list</span><span class="p">(</span><span class="s">""</span><span class="p">,</span> <span class="p">[</span><span class="s">"red"</span><span class="p">,</span><span class="s">"violet"</span><span class="p">,</span><span class="s">"blue"</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span> 
+</code></pre></div></div>
+
+<p><a href="https://i.stack.imgur.com/mJcGc.png"><img src="https://i.stack.imgur.com/mJcGc.png" alt="enter image description here" /></a></p>
+
+<hr />
+
+<p>More generally, if you have a list of values (e.g. <code class="language-plaintext highlighter-rouge">[-2., -1, 2]</code>) and corresponding colors, (e.g. <code class="language-plaintext highlighter-rouge">["red","violet","blue"]</code>), such that the <code class="language-plaintext highlighter-rouge">n</code>th value should correspond to the <code class="language-plaintext highlighter-rouge">n</code>th color, you can normalize the values and supply them as tuples to the <code class="language-plaintext highlighter-rouge">from_list</code> method.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.colors</span>
+
+<span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">c</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="mi">4</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">cvals</span>  <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">2.</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s">"red"</span><span class="p">,</span><span class="s">"violet"</span><span class="p">,</span><span class="s">"blue"</span><span class="p">]</span>
+
+<span class="n">norm</span><span class="o">=</span><span class="n">plt</span><span class="p">.</span><span class="n">Normalize</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">cvals</span><span class="p">),</span><span class="nb">max</span><span class="p">(</span><span class="n">cvals</span><span class="p">))</span>
+<span class="n">tuples</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">norm</span><span class="p">,</span><span class="n">cvals</span><span class="p">),</span> <span class="n">colors</span><span class="p">))</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">LinearSegmentedColormap</span><span class="p">.</span><span class="n">from_list</span><span class="p">(</span><span class="s">""</span><span class="p">,</span> <span class="n">tuples</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span> 
+</code></pre></div></div>
+                    
+                </section>
+            </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div></div>
+    </div>
+</div>
+
+                        <a href="/Materials-Research-Notes/Chap6-Visualisation/example_codes/" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Matplotlib quick examples">
+                            <i class="fa fa-angle-left"></i>
+                        </a>
+                    
+
+                    
+                        <a href="/Materials-Research-Notes/Chap6-Visualisation/pandas_tricks/" class="navigation navigation-next navigation-unique" aria-label="Next page: Pandas tricks">
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    
+                </div>
+            </div>
+
+            <script>
+            var gitbook = gitbook || [];
+            gitbook.push(function() {
+                gitbook.page.hasChanged({
+    "page": {
+        "title": "Introduction",
+        "level": "1.1",
+        "depth": 1,
+        
+        "next": {
+            "title": "Pandas tricks",
+            "level": "1.2",
+            "depth": 1,
+            "path": "_Chap6-Visualisation/pandas_tricks.markdown",
+            "ref": "_Chap6-Visualisation/pandas_tricks.markdown",
+            "articles": []
+        },
+        
+        "dir": "ltr"
+    },    "config": {
+        "plugins": ["fontsettings", "highlight", "livereload", "lunr", "search", "sharing", "theme-default", "livereload"],
+        "styles": {
+            "ebook": "styles/ebook.css",
+            "epub": "styles/epub.css",
+            "mobi": "styles/mobi.css",
+            "pdf": "styles/pdf.css",
+            "print": "styles/print.css",
+            "website": "styles/website.css"
+        },
+        "pluginsConfig": {
+            "fontsettings": {
+                "family": "sans",
+                "size": 2,
+                "theme": "white"
+            },
+            "highlight": {},
+            "livereload": {},
+            "lunr": {
+                "ignoreSpecialCharacters": false,
+                "maxIndexSize": 1000000
+            },
+            "search": {},
+            "sharing": {
+                "all": ["facebook", "google", "twitter", "weibo", "instapaper"],
+                "facebook": true,
+                "google": false,
+                "instapaper": false,
+                "twitter": true,
+                "vk": false,
+                "weibo": false
+            },
+            "theme-default": {
+                "showLevel": false,
+                "styles": {
+                    "ebook": "styles/ebook.css",
+                    "epub": "styles/epub.css",
+                    "mobi": "styles/mobi.css",
+                    "pdf": "styles/pdf.css",
+                    "print": "styles/print.css",
+                    "website": "styles/website.css"
+                }
+            }
+        },
+        "theme": "default",
+        "author": "Tao He",
+        "pdf": {
+            "pageNumbers": true,
+            "fontSize": 12,
+            "fontFamily": "Arial",
+            "paperSize": "a4",
+            "chapterMark": "pagebreak",
+            "pageBreaksBefore": "/",
+            "margin": {
+                "right": 62,
+                "left": 62,
+                "top": 56,
+                "bottom": 56
+            }
+        },
+        "structure": {
+            "langs": "LANGS.md",
+            "readme": "README.md",
+        },
+        "variables": {},
+        "title": "Lei's Notes",
+        "language": "en",
+        "gitbook": "*"
+    },
+    "file": {
+        "path": "_Chap6-Visualisation/matplotlib_tricks.markdown",
+        "mtime": "",
+        "type": "markdown"
+    },
+    "gitbook": {
+        "version": "",
+        "time": "2023-08-17 12:02:06 +0100"
+    },
+    "basePath": "/Materials-Research-Notes",
+    "book": {
+        "language": ""
+    }
+});
+            });
+            </script>
+        </div><script src="/Materials-Research-Notes/gitbook/gitbook.js"></script>
+<script src="/Materials-Research-Notes/gitbook/theme.js"></script>
+
+<script src="/Materials-Research-Notes/gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+<script src="/Materials-Research-Notes/gitbook/gitbook-plugin-sharing/buttons.js"></script>
+
+<!-- <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+<script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+<script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+<script src="../gitbook/gitbook-plugin-search/search.js"></script> -->
+
+<script src="/Materials-Research-Notes/gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+<script src="/Materials-Research-Notes/gitbook/gitbook-plugin-search-pro/search.js"></script>
+
+<script src="/Materials-Research-Notes/gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</body>
+</html>

@@ -1,0 +1,944 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head><meta charset="UTF-8">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"><title>Python practical tricks · Lei&#39;s Notes</title><meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="description" content="My private lab notes on materials science including several projects on perovskite structure materials and computational research."><meta name="generator" content="Jekyll (using style of GitBook)"><meta name="author" content="Lei Lei"><link rel="stylesheet" href="/Materials-Research-Notes/gitbook/style.css">
+<link rel="stylesheet" href="/Materials-Research-Notes/gitbook/gitbook-plugin-fontsettings/website.css">
+<link rel="stylesheet" href="/Materials-Research-Notes/gitbook/gitbook-plugin-search-pro/search.css">
+<link rel="stylesheet" href="/Materials-Research-Notes/gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+
+<link rel="stylesheet" href="/Materials-Research-Notes/gitbook/rouge/colorful.css">
+
+<link rel="stylesheet" href="/Materials-Research-Notes/gitbook/custom.css">
+
+<meta name="HandheldFriendly" content="true"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/Materials-Research-Notes/gitbook/images/apple-touch-icon-precomposed-152.png">
+<link rel="shortcut icon" href="/Materials-Research-Notes/gitbook/images/favicon.ico" type="image/x-icon">
+
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        svg: {
+            fontCache: 'global'
+        }
+    };
+</script>
+
+            <link rel="prev" href="/Materials-Research-Notes/Chap1-Coding/Python-data%20model/" />
+        
+
+        
+            <link rel="next" href="/Materials-Research-Notes/Chap1-Coding/Vim_cheatsheet/" />
+        
+    </head>
+    <body>
+        <div class="book"><div class="book-summary">
+    <div id="book-search-input" role="search">
+        <input type="text" placeholder="Type to search" />
+    </div>
+    <nav role="navigation">
+        <ul class="summary">
+            
+            <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes">
+            
+                <a href="/Materials-Research-Notes/" style="font-size: 165%; font-weight: bold;">
+                    Lei&#39;s Notes
+                </a>
+            </li>
+
+            <li class="divider"></li>
+
+            
+                
+                <p style="font-size: 120%; font-weight: 600; text-indent:10px;">Coding</p>
+                <hr>
+                    
+
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap1-Coding/python-sequences/">
+                        
+                            <a href="/Materials-Research-Notes/Chap1-Coding/python-sequences/">
+                                Python - sequences
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap1-Coding/numpy-tricks/">
+                        
+                            <a href="/Materials-Research-Notes/Chap1-Coding/numpy-tricks/">
+                                Numpy - practical tricks and code snipets
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap1-Coding/Vim_cheatsheet/">
+                        
+                            <a href="/Materials-Research-Notes/Chap1-Coding/Vim_cheatsheet/">
+                                Vim Cheatsheet
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter active" data-level="1.2" data-path="/Materials-Research-Notes/Chap1-Coding/Python-tricks/">
+                        
+                            <a href="/Materials-Research-Notes/Chap1-Coding/Python-tricks/">
+                                Python practical tricks
+                            </a>
+                            
+                                
+                                    <ul><li><a href="#processing-files">Processing Files</a><ul><li><a href="#copy-files">Copy files</a></li><li><a href="#json">JSON</a></li></ul></li><li><a href="#list-tuple-and-dict">List, tuple and dict</a><ul><li><a href="#remove-all-occurences-of-an-element-from-a-list">Remove all occurences of an element from a list</a></li><li><a href="#sort-list-of-lists">Sort list of lists</a></li><li><a href="#sort-list-of-dicts">Sort list of dicts</a></li><li><a href="#remove-a-key-from-a-dict">Remove a key from a dict</a></li></ul></li><li><a href="#variables">Variables</a><ul><li><a href="#create-dynamic-variable-names">Create dynamic variable names</a></li></ul></li></ul>
+
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap1-Coding/Python-data%20model/">
+                        
+                            <a href="/Materials-Research-Notes/Chap1-Coding/Python-data%20model/">
+                                Python - data structures
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap1-Coding/Python-Code%20snipet/">
+                        
+                            <a href="/Materials-Research-Notes/Chap1-Coding/Python-Code%20snipet/">
+                                Python - useful snippets for materials science
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                    <li class="divider"></li>
+                
+            
+                
+                <p style="font-size: 120%; font-weight: 600; text-indent:10px;">ML</p>
+                <hr>
+                    
+
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap2-ML/SHAP/">
+                        
+                            <a href="/Materials-Research-Notes/Chap2-ML/SHAP/">
+                                SHAP
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap2-ML/Pytorch_tricks/">
+                        
+                            <a href="/Materials-Research-Notes/Chap2-ML/Pytorch_tricks/">
+                                Pytorch tricks
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap2-ML/Out_liers/">
+                        
+                            <a href="/Materials-Research-Notes/Chap2-ML/Out_liers/">
+                                ML - handle outliers
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap2-ML/GBR/">
+                        
+                            <a href="/Materials-Research-Notes/Chap2-ML/GBR/">
+                                ML - Gradient Boosting Algorithm
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                    <li class="divider"></li>
+                
+            
+                
+                <p style="font-size: 120%; font-weight: 600; text-indent:10px;">MatNotes</p>
+                <hr>
+                    
+
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap3-MatNotes/2023-05-12-Comp_Mat_Concep/">
+                        
+                            <a href="/Materials-Research-Notes/Chap3-MatNotes/2023-05-12-Comp_Mat_Concep/">
+                                Concepts and methods in computational materials science
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                    <li class="divider"></li>
+                
+            
+                
+                <p style="font-size: 120%; font-weight: 600; text-indent:10px;">HSTORE</p>
+                <hr>
+                    
+
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap4-HSTORE/2023-05-12-interstitial-hydrides/">
+                        
+                            <a href="/Materials-Research-Notes/Chap4-HSTORE/2023-05-12-interstitial-hydrides/">
+                                Solid hydrogen storage materials: interstitial hydrides
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap4-HSTORE/2022-03-29-AIMD-simulation-with-efield/">
+                        
+                            <a href="/Materials-Research-Notes/Chap4-HSTORE/2022-03-29-AIMD-simulation-with-efield/">
+                                AIMD simulation for MAPbI3 under electric filed
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                    <li class="divider"></li>
+                
+            
+                
+                <p style="font-size: 120%; font-weight: 600; text-indent:10px;">CompMat</p>
+                <hr>
+                    
+
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap5-CompMat/VASP-tricks/">
+                        
+                            <a href="/Materials-Research-Notes/Chap5-CompMat/VASP-tricks/">
+                                VASP errors and practical tricks
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                    <li class="divider"></li>
+                
+            
+                
+                <p style="font-size: 120%; font-weight: 600; text-indent:10px;">Visualisation</p>
+                <hr>
+                    
+
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap6-Visualisation/pandas_tricks/">
+                        
+                            <a href="/Materials-Research-Notes/Chap6-Visualisation/pandas_tricks/">
+                                Pandas tricks
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap6-Visualisation/matplotlib_tricks/">
+                        
+                            <a href="/Materials-Research-Notes/Chap6-Visualisation/matplotlib_tricks/">
+                                Matplotlib tricks
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap6-Visualisation/example_codes/">
+                        
+                            <a href="/Materials-Research-Notes/Chap6-Visualisation/example_codes/">
+                                Matplotlib quick examples
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap6-Visualisation/Jupyter/jupyter_tricks/">
+                        
+                            <a href="/Materials-Research-Notes/Chap6-Visualisation/Jupyter/jupyter_tricks/">
+                                Jupyter Notebook Tricks
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                    <li class="divider"></li>
+                
+            
+                
+                <p style="font-size: 120%; font-weight: 600; text-indent:10px;">sys_ssh</p>
+                <hr>
+                    
+
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap7-sys_ssh/work_on_ssh_session/">
+                        
+                            <a href="/Materials-Research-Notes/Chap7-sys_ssh/work_on_ssh_session/">
+                                Bash, Git &amp; SSH tricks
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                    <li class="divider"></li>
+                
+            
+                
+                <p style="font-size: 120%; font-weight: 600; text-indent:10px;">Info</p>
+                <hr>
+                    
+
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/ChapX-Info/quick-start/">
+                        
+                            <a href="/Materials-Research-Notes/ChapX-Info/quick-start/">
+                                Quick Start
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/ChapX-Info/about/">
+                        
+                            <a href="/Materials-Research-Notes/ChapX-Info/about/">
+                                About
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                    <li class="divider"></li>
+                
+            
+                
+            
+        </ul>
+    </nav>
+</div><div class="book-body">
+                <div class="book-header" role="navigation">
+                    <!-- Title -->
+                    <h1>
+                        <i class="fa fa-circle-o-notch fa-spin"></i>
+                        
+                            <a href="." >Python practical tricks</a>
+                        
+                    </h1>
+                </div>
+
+                <div class="body-inner"><div class="page-wrapper" tabindex="-1" role="main">
+    <div class="page-inner">
+        <div id="book-search-results">
+            <div class="search-noresults">
+                <section class="normal markdown-section">
+
+                    
+                        <h1 id="/Chap1-Coding/Python-tricks" style="border-style: solid solid solid solid; border-width: 0px 0px 2px 0px; border-color: black black #F1F0F0 black;">Python practical tricks</h1>
+                    
+
+                    
+                    
+                    
+                    
+
+<h2 id="processing-files">Processing Files</h2>
+
+<h3 id="copy-files">Copy files</h3>
+
+<p>In Python, you can copy the files using</p>
+
+<ul>
+  <li><strong><a href="https://docs.python.org/3/library/shutil.html"><code class="language-plaintext highlighter-rouge">shutil</code></a></strong> module</li>
+  <li><strong><a href="https://docs.python.org/3/library/os.html"><code class="language-plaintext highlighter-rouge">os</code></a></strong> module</li>
+  <li><strong><a href="https://docs.python.org/3/library/subprocess.html"><code class="language-plaintext highlighter-rouge">subprocess</code></a></strong> module</li>
+</ul>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">import</span> <span class="nn">subprocess</span> 
+</code></pre></div></div>
+
+<hr />
+
+<h4 id="copying-files-using-shutil-module">Copying files using <a href="https://docs.python.org/3/library/shutil.html"><code class="language-plaintext highlighter-rouge">shutil</code></a> module</h4>
+
+<p><strong><a href="https://docs.python.org/3/library/shutil.html#shutil.copyfile"><code class="language-plaintext highlighter-rouge">shutil.copyfile</code></a></strong> signature</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">shutil</span><span class="p">.</span><span class="n">copyfile</span><span class="p">(</span><span class="n">src_file</span><span class="p">,</span> <span class="n">dest_file</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">follow_symlinks</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="c1"># example    
+</span><span class="n">shutil</span><span class="p">.</span><span class="n">copyfile</span><span class="p">(</span><span class="s">'source.txt'</span><span class="p">,</span> <span class="s">'destination.txt'</span><span class="p">)</span> 
+</code></pre></div></div>
+
+<hr />
+
+<p><strong><a href="https://docs.python.org/3/library/shutil.html#shutil.copy"><code class="language-plaintext highlighter-rouge">shutil.copy</code></a></strong> signature</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">shutil</span><span class="p">.</span><span class="n">copy</span><span class="p">(</span><span class="n">src_file</span><span class="p">,</span> <span class="n">dest_file</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">follow_symlinks</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="c1"># example
+</span><span class="n">shutil</span><span class="p">.</span><span class="n">copy</span><span class="p">(</span><span class="s">'source.txt'</span><span class="p">,</span> <span class="s">'destination.txt'</span><span class="p">)</span> 
+</code></pre></div></div>
+
+<hr />
+
+<p><strong><a href="https://docs.python.org/3/library/shutil.html#shutil.copy2"><code class="language-plaintext highlighter-rouge">shutil.copy2</code></a></strong> signature</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">shutil</span><span class="p">.</span><span class="n">copy2</span><span class="p">(</span><span class="n">src_file</span><span class="p">,</span> <span class="n">dest_file</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">follow_symlinks</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="c1"># example
+</span><span class="n">shutil</span><span class="p">.</span><span class="n">copy2</span><span class="p">(</span><span class="s">'source.txt'</span><span class="p">,</span> <span class="s">'destination.txt'</span><span class="p">)</span> 
+</code></pre></div></div>
+
+<hr />
+
+<p><strong><a href="https://docs.python.org/3/library/shutil.html#shutil.copyfileobj"><code class="language-plaintext highlighter-rouge">shutil.copyfileobj</code></a></strong> signature</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">shutil</span><span class="p">.</span><span class="n">copyfileobj</span><span class="p">(</span><span class="n">src_file_object</span><span class="p">,</span> <span class="n">dest_file_object</span><span class="p">[,</span> <span class="n">length</span><span class="p">])</span>
+
+<span class="c1"># example
+</span><span class="n">file_src</span> <span class="o">=</span> <span class="s">'source.txt'</span>  
+<span class="n">f_src</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_src</span><span class="p">,</span> <span class="s">'rb'</span><span class="p">)</span>
+
+<span class="n">file_dest</span> <span class="o">=</span> <span class="s">'destination.txt'</span>  
+<span class="n">f_dest</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_dest</span><span class="p">,</span> <span class="s">'wb'</span><span class="p">)</span>
+
+<span class="n">shutil</span><span class="p">.</span><span class="n">copyfileobj</span><span class="p">(</span><span class="n">f_src</span><span class="p">,</span> <span class="n">f_dest</span><span class="p">)</span> 
+</code></pre></div></div>
+
+<hr />
+
+<p><strong>Clarification on <code class="language-plaintext highlighter-rouge">shutil</code> module</strong></p>
+
+<table class="s-table">
+    <thead>
+        <tr>
+            <th>Function</th>
+            <th>
+                Copies<br />
+                metadata
+            </th>
+            <th class="">
+                Copies<br />
+                permissions
+            </th>
+            <th>Uses file object</th>
+            <th>
+                Destination<br />
+                may be directory
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a href="https://docs.python.org/3/library/shutil.html#shutil.copy" rel="noreferrer">shutil.copy</a></td>
+            <td>No</td>
+            <td class="">Yes</td>
+            <td>No</td>
+            <td>Yes</td>
+        </tr>
+        <tr>
+            <td><a href="https://docs.python.org/3/library/shutil.html#shutil.copyfile" rel="noreferrer">shutil.copyfile</a></td>
+            <td>No</td>
+            <td class="">No</td>
+            <td>No</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td><a href="https://docs.python.org/3/library/shutil.html#shutil.copy2" rel="noreferrer">shutil.copy2</a></td>
+            <td>Yes</td>
+            <td class="">Yes</td>
+            <td class="">No</td>
+            <td>Yes</td>
+        </tr>
+        <tr>
+            <td><a href="https://docs.python.org/3/library/shutil.html#shutil.copyfileobj" rel="noreferrer">shutil.copyfileobj</a></td>
+            <td>No</td>
+            <td>No</td>
+            <td class="">Yes</td>
+            <td>No</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul>
+  <li>9 Note that <a href="https://docs.python.org/3/library/shutil.html">even the <code class="language-plaintext highlighter-rouge">shutil.copy2()</code> function cannot copy all file metadata</a>. – <a href="/users/10669875/wovano" title="4,397 reputation">wovano</a> <a href="#comment126266541_30359308">Mar 11, 2022 at 10:34</a></li>
+</ul>
+
+<h4 id="copying-files-using-os-module">Copying files using <a href="https://docs.python.org/3/library/os.html"><code class="language-plaintext highlighter-rouge">os</code></a> module</h4>
+
+<p><strong><a href="https://docs.python.org/3/library/os.html#os.popen"><code class="language-plaintext highlighter-rouge">os.popen</code></a></strong> signature</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">os</span><span class="p">.</span><span class="n">popen</span><span class="p">(</span><span class="n">cmd</span><span class="p">[,</span> <span class="n">mode</span><span class="p">[,</span> <span class="n">bufsize</span><span class="p">]])</span>
+
+<span class="c1"># example
+# In Unix/Linux
+</span><span class="n">os</span><span class="p">.</span><span class="n">popen</span><span class="p">(</span><span class="s">'cp source.txt destination.txt'</span><span class="p">)</span> 
+
+<span class="c1"># In Windows
+</span><span class="n">os</span><span class="p">.</span><span class="n">popen</span><span class="p">(</span><span class="s">'copy source.txt destination.txt'</span><span class="p">)</span> 
+</code></pre></div></div>
+
+<hr />
+
+<p><strong><a href="https://docs.python.org/3/library/os.html#os.system"><code class="language-plaintext highlighter-rouge">os.system</code></a></strong> signature</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">os</span><span class="p">.</span><span class="n">system</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+
+
+<span class="c1"># In Linux/Unix
+</span><span class="n">os</span><span class="p">.</span><span class="n">system</span><span class="p">(</span><span class="s">'cp source.txt destination.txt'</span><span class="p">)</span>  
+
+<span class="c1"># In Windows
+</span><span class="n">os</span><span class="p">.</span><span class="n">system</span><span class="p">(</span><span class="s">'copy source.txt destination.txt'</span><span class="p">)</span> 
+</code></pre></div></div>
+
+<hr />
+
+<h4 id="copying-files-using-subprocess-module">Copying files using <a href="https://docs.python.org/3/library/subprocess.html"><code class="language-plaintext highlighter-rouge">subprocess</code></a> module</h4>
+
+<p><strong><a href="https://docs.python.org/3/library/subprocess.html#subprocess.call"><code class="language-plaintext highlighter-rouge">subprocess.call</code></a></strong> signature</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">subprocess</span><span class="p">.</span><span class="n">call</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">stdin</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="c1"># example (WARNING: setting `shell=True` might be a security-risk)
+# In Linux/Unix
+</span><span class="n">status</span> <span class="o">=</span> <span class="n">subprocess</span><span class="p">.</span><span class="n">call</span><span class="p">(</span><span class="s">'cp source.txt destination.txt'</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> 
+
+<span class="c1"># In Windows
+</span><span class="n">status</span> <span class="o">=</span> <span class="n">subprocess</span><span class="p">.</span><span class="n">call</span><span class="p">(</span><span class="s">'copy source.txt destination.txt'</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> 
+</code></pre></div></div>
+
+<hr />
+
+<p><strong><a href="https://docs.python.org/3/library/subprocess.html#subprocess.check_output"><code class="language-plaintext highlighter-rouge">subprocess.check_output</code></a></strong> signature</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">subprocess</span><span class="p">.</span><span class="n">check_output</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">stdin</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">universal_newlines</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="c1"># example (WARNING: setting `shell=True` might be a security-risk)
+# In Linux/Unix
+</span><span class="n">status</span> <span class="o">=</span> <span class="n">subprocess</span><span class="p">.</span><span class="n">check_output</span><span class="p">(</span><span class="s">'cp source.txt destination.txt'</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="c1"># In Windows
+</span><span class="n">status</span> <span class="o">=</span> <span class="n">subprocess</span><span class="p">.</span><span class="n">check_output</span><span class="p">(</span><span class="s">'copy source.txt destination.txt'</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> 
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="json">JSON</h3>
+
+<h4 id="load-json-file">Load <code class="language-plaintext highlighter-rouge">json</code> file</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">json</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'site_occ.json'</span><span class="p">)</span> <span class="k">as</span> <span class="nb">file</span><span class="p">:</span>
+    <span class="n">parsed_json</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="nb">file</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">parsed_json</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="list-tuple-and-dict">List, tuple and dict</h2>
+
+<h3 id="remove-all-occurences-of-an-element-from-a-list">Remove all occurences of an element from a list</h3>
+
+<p><a href="https://stackoverflow.com/questions/1157106/remove-all-occurrences-of-a-value-from-a-list">Remove all occurrences of a value from a list?</a></p>
+
+<p>Functional approach:</p>
+
+<p><strong>Python 3.x</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">((</span><span class="mi">2</span><span class="p">).</span><span class="n">__ne__</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+</code></pre></div></div>
+
+<h3 id="sort-list-of-lists">Sort list of lists</h3>
+
+<blockquote>
+  <p>Source <a href="https://stackoverflow.com/questions/2213923/removing-duplicates-from-a-list-of-lists">stackoverflow.com</a></p>
+</blockquote>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">k</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">]]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">itertools</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">k</span><span class="p">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">_</span> <span class="ow">in</span> <span class="n">itertools</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
+<span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span> 
+</code></pre></div></div>
+
+<p><a href="http://docs.python.org/library/itertools.html?highlight=itertools#module-itertools"><code class="language-plaintext highlighter-rouge">itertools</code></a> often offers the fastest and most powerful solutions to this kind of problems, and is <strong>well</strong> worth getting intimately familiar with!</p>
+
+<p><strong>Edit</strong>: as I mention in a comment, normal optimization efforts are focused on large inputs (the big-O approach) because it’s so much easier that it offers good returns on efforts. But sometimes (essentially for “tragically crucial bottlenecks” in deep inner loops of code that’s pushing the boundaries of performance limits) one may need to go into much more detail, providing probability distributions, deciding which performance measures to optimize (maybe the upper bound or the 90th centile is more important than an average or median, depending on one’s apps), performing possibly-heuristic checks at the start to pick different algorithms depending on input data characteristics, and so forth.</p>
+
+<p>Careful measurements of “point” performance (code A vs code B for a specific input) are a part of this extremely costly process, and standard library module <code class="language-plaintext highlighter-rouge">timeit</code> helps here. However, it’s easier to use it at a shell prompt. For example, here’s a short module to showcase the general approach for this problem, save it as <code class="language-plaintext highlighter-rouge">nodup.py</code>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import itertools
+
+k = [[1, 2], [4], [5, 6, 2], [1, 2], [3], [4]]
+
+def doset(k, map=map, list=list, set=set, tuple=tuple):
+  return map(list, set(map(tuple, k)))
+
+def dosort(k, sorted=sorted, xrange=xrange, len=len):
+  ks = sorted(k)
+  return [ks[i] for i in xrange(len(ks)) if i == 0 or ks[i] != ks[i-1]]
+
+def dogroupby(k, sorted=sorted, groupby=itertools.groupby, list=list):
+  ks = sorted(k)
+  return [i for i, _ in itertools.groupby(ks)]
+
+def donewk(k):
+  newk = []
+  for i in k:
+    if i not in newk:
+      newk.append(i)
+  return newk
+
+# sanity check that all functions compute the same result and don't alter k
+if __name__ == '__main__':
+  savek = list(k)
+  for f in doset, dosort, dogroupby, donewk:
+    resk = f(k)
+    assert k == savek
+    print '%10s %s' % (f.__name__, sorted(resk)) 
+</code></pre></div></div>
+
+<p>Note the sanity check (performed when you just do <code class="language-plaintext highlighter-rouge">python nodup.py</code>) and the basic hoisting technique (make constant global names local to each function for speed) to put things on equal footing.</p>
+
+<p>Now we can run checks on the tiny example list:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python -mtimeit -s'import nodup' 'nodup.doset(nodup.k)'
+100000 loops, best of 3: 11.7 usec per loop
+$ python -mtimeit -s'import nodup' 'nodup.dosort(nodup.k)'
+100000 loops, best of 3: 9.68 usec per loop
+$ python -mtimeit -s'import nodup' 'nodup.dogroupby(nodup.k)'
+100000 loops, best of 3: 8.74 usec per loop
+$ python -mtimeit -s'import nodup' 'nodup.donewk(nodup.k)'
+100000 loops, best of 3: 4.44 usec per loop 
+</code></pre></div></div>
+
+<p>confirming that the quadratic approach has small-enough constants to make it attractive for tiny lists with few duplicated values. With a short list without duplicates:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python -mtimeit -s'import nodup' 'nodup.donewk([[i] for i in range(12)])'
+10000 loops, best of 3: 25.4 usec per loop
+$ python -mtimeit -s'import nodup' 'nodup.dogroupby([[i] for i in range(12)])'
+10000 loops, best of 3: 23.7 usec per loop
+$ python -mtimeit -s'import nodup' 'nodup.doset([[i] for i in range(12)])'
+10000 loops, best of 3: 31.3 usec per loop
+$ python -mtimeit -s'import nodup' 'nodup.dosort([[i] for i in range(12)])'
+10000 loops, best of 3: 25 usec per loop 
+</code></pre></div></div>
+
+<p>the quadratic approach isn’t bad, but the sort and groupby ones are better. Etc, etc.</p>
+
+<p>If (as the obsession with performance suggests) this operation is at a core inner loop of your pushing-the-boundaries application, it’s worth trying the same set of tests on other representative input samples, possibly detecting some simple measure that could heuristically let you pick one or the other approach (but the measure must be fast, of course).</p>
+
+<p>It’s also well worth considering keeping a different representation for <code class="language-plaintext highlighter-rouge">k</code> – why does it have to be a list of lists rather than a set of tuples in the first place? If the duplicate removal task is frequent, and profiling shows it to be the program’s performance bottleneck, keeping a set of tuples all the time and getting a list of lists from it only if and where needed, might be faster overall, for example.</p>
+
+<h3 id="sort-list-of-dicts">Sort list of dicts</h3>
+
+<h4 id="sort-by-values">Sort by values</h4>
+
+<blockquote>
+  <p>Source: <a href="https://stackoverflow.com/questions/72899/how-to-sort-a-list-of-dictionaries-by-a-value-of-the-dictionary-in-python">stackoverflow.com</a></p>
+</blockquote>
+
+<p>The <a href="https://docs.python.org/library/functions.html#sorted"><code class="language-plaintext highlighter-rouge">sorted()</code></a> function takes a <code class="language-plaintext highlighter-rouge">key=</code> parameter</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">newlist</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">list_to_be_sorted</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">d</span><span class="p">[</span><span class="s">'name'</span><span class="p">])</span> 
+</code></pre></div></div>
+
+<p>Alternatively, you can use <a href="https://docs.python.org/library/operator.html#operator.itemgetter"><code class="language-plaintext highlighter-rouge">operator.itemgetter</code></a> instead of defining the function yourself</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">operator</span> <span class="kn">import</span> <span class="n">itemgetter</span>
+<span class="n">newlist</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">list_to_be_sorted</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">itemgetter</span><span class="p">(</span><span class="s">'name'</span><span class="p">))</span> 
+</code></pre></div></div>
+
+<p>For completeness, add <code class="language-plaintext highlighter-rouge">reverse=True</code> to sort in descending order</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">newlist</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">list_to_be_sorted</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">itemgetter</span><span class="p">(</span><span class="s">'name'</span><span class="p">),</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> 
+</code></pre></div></div>
+
+<h4 id="sort-by-key-names">Sort by key names</h4>
+
+<blockquote>
+  <p>Source: <a href="https://stackoverflow.com/questions/38644055/sort-list-of-dictionaries-based-on-keys">stackoverflow.com</a></p>
+</blockquote>
+
+<p>Just use <code class="language-plaintext highlighter-rouge">sorted</code> using a list like <code class="language-plaintext highlighter-rouge">[key1 in dict, key2 in dict, ...]</code> as the key to sort by. Remember to reverse the result, since <code class="language-plaintext highlighter-rouge">True</code> (i.e. key is in dict) is sorted after <code class="language-plaintext highlighter-rouge">False</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; dicts = [{1:2, 3:4}, {3:4}, {5:6, 7:8}]
+&gt;&gt;&gt; keys = [5, 3, 1]
+&gt;&gt;&gt; sorted(dicts, key=lambda d: [k in d for k in keys], reverse=True)
+[{5: 6, 7: 8}, {1: 2, 3: 4}, {3: 4}] 
+</code></pre></div></div>
+
+<p>This is using <em>all</em> the keys to break ties, i.e. in above example, there are two dicts that have the key <code class="language-plaintext highlighter-rouge">3</code>, but one also has the key <code class="language-plaintext highlighter-rouge">1</code>, so this one is sorted second.</p>
+
+<h3 id="remove-a-key-from-a-dict">Remove a key from a dict</h3>
+
+<blockquote>
+  <p>Source: <a href="https://stackoverflow.com/questions/11277432/how-can-i-remove-a-key-from-a-python-dictionary">stackoverflow.com</a></p>
+</blockquote>
+
+<p>To delete a key regardless of whether it is in the dictionary, use the two-argument form of <a href="http://docs.python.org/library/stdtypes.html#dict.pop"><code class="language-plaintext highlighter-rouge">dict.pop()</code></a>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_dict</span><span class="p">.</span><span class="n">pop</span><span class="p">(</span><span class="s">'key'</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span> 
+</code></pre></div></div>
+
+<p>This will return <code class="language-plaintext highlighter-rouge">my_dict[key]</code> if <code class="language-plaintext highlighter-rouge">key</code> exists in the dictionary, and <code class="language-plaintext highlighter-rouge">None</code> otherwise. If the second parameter is not specified (i.e. <code class="language-plaintext highlighter-rouge">my_dict.pop('key')</code>) and <code class="language-plaintext highlighter-rouge">key</code> does not exist, a <code class="language-plaintext highlighter-rouge">KeyError</code> is raised.</p>
+
+<p>To delete a key that is guaranteed to exist, you can also use</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">del</span> <span class="n">my_dict</span><span class="p">[</span><span class="s">'key'</span><span class="p">]</span> 
+</code></pre></div></div>
+
+<p>This will raise a <code class="language-plaintext highlighter-rouge">KeyError</code> if the key is not in the dictionary.</p>
+
+<h2 id="variables">Variables</h2>
+
+<h3 id="create-dynamic-variable-names">Create dynamic variable names</h3>
+
+<h4 id="using-for-loop">Using <code class="language-plaintext highlighter-rouge">for</code> loop</h4>
+
+<p>The creation of a dynamic variable name in Python can be achieved with the help of iteration.</p>
+
+<p>Along with the <code class="language-plaintext highlighter-rouge">for</code> loop, the <code class="language-plaintext highlighter-rouge">globals()</code> function will also be used in this method.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">globals()</code> method in Python provides the output as a dictionary of the current global symbol table.</p>
+
+<p>The following code uses the <code class="language-plaintext highlighter-rouge">for</code> loop and the <code class="language-plaintext highlighter-rouge">globals()</code> method to create a dynamic variable name in Python.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">):</span>
+    <span class="nb">globals</span><span class="p">()[</span><span class="s">'strg%s'</span> <span class="o">%</span> <span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="s">'Hello'</span>
+<span class="c1"># strg0 = 'Hello', strg1 = 'Hello' ... strg6 = 'Hello'
+</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">):</span>
+    <span class="nb">globals</span><span class="p">()[</span><span class="sa">f</span><span class="s">"variable1</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s">"</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s">"Hello the variable number </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s">!"</span>
+
+
+<span class="k">print</span><span class="p">(</span><span class="n">variable5</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Output:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Hello from variable number 5!
+</code></pre></div></div>
+
+<h4 id="using-a-dictionary">Using a dictionary</h4>
+
+<p>A dictionary is one of the four built-in data-types provided by Python along with tuple, list, and set. It is used to store data in the form of key: value pairs. A dictionary is both ordered (in Python 3.7 and above) and mutable. It is written with curly brackets <code class="language-plaintext highlighter-rouge">{}</code>. In addition to this, dictionaries cannot have any duplicates.</p>
+
+<p>A dictionary has both a key and value, so it is easy to create a dynamic variable name using dictionaries.</p>
+
+<p>The following code uses a dictionary to create a dynamic variable name in python.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">var</span> <span class="o">=</span> <span class="s">"a"</span>
+<span class="n">val</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">dict1</span> <span class="o">=</span> <span class="p">{</span><span class="n">var</span><span class="p">:</span> <span class="n">val</span><span class="p">}</span>
+<span class="k">print</span><span class="p">(</span><span class="n">dict1</span><span class="p">[</span><span class="s">"a"</span><span class="p">])</span>
+</code></pre></div></div>
+
+<p>Although the creation of a dynamic variable name is possible in Python, It is needless and unnecessary as data in Python is created dynamically. Python references the objects in the code. If the reference of the object exists, then the object itself exists.</p>
+
+<p>Creating a variable in this way is not recommended.</p>
+                    
+                </section>
+            </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div></div>
+    </div>
+</div>
+
+                        <a href="/Materials-Research-Notes/Chap1-Coding/Python-data%20model/" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Python - data structures">
+                            <i class="fa fa-angle-left"></i>
+                        </a>
+                    
+
+                    
+                        <a href="/Materials-Research-Notes/Chap1-Coding/Vim_cheatsheet/" class="navigation navigation-next navigation-unique" aria-label="Next page: Vim Cheatsheet">
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    
+                </div>
+            </div>
+
+            <script>
+            var gitbook = gitbook || [];
+            gitbook.push(function() {
+                gitbook.page.hasChanged({
+    "page": {
+        "title": "Introduction",
+        "level": "1.1",
+        "depth": 1,
+        
+        "next": {
+            "title": "Vim Cheatsheet",
+            "level": "1.2",
+            "depth": 1,
+            "path": "_Chap1-Coding/Vim_cheatsheet.markdown",
+            "ref": "_Chap1-Coding/Vim_cheatsheet.markdown",
+            "articles": []
+        },
+        
+        "dir": "ltr"
+    },    "config": {
+        "plugins": ["fontsettings", "highlight", "livereload", "lunr", "search", "sharing", "theme-default", "livereload"],
+        "styles": {
+            "ebook": "styles/ebook.css",
+            "epub": "styles/epub.css",
+            "mobi": "styles/mobi.css",
+            "pdf": "styles/pdf.css",
+            "print": "styles/print.css",
+            "website": "styles/website.css"
+        },
+        "pluginsConfig": {
+            "fontsettings": {
+                "family": "sans",
+                "size": 2,
+                "theme": "white"
+            },
+            "highlight": {},
+            "livereload": {},
+            "lunr": {
+                "ignoreSpecialCharacters": false,
+                "maxIndexSize": 1000000
+            },
+            "search": {},
+            "sharing": {
+                "all": ["facebook", "google", "twitter", "weibo", "instapaper"],
+                "facebook": true,
+                "google": false,
+                "instapaper": false,
+                "twitter": true,
+                "vk": false,
+                "weibo": false
+            },
+            "theme-default": {
+                "showLevel": false,
+                "styles": {
+                    "ebook": "styles/ebook.css",
+                    "epub": "styles/epub.css",
+                    "mobi": "styles/mobi.css",
+                    "pdf": "styles/pdf.css",
+                    "print": "styles/print.css",
+                    "website": "styles/website.css"
+                }
+            }
+        },
+        "theme": "default",
+        "author": "Tao He",
+        "pdf": {
+            "pageNumbers": true,
+            "fontSize": 12,
+            "fontFamily": "Arial",
+            "paperSize": "a4",
+            "chapterMark": "pagebreak",
+            "pageBreaksBefore": "/",
+            "margin": {
+                "right": 62,
+                "left": 62,
+                "top": 56,
+                "bottom": 56
+            }
+        },
+        "structure": {
+            "langs": "LANGS.md",
+            "readme": "README.md",
+        },
+        "variables": {},
+        "title": "Lei's Notes",
+        "language": "en",
+        "gitbook": "*"
+    },
+    "file": {
+        "path": "_Chap1-Coding/Python-tricks.markdown",
+        "mtime": "",
+        "type": "markdown"
+    },
+    "gitbook": {
+        "version": "",
+        "time": "2023-08-17 12:02:06 +0100"
+    },
+    "basePath": "/Materials-Research-Notes",
+    "book": {
+        "language": ""
+    }
+});
+            });
+            </script>
+        </div><script src="/Materials-Research-Notes/gitbook/gitbook.js"></script>
+<script src="/Materials-Research-Notes/gitbook/theme.js"></script>
+
+<script src="/Materials-Research-Notes/gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+<script src="/Materials-Research-Notes/gitbook/gitbook-plugin-sharing/buttons.js"></script>
+
+<!-- <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+<script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+<script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+<script src="../gitbook/gitbook-plugin-search/search.js"></script> -->
+
+<script src="/Materials-Research-Notes/gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+<script src="/Materials-Research-Notes/gitbook/gitbook-plugin-search-pro/search.js"></script>
+
+<script src="/Materials-Research-Notes/gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</body>
+</html>

@@ -77,3 +77,11 @@ Using `echo`
 ~~~shell
 echo "$(<file.txt )"
 ~~~
+
+# Slurm
+
+## Cancel jobs
+
+~~~shell
+scancel --state=PENDING --user=leilei
+~~~

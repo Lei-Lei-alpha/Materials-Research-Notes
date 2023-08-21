@@ -1,0 +1,798 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head><meta charset="UTF-8">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"><title>Pandas tricks · Lei&#39;s Notes</title><meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="description" content="My private lab notes on materials science including several projects on perovskite structure materials and computational research."><meta name="generator" content="Jekyll (using style of GitBook)"><meta name="author" content="Lei Lei"><link rel="stylesheet" href="/Materials-Research-Notes/gitbook/style.css">
+<link rel="stylesheet" href="/Materials-Research-Notes/gitbook/gitbook-plugin-fontsettings/website.css">
+<link rel="stylesheet" href="/Materials-Research-Notes/gitbook/gitbook-plugin-search-pro/search.css">
+<link rel="stylesheet" href="/Materials-Research-Notes/gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+
+<link rel="stylesheet" href="/Materials-Research-Notes/gitbook/rouge/colorful.css">
+
+<link rel="stylesheet" href="/Materials-Research-Notes/gitbook/custom.css">
+
+<meta name="HandheldFriendly" content="true"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/Materials-Research-Notes/gitbook/images/apple-touch-icon-precomposed-152.png">
+<link rel="shortcut icon" href="/Materials-Research-Notes/gitbook/images/favicon.ico" type="image/x-icon">
+
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        svg: {
+            fontCache: 'global'
+        }
+    };
+</script>
+
+            <link rel="prev" href="/Materials-Research-Notes/Chap6-Visualisation/matplotlib_tricks/" />
+        
+
+        
+    </head>
+    <body>
+        <div class="book"><div class="book-summary">
+    <div id="book-search-input" role="search">
+        <input type="text" placeholder="Type to search" />
+    </div>
+    <nav role="navigation">
+        <ul class="summary">
+            
+            <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes">
+            
+                <a href="/Materials-Research-Notes/" style="font-size: 165%; font-weight: bold;">
+                    Lei&#39;s Notes
+                </a>
+            </li>
+
+            <li class="divider"></li>
+
+            
+                
+                <p style="font-size: 120%; font-weight: 600; text-indent:10px;">Coding</p>
+                <hr>
+                    
+
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap1-Coding/python-sequences/">
+                        
+                            <a href="/Materials-Research-Notes/Chap1-Coding/python-sequences/">
+                                Python - sequences
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap1-Coding/numpy-tricks/">
+                        
+                            <a href="/Materials-Research-Notes/Chap1-Coding/numpy-tricks/">
+                                Numpy - practical tricks and code snipets
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap1-Coding/Vim_cheatsheet/">
+                        
+                            <a href="/Materials-Research-Notes/Chap1-Coding/Vim_cheatsheet/">
+                                Vim Cheatsheet
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap1-Coding/Python-tricks/">
+                        
+                            <a href="/Materials-Research-Notes/Chap1-Coding/Python-tricks/">
+                                Python practical tricks
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap1-Coding/Python-data%20model/">
+                        
+                            <a href="/Materials-Research-Notes/Chap1-Coding/Python-data%20model/">
+                                Python - data structures
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap1-Coding/Python-Code%20snipet/">
+                        
+                            <a href="/Materials-Research-Notes/Chap1-Coding/Python-Code%20snipet/">
+                                Python - useful snippets for materials science
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                    <li class="divider"></li>
+                
+            
+                
+                <p style="font-size: 120%; font-weight: 600; text-indent:10px;">ML</p>
+                <hr>
+                    
+
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap2-ML/SHAP/">
+                        
+                            <a href="/Materials-Research-Notes/Chap2-ML/SHAP/">
+                                SHAP
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap2-ML/Pytorch_tricks/">
+                        
+                            <a href="/Materials-Research-Notes/Chap2-ML/Pytorch_tricks/">
+                                Pytorch tricks
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap2-ML/Out_liers/">
+                        
+                            <a href="/Materials-Research-Notes/Chap2-ML/Out_liers/">
+                                ML - handle outliers
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap2-ML/GBR/">
+                        
+                            <a href="/Materials-Research-Notes/Chap2-ML/GBR/">
+                                ML - Gradient Boosting Algorithm
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                    <li class="divider"></li>
+                
+            
+                
+                <p style="font-size: 120%; font-weight: 600; text-indent:10px;">MatNotes</p>
+                <hr>
+                    
+
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap3-MatNotes/2023-05-12-Comp_Mat_Concep/">
+                        
+                            <a href="/Materials-Research-Notes/Chap3-MatNotes/2023-05-12-Comp_Mat_Concep/">
+                                Concepts and methods in computational materials science
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                    <li class="divider"></li>
+                
+            
+                
+                <p style="font-size: 120%; font-weight: 600; text-indent:10px;">HSTORE</p>
+                <hr>
+                    
+
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap4-HSTORE/2023-05-12-interstitial-hydrides/">
+                        
+                            <a href="/Materials-Research-Notes/Chap4-HSTORE/2023-05-12-interstitial-hydrides/">
+                                Solid hydrogen storage materials: interstitial hydrides
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap4-HSTORE/2022-03-29-AIMD-simulation-with-efield/">
+                        
+                            <a href="/Materials-Research-Notes/Chap4-HSTORE/2022-03-29-AIMD-simulation-with-efield/">
+                                AIMD simulation for MAPbI3 under electric filed
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                    <li class="divider"></li>
+                
+            
+                
+                <p style="font-size: 120%; font-weight: 600; text-indent:10px;">CompMat</p>
+                <hr>
+                    
+
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap5-CompMat/VASP-tricks/">
+                        
+                            <a href="/Materials-Research-Notes/Chap5-CompMat/VASP-tricks/">
+                                VASP errors and practical tricks
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                    <li class="divider"></li>
+                
+            
+                
+                <p style="font-size: 120%; font-weight: 600; text-indent:10px;">Visualisation</p>
+                <hr>
+                    
+
+                    
+                        
+                        <li class="chapter active" data-level="1.2" data-path="/Materials-Research-Notes/Chap6-Visualisation/pandas_tricks/">
+                        
+                            <a href="/Materials-Research-Notes/Chap6-Visualisation/pandas_tricks/">
+                                Pandas tricks
+                            </a>
+                            
+                                
+                                    <ul><li><a href="#dataframes">Dataframes</a><ul><li><a href="#merge-dataframes">Merge dataframes</a></li><li><a href="#concatenate">Concatenate</a></li><li><a href="#add-new-row-to-dataframe">Add new row to dataframe</a></li><li><a href="#add-a-column-to-pandas-dataframe">Add a column to pandas dataframe</a></li></ul></li><li><a href="#data">Data</a><ul><li><a href="#replace-values">Replace values</a></li></ul></li><li><a href="#index-slicing-filtering--sorting">Index, slicing, filtering &amp; sorting</a><ul><li><a href="#reset-index">Reset index</a></li><li><a href="#set-first-column-as-index">Set first column as index</a></li><li><a href="#select-specified-columns">Select specified columns:</a></li><li><a href="#filtering-a-column-by-multiple-conditions">Filtering a column by multiple conditions:</a></li><li><a href="#slicing">Slicing</a></li><li><a href="#sorting">Sorting</a></li></ul></li><li><a href="#file-io">File I/O</a><ul><li><a href="#read-txt">Read txt</a></li><li><a href="#skip-rows">Skip rows</a></li><li><a href="#specify-column-names">Specify column names</a></li><li><a href="#write-data-to-excel-file">Write data to excel file</a></li></ul></li></ul>
+
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap6-Visualisation/matplotlib_tricks/">
+                        
+                            <a href="/Materials-Research-Notes/Chap6-Visualisation/matplotlib_tricks/">
+                                Matplotlib tricks
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap6-Visualisation/example_codes/">
+                        
+                            <a href="/Materials-Research-Notes/Chap6-Visualisation/example_codes/">
+                                Matplotlib quick examples
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap6-Visualisation/Jupyter/jupyter_tricks/">
+                        
+                            <a href="/Materials-Research-Notes/Chap6-Visualisation/Jupyter/jupyter_tricks/">
+                                Jupyter Notebook Tricks
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                    <li class="divider"></li>
+                
+            
+                
+                <p style="font-size: 120%; font-weight: 600; text-indent:10px;">sys_ssh</p>
+                <hr>
+                    
+
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap7-sys_ssh/work_on_ssh_session/">
+                        
+                            <a href="/Materials-Research-Notes/Chap7-sys_ssh/work_on_ssh_session/">
+                                Bash, Git &amp; SSH tricks
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                    <li class="divider"></li>
+                
+            
+                
+                <p style="font-size: 120%; font-weight: 600; text-indent:10px;">Info</p>
+                <hr>
+                    
+
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/ChapX-Info/quick-start/">
+                        
+                            <a href="/Materials-Research-Notes/ChapX-Info/quick-start/">
+                                Quick Start
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/ChapX-Info/about/">
+                        
+                            <a href="/Materials-Research-Notes/ChapX-Info/about/">
+                                About
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                    <li class="divider"></li>
+                
+            
+                
+            
+        </ul>
+    </nav>
+</div><div class="book-body">
+                <div class="book-header" role="navigation">
+                    <!-- Title -->
+                    <h1>
+                        <i class="fa fa-circle-o-notch fa-spin"></i>
+                        
+                            <a href="." >Pandas tricks</a>
+                        
+                    </h1>
+                </div>
+
+                <div class="body-inner"><div class="page-wrapper" tabindex="-1" role="main">
+    <div class="page-inner">
+        <div id="book-search-results">
+            <div class="search-noresults">
+                <section class="normal markdown-section">
+
+                    
+                        <h1 id="/Chap6-Visualisation/pandas_tricks" style="border-style: solid solid solid solid; border-width: 0px 0px 2px 0px; border-color: black black #F1F0F0 black;">Pandas tricks</h1>
+                    
+
+                    
+                    
+                    
+                    
+
+<h2 id="dataframes">Dataframes</h2>
+<h3 id="merge-dataframes">Merge dataframes</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#on: the key (common column names) of the two dataframes;
+#how: inner (keep common values only), outer: keep all values
+</span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s">"inner"</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="s">"wavelength"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="concatenate">Concatenate</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pandas</span><span class="p">.</span><span class="n">concat</span><span class="p">(</span><span class="n">objs</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">join</span><span class="o">=</span><span class="s">'outer'</span><span class="p">,</span> <span class="n">join_axes</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">verify_integrity</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+<h3 id="add-new-row-to-dataframe">Add new row to dataframe</h3>
+
+<p>Just assign row to a particular index, using <code class="language-plaintext highlighter-rouge">loc</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>  <span class="c1"># adding a row
+</span><span class="n">df</span><span class="p">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># shifting index
+</span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">sort_index</span><span class="p">()</span>  <span class="c1"># sorting by index
+</span></code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">**</span><span class="c1">#add row to end of DataFrame
+</span><span class="n">df</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">.</span><span class="n">index</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="n">value1</span><span class="p">,</span> <span class="n">value2</span><span class="p">,</span> <span class="n">value3</span><span class="p">,</span> <span class="p">...]</span><span class="o">**</span>
+</code></pre></div></div>
+
+<h3 id="add-a-column-to-pandas-dataframe">Add a column to pandas dataframe</h3>
+
+<blockquote>
+  <p>You can use the assign() function to add a new column to the end of a pandas DataFrame: df = df.assig……</p>
+</blockquote>
+
+<hr />
+
+<p>You can use the <strong>assign()</strong> function to add a new column to the end of a pandas DataFrame:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">assign</span><span class="p">(</span><span class="n">col_name</span><span class="o">=</span><span class="p">[</span><span class="n">value1</span><span class="p">,</span> <span class="n">value2</span><span class="p">,</span> <span class="n">value3</span><span class="p">,</span> <span class="p">...])</span>
+</code></pre></div></div>
+
+<p>And you can use the <strong>insert()</strong> function to add a new column to a specific location in a pandas DataFrame:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">position</span><span class="p">,</span> <span class="s">'col_name'</span><span class="p">,</span> <span class="p">[</span><span class="n">value1</span><span class="p">,</span> <span class="n">value2</span><span class="p">,</span> <span class="n">value3</span><span class="p">,</span> <span class="p">...])</span>
+</code></pre></div></div>
+
+<p>The following examples show how to use this syntax in practice with the following pandas DataFrame:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+
+<span class="c1">#create DataFrame
+</span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s">'points'</span><span class="p">:</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">23</span><span class="p">],</span>
+                   <span class="s">'assists'</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span>
+                   <span class="s">'rebounds'</span><span class="p">:</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">]})</span>
+
+<span class="c1">#view DataFrame
+</span><span class="n">df</span>
+
+<span class="n">points</span>    <span class="n">assists</span>    <span class="n">rebounds</span>
+<span class="mi">0</span>    <span class="mi">25</span>    <span class="mi">5</span>    <span class="mi">11</span>
+<span class="mi">1</span>    <span class="mi">12</span>    <span class="mi">7</span>    <span class="mi">8</span>
+<span class="mi">2</span>    <span class="mi">15</span>    <span class="mi">7</span>    <span class="mi">10</span>
+<span class="mi">3</span>    <span class="mi">14</span>    <span class="mi">9</span>    <span class="mi">6</span>
+<span class="mi">4</span>    <span class="mi">19</span>    <span class="mi">12</span>    <span class="mi">6</span>
+<span class="mi">5</span>    <span class="mi">23</span>    <span class="mi">9</span>    <span class="mi">5</span>
+</code></pre></div></div>
+
+<h4 id="example-1-add-new-column-to-end-of-dataframe"><strong>Example 1: Add New Column to End of DataFrame</strong></h4>
+
+<p>The following code shows how to add a new column to the end of the DataFrame:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#add 'steals' column to end of DataFrame
+</span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">assign</span><span class="p">(</span><span class="n">steals</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+<span class="c1">#view DataFrame
+</span><span class="n">df</span>
+
+<span class="n">points</span>    <span class="n">assists</span>    <span class="n">rebounds</span> <span class="n">steals</span>
+<span class="mi">0</span>    <span class="mi">25</span>    <span class="mi">5</span>    <span class="mi">11</span>     <span class="mi">2</span>
+<span class="mi">1</span>    <span class="mi">12</span>    <span class="mi">7</span>    <span class="mi">8</span>     <span class="mi">2</span>
+<span class="mi">2</span>    <span class="mi">15</span>    <span class="mi">7</span>    <span class="mi">10</span>     <span class="mi">4</span>
+<span class="mi">3</span>    <span class="mi">14</span>    <span class="mi">9</span>    <span class="mi">6</span>     <span class="mi">7</span>
+<span class="mi">4</span>    <span class="mi">19</span>    <span class="mi">12</span>    <span class="mi">6</span>     <span class="mi">4</span>
+<span class="mi">5</span>    <span class="mi">23</span>    <span class="mi">9</span>    <span class="mi">5</span>     <span class="mi">1</span>
+</code></pre></div></div>
+
+<h4 id="example-2-add-multiple-columns-to-end-of-dataframe"><strong>Example 2: Add Multiple Columns to End of DataFrame</strong></h4>
+
+<p>The following code shows how to add multiple new columns to the end of the DataFrame:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#add 'steals' and 'blocks' columns to end of DataFrame
+</span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">assign</span><span class="p">(</span><span class="n">steals</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+               <span class="n">blocks</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+
+<span class="c1">#view DataFrame
+</span><span class="n">df</span>
+
+<span class="n">points</span>    <span class="n">assists</span>    <span class="n">rebounds</span> <span class="n">steals</span>    <span class="n">blocks</span>
+<span class="mi">0</span>    <span class="mi">25</span>    <span class="mi">5</span>    <span class="mi">11</span>     <span class="mi">2</span>    <span class="mi">0</span>
+<span class="mi">1</span>    <span class="mi">12</span>    <span class="mi">7</span>    <span class="mi">8</span>     <span class="mi">2</span>    <span class="mi">1</span>
+<span class="mi">2</span>    <span class="mi">15</span>    <span class="mi">7</span>    <span class="mi">10</span>     <span class="mi">4</span>    <span class="mi">1</span>
+<span class="mi">3</span>    <span class="mi">14</span>    <span class="mi">9</span>    <span class="mi">6</span>     <span class="mi">7</span>    <span class="mi">3</span>
+<span class="mi">4</span>    <span class="mi">19</span>    <span class="mi">12</span>    <span class="mi">6</span>     <span class="mi">4</span>    <span class="mi">2</span>
+<span class="mi">5</span>    <span class="mi">23</span>    <span class="mi">9</span>    <span class="mi">5</span>     <span class="mi">1</span>    <span class="mi">5</span>
+</code></pre></div></div>
+
+<h4 id="example-3-add-new-column-using-existing-column"><strong>Example 3: Add New Column Using Existing Column</strong></h4>
+
+<p>The following code shows how to add a new column to the end of the DataFrame, based on the values in an existing column:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#add 'half_pts' to end of DataFrame
+</span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">assign</span><span class="p">(</span><span class="n">half_pts</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">.</span><span class="n">points</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1">#view DataFrame
+</span><span class="n">df</span>
+
+        <span class="n">points</span>    <span class="n">assists</span>    <span class="n">rebounds</span> <span class="n">half_pts</span>
+<span class="mi">0</span>    <span class="mi">25</span>    <span class="mi">5</span>    <span class="mi">11</span>     <span class="mf">12.5</span>
+<span class="mi">1</span>    <span class="mi">12</span>    <span class="mi">7</span>    <span class="mi">8</span>     <span class="mf">6.0</span>
+<span class="mi">2</span>    <span class="mi">15</span>    <span class="mi">7</span>    <span class="mi">10</span>     <span class="mf">7.5</span>
+<span class="mi">3</span>    <span class="mi">14</span>    <span class="mi">9</span>    <span class="mi">6</span>     <span class="mf">7.0</span>
+<span class="mi">4</span>    <span class="mi">19</span>    <span class="mi">12</span>    <span class="mi">6</span>     <span class="mf">9.5</span>
+<span class="mi">5</span>    <span class="mi">23</span>    <span class="mi">9</span>    <span class="mi">5</span>     <span class="mf">11.5</span>
+</code></pre></div></div>
+
+<h4 id="example-4-add-new-column-in-specific-location-of-dataframe"><strong>Example 4: Add New Column in Specific Location of DataFrame</strong></h4>
+
+<p>The following code shows how to add a new column by inserting it into a specific location in the DataFrame:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#add 'steals' to column index position 2 in DataFrame
+</span><span class="n">df</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">'steals'</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+<span class="c1">#view DataFrame
+</span><span class="n">df</span>
+
+<span class="n">points</span>    <span class="n">assists</span>    <span class="n">steals</span>    <span class="n">rebounds</span>
+<span class="mi">0</span>    <span class="mi">25</span>    <span class="mi">5</span>    <span class="mi">2</span>    <span class="mi">11</span>
+<span class="mi">1</span>    <span class="mi">12</span>    <span class="mi">7</span>    <span class="mi">2</span>    <span class="mi">8</span>
+<span class="mi">2</span>    <span class="mi">15</span>    <span class="mi">7</span>    <span class="mi">4</span>    <span class="mi">10</span>
+<span class="mi">3</span>    <span class="mi">14</span>    <span class="mi">9</span>    <span class="mi">7</span>    <span class="mi">6</span>
+<span class="mi">4</span>    <span class="mi">19</span>    <span class="mi">12</span>    <span class="mi">4</span>    <span class="mi">6</span>
+<span class="mi">5</span>    <span class="mi">23</span>    <span class="mi">9</span>    <span class="mi">1</span>    <span class="mi">5</span>
+</code></pre></div></div>
+
+<h2 id="data">Data</h2>
+
+<h3 id="replace-values">Replace values</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Replace a Single Value
+</span><span class="n">df</span><span class="p">[</span><span class="s">'Age'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">'Age'</span><span class="p">].</span><span class="n">replace</span><span class="p">(</span><span class="mi">23</span><span class="p">,</span> <span class="mi">99</span><span class="p">)</span>
+
+<span class="c1"># Replace Multiple Values
+</span><span class="n">df</span><span class="p">[</span><span class="s">'Age'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">'Age'</span><span class="p">].</span><span class="n">replace</span><span class="p">([</span><span class="mi">23</span><span class="p">,</span> <span class="mi">45</span><span class="p">],</span> <span class="p">[</span><span class="mi">99</span><span class="p">,</span> <span class="mi">999</span><span class="p">])</span>
+
+<span class="c1"># Also works in the Entire DataFrame
+</span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="mi">23</span><span class="p">,</span> <span class="mi">99</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">23</span><span class="p">,</span> <span class="mi">45</span><span class="p">],</span> <span class="p">[</span><span class="mi">99</span><span class="p">,</span> <span class="mi">999</span><span class="p">])</span>
+
+<span class="c1"># Replace Multiple Values with a Single Value
+</span><span class="n">df</span><span class="p">[</span><span class="s">'Age'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">'Age'</span><span class="p">].</span><span class="n">replace</span><span class="p">([</span><span class="mi">23</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">35</span><span class="p">],</span> <span class="mi">99</span><span class="p">)</span>
+
+<span class="c1"># Using a Dictionary (Dict is passed into to_replace=)
+</span><span class="n">df</span><span class="p">[</span><span class="s">'Age'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">'Age'</span><span class="p">].</span><span class="n">replace</span><span class="p">({</span><span class="mi">23</span><span class="p">:</span><span class="mi">99</span><span class="p">,</span> <span class="mi">45</span><span class="p">:</span><span class="mi">999</span><span class="p">})</span>
+
+<span class="c1"># Using a Dictionary for Column Replacements (key:value = column:value)
+</span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">replace</span><span class="p">({</span><span class="s">'Name'</span><span class="p">:</span> <span class="s">'Jane'</span><span class="p">,</span> <span class="s">'Age'</span><span class="p">:</span> <span class="mi">45</span><span class="p">},</span> <span class="mi">99</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="index-slicing-filtering--sorting">Index, slicing, filtering &amp; sorting</h2>
+
+<h3 id="reset-index">Reset index</h3>
+
+<p><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.reset_index.html">pandas.DataFrame.reset_index — pandas 1.2.4 documentation (pydata.org)</a></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="set-first-column-as-index">Set first column as index</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_excel</span><span class="p">(</span><span class="nb">file</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="select-specified-columns">Select specified columns:</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">.</span><span class="nb">filter</span><span class="p">([</span><span class="s">"species"</span><span class="p">,</span><span class="s">"bill_length_mm"</span><span class="p">])</span>
+</code></pre></div></div>
+
+<h3 id="filtering-a-column-by-multiple-conditions">Filtering a column by multiple conditions:</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dataFrame</span><span class="p">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">dataFrame</span><span class="p">[</span><span class="s">'Salary'</span><span class="p">]</span><span class="o">&gt;=</span><span class="mi">100000</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">dataFrame</span><span class="p">[</span><span class="s">'Age'</span><span class="p">]</span><span class="o">&lt;</span> <span class="mi">40</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">dataFrame</span><span class="p">[</span><span class="s">'JOB'</span><span class="p">].</span><span class="nb">str</span><span class="p">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">'D'</span><span class="p">)),</span>
+             <span class="p">[</span><span class="s">'Name'</span><span class="p">,</span><span class="s">'JOB'</span><span class="p">]]</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Select the data by condition: 449.75&lt;data['e loss']&lt;470.25
+</span><span class="n">data</span><span class="p">[(</span><span class="mf">449.75</span><span class="o">&lt;</span><span class="n">data</span><span class="p">[</span><span class="s">'e loss'</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">'e loss'</span><span class="p">]</span><span class="o">&lt;</span><span class="mf">470.25</span><span class="p">)]</span>
+<span class="c1"># Select the data by condition: data['e loss'] &lt;  449.75or data['e loss'] &gt; 470.25
+</span><span class="n">data</span><span class="p">[(</span><span class="mf">449.75</span><span class="o">&lt;</span><span class="n">data</span><span class="p">[</span><span class="s">'e loss'</span><span class="p">])</span> <span class="o">|</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">'e loss'</span><span class="p">]</span><span class="o">&lt;</span><span class="mf">470.25</span><span class="p">)]</span>
+</code></pre></div></div>
+
+<h3 id="slicing">Slicing</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#select the values after row 209
+</span><span class="n">df</span><span class="o">=</span><span class="n">df1</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">209</span><span class="p">:]</span>
+<span class="c1">#select
+</span><span class="n">df</span><span class="o">=</span><span class="n">df1</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">156</span><span class="p">:</span><span class="mi">190</span><span class="p">]</span>
+</code></pre></div></div>
+
+<h3 id="sorting">Sorting</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df_sort</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="s">'column_1'</span><span class="p">)</span>
+<span class="n">df_sort</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="p">[</span><span class="s">'column_1'</span><span class="p">,</span> <span class="s">'column_2'</span><span class="p">])</span>
+</code></pre></div></div>
+
+<h2 id="file-io">File I/O</h2>
+<h3 id="read-txt">Read txt</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'output_list.txt'</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="bp">None</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="skip-rows">Skip rows</h3>
+
+<pre><code class="language-python3">pandas.read_csv(filepath_or_buffer, skiprows=N, ....)
+</code></pre>
+
+<p>If the unwanted rows are begin with #, than these rows can be ignored by:</p>
+
+<pre><code class="language-python3">df=pd.read_csv("1-Signal-43135.msa", header=None, sep = ',', comment='#', delimiter=',',dtype=float)
+</code></pre>
+
+<h3 id="specify-column-names">Specify column names</h3>
+
+<p>Use <code class="language-plaintext highlighter-rouge">names</code> to specify the column names:</p>
+
+<pre><code class="language-python3">df = pd.read_csv(path, header=None, sep = ',', comment='#',
+                 delimiter=',', names=('e loss', 'intensity'),
+                 dtype=float)
+</code></pre>
+
+<h3 id="write-data-to-excel-file">Write data to excel file</h3>
+
+<p>Create, write to and save a workbook:</p>
+
+<pre><code class="language-python3">df1 = pd.DataFrame([['a', 'b'], ['c', 'd']],
+                   index=['row 1', 'row 2'],
+                   columns=['col 1', 'col 2'])
+df1.to_excel("output.xlsx")
+</code></pre>
+
+<p>To specify the sheet name:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df1</span><span class="p">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s">"output.xlsx"</span><span class="p">,</span>
+<span class="err">            </span> <span class="n">sheet_name</span><span class="o">=</span><span class="s">'Sheet_name_1'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>If you wish to write to more than one sheet in the workbook, it is necessary to specify an ExcelWriter object:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df2</span> <span class="o">=</span> <span class="n">df1</span><span class="p">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="k">with</span> <span class="n">pd</span><span class="p">.</span><span class="n">ExcelWriter</span><span class="p">(</span><span class="s">'output.xlsx'</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>  
+<span class="err">    </span><span class="n">df1</span><span class="p">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s">'Sheet_name_1'</span><span class="p">)</span>
+<span class="err">    </span><span class="n">df2</span><span class="p">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s">'Sheet_name_2'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>ExcelWriter can also be used to append to an existing Excel file:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">with</span> <span class="n">pd</span><span class="p">.</span><span class="n">ExcelWriter</span><span class="p">(</span><span class="s">'output.xlsx'</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s">"openpyxl"</span><span class="p">,</span>
+                    <span class="n">mode</span><span class="o">=</span><span class="s">'a'</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>  
+<span class="err">    </span><span class="n">df</span><span class="p">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s">'Sheet_name_3'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>To set the library that is used to write the Excel file, you can pass the engine keyword (the default engine is automatically chosen depending on the file extension):</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df1</span><span class="p">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s">'output1.xlsx'</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s">'xlsxwriter'</span><span class="p">)</span>
+</code></pre></div></div>
+                    
+                </section>
+            </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div></div>
+    </div>
+</div>
+
+                        <a href="/Materials-Research-Notes/Chap6-Visualisation/matplotlib_tricks/" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Matplotlib tricks">
+                            <i class="fa fa-angle-left"></i>
+                        </a>
+                    
+
+                    
+                </div>
+            </div>
+
+            <script>
+            var gitbook = gitbook || [];
+            gitbook.push(function() {
+                gitbook.page.hasChanged({
+    "page": {
+        "title": "Introduction",
+        "level": "1.1",
+        "depth": 1,
+        
+        "dir": "ltr"
+    },    "config": {
+        "plugins": ["fontsettings", "highlight", "livereload", "lunr", "search", "sharing", "theme-default", "livereload"],
+        "styles": {
+            "ebook": "styles/ebook.css",
+            "epub": "styles/epub.css",
+            "mobi": "styles/mobi.css",
+            "pdf": "styles/pdf.css",
+            "print": "styles/print.css",
+            "website": "styles/website.css"
+        },
+        "pluginsConfig": {
+            "fontsettings": {
+                "family": "sans",
+                "size": 2,
+                "theme": "white"
+            },
+            "highlight": {},
+            "livereload": {},
+            "lunr": {
+                "ignoreSpecialCharacters": false,
+                "maxIndexSize": 1000000
+            },
+            "search": {},
+            "sharing": {
+                "all": ["facebook", "google", "twitter", "weibo", "instapaper"],
+                "facebook": true,
+                "google": false,
+                "instapaper": false,
+                "twitter": true,
+                "vk": false,
+                "weibo": false
+            },
+            "theme-default": {
+                "showLevel": false,
+                "styles": {
+                    "ebook": "styles/ebook.css",
+                    "epub": "styles/epub.css",
+                    "mobi": "styles/mobi.css",
+                    "pdf": "styles/pdf.css",
+                    "print": "styles/print.css",
+                    "website": "styles/website.css"
+                }
+            }
+        },
+        "theme": "default",
+        "author": "Tao He",
+        "pdf": {
+            "pageNumbers": true,
+            "fontSize": 12,
+            "fontFamily": "Arial",
+            "paperSize": "a4",
+            "chapterMark": "pagebreak",
+            "pageBreaksBefore": "/",
+            "margin": {
+                "right": 62,
+                "left": 62,
+                "top": 56,
+                "bottom": 56
+            }
+        },
+        "structure": {
+            "langs": "LANGS.md",
+            "readme": "README.md",
+        },
+        "variables": {},
+        "title": "Lei's Notes",
+        "language": "en",
+        "gitbook": "*"
+    },
+    "file": {
+        "path": "_Chap6-Visualisation/pandas_tricks.markdown",
+        "mtime": "",
+        "type": "markdown"
+    },
+    "gitbook": {
+        "version": "",
+        "time": "2023-08-17 12:02:06 +0100"
+    },
+    "basePath": "/Materials-Research-Notes",
+    "book": {
+        "language": ""
+    }
+});
+            });
+            </script>
+        </div><script src="/Materials-Research-Notes/gitbook/gitbook.js"></script>
+<script src="/Materials-Research-Notes/gitbook/theme.js"></script>
+
+<script src="/Materials-Research-Notes/gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+<script src="/Materials-Research-Notes/gitbook/gitbook-plugin-sharing/buttons.js"></script>
+
+<!-- <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+<script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+<script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+<script src="../gitbook/gitbook-plugin-search/search.js"></script> -->
+
+<script src="/Materials-Research-Notes/gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+<script src="/Materials-Research-Notes/gitbook/gitbook-plugin-search-pro/search.js"></script>
+
+<script src="/Materials-Research-Notes/gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</body>
+</html>

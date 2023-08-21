@@ -1,0 +1,874 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head><meta charset="UTF-8">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"><title>Vim Cheatsheet · Lei&#39;s Notes</title><meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="description" content="My private lab notes on materials science including several projects on perovskite structure materials and computational research."><meta name="generator" content="Jekyll (using style of GitBook)"><meta name="author" content="Lei Lei"><link rel="stylesheet" href="/Materials-Research-Notes/gitbook/style.css">
+<link rel="stylesheet" href="/Materials-Research-Notes/gitbook/gitbook-plugin-fontsettings/website.css">
+<link rel="stylesheet" href="/Materials-Research-Notes/gitbook/gitbook-plugin-search-pro/search.css">
+<link rel="stylesheet" href="/Materials-Research-Notes/gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+
+<link rel="stylesheet" href="/Materials-Research-Notes/gitbook/rouge/colorful.css">
+
+<link rel="stylesheet" href="/Materials-Research-Notes/gitbook/custom.css">
+
+<meta name="HandheldFriendly" content="true"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/Materials-Research-Notes/gitbook/images/apple-touch-icon-precomposed-152.png">
+<link rel="shortcut icon" href="/Materials-Research-Notes/gitbook/images/favicon.ico" type="image/x-icon">
+
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        svg: {
+            fontCache: 'global'
+        }
+    };
+</script>
+
+            <link rel="prev" href="/Materials-Research-Notes/Chap1-Coding/Python-tricks/" />
+        
+
+        
+            <link rel="next" href="/Materials-Research-Notes/Chap1-Coding/numpy-tricks/" />
+        
+    </head>
+    <body>
+        <div class="book"><div class="book-summary">
+    <div id="book-search-input" role="search">
+        <input type="text" placeholder="Type to search" />
+    </div>
+    <nav role="navigation">
+        <ul class="summary">
+            
+            <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes">
+            
+                <a href="/Materials-Research-Notes/" style="font-size: 165%; font-weight: bold;">
+                    Lei&#39;s Notes
+                </a>
+            </li>
+
+            <li class="divider"></li>
+
+            
+                
+                <p style="font-size: 120%; font-weight: 600; text-indent:10px;">Coding</p>
+                <hr>
+                    
+
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap1-Coding/python-sequences/">
+                        
+                            <a href="/Materials-Research-Notes/Chap1-Coding/python-sequences/">
+                                Python - sequences
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap1-Coding/numpy-tricks/">
+                        
+                            <a href="/Materials-Research-Notes/Chap1-Coding/numpy-tricks/">
+                                Numpy - practical tricks and code snipets
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter active" data-level="1.2" data-path="/Materials-Research-Notes/Chap1-Coding/Vim_cheatsheet/">
+                        
+                            <a href="/Materials-Research-Notes/Chap1-Coding/Vim_cheatsheet/">
+                                Vim Cheatsheet
+                            </a>
+                            
+                                
+                                    <ul><li><a href="#global">Global</a></li><li><a href="#cursor-movement">Cursor movement</a></li><li><a href="#insert-mode---insertingappending-text">Insert mode - inserting/appending text</a></li><li><a href="#editing">Editing</a></li><li><a href="#marking-text-visual-mode">Marking text (visual mode)</a></li><li><a href="#visual-commands">Visual commands</a></li><li><a href="#registers">Registers</a></li><li><a href="#marks-and-positions">Marks and positions</a></li><li><a href="#macros">Macros</a></li><li><a href="#cut-and-paste">Cut and paste</a></li><li><a href="#indent-text">Indent text</a></li><li><a href="#exiting">Exiting</a></li><li><a href="#search-and-replace">Search and replace</a></li><li><a href="#search-in-multiple-files">Search in multiple files</a></li><li><a href="#tabs">Tabs</a></li></ul>
+
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap1-Coding/Python-tricks/">
+                        
+                            <a href="/Materials-Research-Notes/Chap1-Coding/Python-tricks/">
+                                Python practical tricks
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap1-Coding/Python-data%20model/">
+                        
+                            <a href="/Materials-Research-Notes/Chap1-Coding/Python-data%20model/">
+                                Python - data structures
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap1-Coding/Python-Code%20snipet/">
+                        
+                            <a href="/Materials-Research-Notes/Chap1-Coding/Python-Code%20snipet/">
+                                Python - useful snippets for materials science
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                    <li class="divider"></li>
+                
+            
+                
+                <p style="font-size: 120%; font-weight: 600; text-indent:10px;">ML</p>
+                <hr>
+                    
+
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap2-ML/SHAP/">
+                        
+                            <a href="/Materials-Research-Notes/Chap2-ML/SHAP/">
+                                SHAP
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap2-ML/Pytorch_tricks/">
+                        
+                            <a href="/Materials-Research-Notes/Chap2-ML/Pytorch_tricks/">
+                                Pytorch tricks
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap2-ML/Out_liers/">
+                        
+                            <a href="/Materials-Research-Notes/Chap2-ML/Out_liers/">
+                                ML - handle outliers
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap2-ML/GBR/">
+                        
+                            <a href="/Materials-Research-Notes/Chap2-ML/GBR/">
+                                ML - Gradient Boosting Algorithm
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                    <li class="divider"></li>
+                
+            
+                
+                <p style="font-size: 120%; font-weight: 600; text-indent:10px;">MatNotes</p>
+                <hr>
+                    
+
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap3-MatNotes/2023-05-12-Comp_Mat_Concep/">
+                        
+                            <a href="/Materials-Research-Notes/Chap3-MatNotes/2023-05-12-Comp_Mat_Concep/">
+                                Concepts and methods in computational materials science
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                    <li class="divider"></li>
+                
+            
+                
+                <p style="font-size: 120%; font-weight: 600; text-indent:10px;">HSTORE</p>
+                <hr>
+                    
+
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap4-HSTORE/2023-05-12-interstitial-hydrides/">
+                        
+                            <a href="/Materials-Research-Notes/Chap4-HSTORE/2023-05-12-interstitial-hydrides/">
+                                Solid hydrogen storage materials: interstitial hydrides
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap4-HSTORE/2022-03-29-AIMD-simulation-with-efield/">
+                        
+                            <a href="/Materials-Research-Notes/Chap4-HSTORE/2022-03-29-AIMD-simulation-with-efield/">
+                                AIMD simulation for MAPbI3 under electric filed
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                    <li class="divider"></li>
+                
+            
+                
+                <p style="font-size: 120%; font-weight: 600; text-indent:10px;">CompMat</p>
+                <hr>
+                    
+
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap5-CompMat/VASP-tricks/">
+                        
+                            <a href="/Materials-Research-Notes/Chap5-CompMat/VASP-tricks/">
+                                VASP errors and practical tricks
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                    <li class="divider"></li>
+                
+            
+                
+                <p style="font-size: 120%; font-weight: 600; text-indent:10px;">Visualisation</p>
+                <hr>
+                    
+
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap6-Visualisation/pandas_tricks/">
+                        
+                            <a href="/Materials-Research-Notes/Chap6-Visualisation/pandas_tricks/">
+                                Pandas tricks
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap6-Visualisation/matplotlib_tricks/">
+                        
+                            <a href="/Materials-Research-Notes/Chap6-Visualisation/matplotlib_tricks/">
+                                Matplotlib tricks
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap6-Visualisation/example_codes/">
+                        
+                            <a href="/Materials-Research-Notes/Chap6-Visualisation/example_codes/">
+                                Matplotlib quick examples
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap6-Visualisation/Jupyter/jupyter_tricks/">
+                        
+                            <a href="/Materials-Research-Notes/Chap6-Visualisation/Jupyter/jupyter_tricks/">
+                                Jupyter Notebook Tricks
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                    <li class="divider"></li>
+                
+            
+                
+                <p style="font-size: 120%; font-weight: 600; text-indent:10px;">sys_ssh</p>
+                <hr>
+                    
+
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap7-sys_ssh/work_on_ssh_session/">
+                        
+                            <a href="/Materials-Research-Notes/Chap7-sys_ssh/work_on_ssh_session/">
+                                Bash, Git &amp; SSH tricks
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                    <li class="divider"></li>
+                
+            
+                
+                <p style="font-size: 120%; font-weight: 600; text-indent:10px;">Info</p>
+                <hr>
+                    
+
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/ChapX-Info/quick-start/">
+                        
+                            <a href="/Materials-Research-Notes/ChapX-Info/quick-start/">
+                                Quick Start
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                        
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/ChapX-Info/about/">
+                        
+                            <a href="/Materials-Research-Notes/ChapX-Info/about/">
+                                About
+                            </a>
+                            
+                                
+                            
+                        </li>
+                    
+                    <li class="divider"></li>
+                
+            
+                
+            
+        </ul>
+    </nav>
+</div><div class="book-body">
+                <div class="book-header" role="navigation">
+                    <!-- Title -->
+                    <h1>
+                        <i class="fa fa-circle-o-notch fa-spin"></i>
+                        
+                            <a href="." >Vim Cheatsheet</a>
+                        
+                    </h1>
+                </div>
+
+                <div class="body-inner"><div class="page-wrapper" tabindex="-1" role="main">
+    <div class="page-inner">
+        <div id="book-search-results">
+            <div class="search-noresults">
+                <section class="normal markdown-section">
+
+                    
+                        <h1 id="/Chap1-Coding/Vim_cheatsheet" style="border-style: solid solid solid solid; border-width: 0px 0px 2px 0px; border-color: black black #F1F0F0 black;">Vim Cheatsheet</h1>
+                    
+
+                    
+                    
+                    
+                    
+
+<blockquote>
+  <p>Cliped from <a href="https://vim.rtorr.com/">vim.rtorr.com</a></p>
+</blockquote>
+
+<h2 id="global">Global</h2>
+
+<ul>
+  <li>:h[elp] keyword - open help for keyword</li>
+  <li>:sav[eas] file - save file as</li>
+  <li>:clo[se] - close current pane</li>
+  <li>:ter[minal] - open a terminal window</li>
+  <li>K - open man page for word under the cursor</li>
+</ul>
+
+<p><strong>Tip</strong> Run vimtutor in a terminal to learn the first Vim commands.</p>
+
+<h2 id="cursor-movement">Cursor movement</h2>
+
+<ul>
+  <li>h - move cursor left</li>
+  <li>j - move cursor down</li>
+  <li>k - move cursor up</li>
+  <li>l - move cursor right</li>
+  <li>gj - move cursor down (multi-line text)</li>
+  <li>gk - move cursor up (multi-line text)</li>
+  <li>H - move to top of screen</li>
+  <li>M - move to middle of screen</li>
+  <li>L - move to bottom of screen</li>
+  <li>w - jump forwards to the start of a word</li>
+  <li>W - jump forwards to the start of a word (words can contain punctuation)</li>
+  <li>e - jump forwards to the end of a word</li>
+  <li>E - jump forwards to the end of a word (words can contain punctuation)</li>
+  <li>b - jump backwards to the start of a word</li>
+  <li>B - jump backwards to the start of a word (words can contain punctuation)</li>
+  <li>ge - jump backwards to the end of a word</li>
+  <li>gE - jump backwards to the end of a word (words can contain punctuation)</li>
+  <li>% - move to matching character (default supported pairs: ‘()’, ‘{}’, ‘[]’ - use <code class="language-plaintext highlighter-rouge">:h matchpairs</code> in vim for more info)</li>
+  <li>0 - jump to the start of the line</li>
+  <li>^ - jump to the first non-blank character of the line</li>
+  <li>$ - jump to the end of the line</li>
+  <li>g_ - jump to the last non-blank character of the line</li>
+  <li>gg - go to the first line of the document</li>
+  <li>G - go to the last line of the document</li>
+  <li>5gg or 5G - go to line 5</li>
+  <li>gd - move to local declaration</li>
+  <li>gD - move to global declaration</li>
+  <li>fx - jump to next occurrence of character x</li>
+  <li>tx - jump to before next occurrence of character x</li>
+  <li>Fx - jump to the previous occurrence of character x</li>
+  <li>Tx - jump to after previous occurrence of character x</li>
+  <li>; - repeat previous f, t, F or T movement</li>
+  <li>, - repeat previous f, t, F or T movement, backwards</li>
+  <li>} - jump to next paragraph (or function/block, when editing code)</li>
+  <li>{ - jump to previous paragraph (or function/block, when editing code)</li>
+  <li>zz - center cursor on screen</li>
+  <li>zt - position cursor on top of the screen</li>
+  <li>zb - position cursor on bottom of the screen</li>
+  <li>Ctrl + e - move screen down one line (without moving cursor)</li>
+  <li>Ctrl + y - move screen up one line (without moving cursor)</li>
+  <li>Ctrl + b - move back one full screen</li>
+  <li>Ctrl + f - move forward one full screen</li>
+  <li>Ctrl + d - move forward 1/2 a screen</li>
+  <li>Ctrl + u - move back 1/2 a screen</li>
+</ul>
+
+<p><strong>Tip</strong> Prefix a cursor movement command with a number to repeat it. For example, 4j moves down 4 lines.</p>
+
+<h2 id="insert-mode---insertingappending-text">Insert mode - inserting/appending text</h2>
+
+<ul>
+  <li>i - insert before the cursor</li>
+  <li>I - insert at the beginning of the line</li>
+  <li>a - insert (append) after the cursor</li>
+  <li>A - insert (append) at the end of the line</li>
+  <li>o - append (open) a new line below the current line</li>
+  <li>O - append (open) a new line above the current line</li>
+  <li>ea - insert (append) at the end of the word</li>
+  <li>Ctrl + h - delete the character before the cursor during insert mode</li>
+  <li>Ctrl + w - delete word before the cursor during insert mode</li>
+  <li>Ctrl + j - begin new line during insert mode</li>
+  <li>Ctrl + t - indent (move right) line one shiftwidth during insert mode</li>
+  <li>Ctrl + d - de-indent (move left) line one shiftwidth during insert mode</li>
+  <li>Ctrl + n - insert (auto-complete) next match before the cursor during insert mode</li>
+  <li>Ctrl + p - insert (auto-complete) previous match before the cursor during insert mode</li>
+  <li>Ctrl + rx - insert the contents of register x</li>
+  <li>Ctrl + ox - Temporarily enter normal mode to issue one normal-mode command x.</li>
+  <li>Esc or Ctrl + c - exit insert mode</li>
+</ul>
+
+<h2 id="editing">Editing</h2>
+
+<ul>
+  <li>r - replace a single character.</li>
+  <li>R - replace more than one character, until ESC is pressed.</li>
+  <li>J - join line below to the current one with one space in between</li>
+  <li>gJ - join line below to the current one without space in between</li>
+  <li>gwip - reflow paragraph</li>
+  <li>g~ - switch case up to motion</li>
+  <li>gu - change to lowercase up to motion</li>
+  <li>gU - change to uppercase up to motion</li>
+  <li>cc - change (replace) entire line</li>
+  <li>c$ or C - change (replace) to the end of the line</li>
+  <li>ciw - change (replace) entire word</li>
+  <li>cw or ce - change (replace) to the end of the word</li>
+  <li>s - delete character and substitute text</li>
+  <li>S - delete line and substitute text (same as cc)</li>
+  <li>xp - transpose two letters (delete and paste)</li>
+  <li>u - undo</li>
+  <li>U - restore (undo) last changed line</li>
+  <li>Ctrl + r - redo</li>
+  <li>. - repeat last command</li>
+</ul>
+
+<h2 id="marking-text-visual-mode">Marking text (visual mode)</h2>
+
+<ul>
+  <li>v - start visual mode, mark lines, then do a command (like y-yank)</li>
+  <li>V - start linewise visual mode</li>
+  <li>o - move to other end of marked area</li>
+  <li>Ctrl + v - start visual block mode</li>
+  <li>O - move to other corner of block</li>
+  <li>aw - mark a word</li>
+  <li>ab - a block with ()</li>
+  <li>aB - a block with {}</li>
+  <li>at - a block with &lt;&gt; tags</li>
+  <li>ib - inner block with ()</li>
+  <li>iB - inner block with {}</li>
+  <li>it - inner block with &lt;&gt; tags</li>
+  <li>Esc or Ctrl + c - exit visual mode</li>
+</ul>
+
+<p><strong>Tip</strong> Instead of b or B one can also use ( or { respectively.</p>
+
+<h2 id="visual-commands">Visual commands</h2>
+
+<ul>
+  <li>
+    <blockquote>
+      <ul>
+        <li>shift text right</li>
+      </ul>
+    </blockquote>
+  </li>
+  <li>&lt; - shift text left</li>
+  <li>y - yank (copy) marked text</li>
+  <li>d - delete marked text</li>
+  <li>~ - switch case</li>
+  <li>u - change marked text to lowercase</li>
+  <li>U - change marked text to uppercase</li>
+</ul>
+
+<h2 id="registers">Registers</h2>
+
+<ul>
+  <li>:reg[isters] - show registers content</li>
+  <li>“xy - yank into register x</li>
+  <li>“xp - paste contents of register x</li>
+  <li>“+y - yank into the system clipboard register</li>
+  <li>“+p - paste from the system clipboard register</li>
+</ul>
+
+<p><strong>Tip</strong> Registers are being stored in ~/.viminfo, and will be loaded again on next restart of vim.</p>
+
+<p><strong>Tip</strong> Special registers:</p>
+
+<p> 0 - last yank<br />
+ ” - unnamed register, last delete or yank<br />
+ % - current file name<br />
+ # - alternate file name<br />
+ * - clipboard contents (X11 primary)<br />
+ + - clipboard contents (X11 clipboard)<br />
+ / - last search pattern<br />
+ : - last command-line<br />
+ . - last inserted text<br />
+ - - last small (less than a line) delete<br />
+ = - expression register<br />
+ _ - black hole register</p>
+
+<h2 id="marks-and-positions">Marks and positions</h2>
+
+<ul>
+  <li>:marks - list of marks</li>
+  <li>ma - set current position for mark A</li>
+  <li>`a - jump to position of mark A</li>
+  <li>y`a - yank text to position of mark A</li>
+  <li>`0 - go to the position where Vim was previously exited</li>
+  <li>`” - go to the position when last editing this file</li>
+  <li>`. - go to the position of the last change in this file</li>
+  <li>`` - go to the position before the last jump</li>
+  <li>:ju[mps] - list of jumps</li>
+  <li>Ctrl + i - go to newer position in jump list</li>
+  <li>Ctrl + o - go to older position in jump list</li>
+  <li>:changes - list of changes</li>
+  <li>g, - go to newer position in change list</li>
+  <li>g; - go to older position in change list</li>
+  <li>Ctrl + ] - jump to the tag under cursor</li>
+</ul>
+
+<p><strong>Tip</strong> To jump to a mark you can either use a backtick (`) or an apostrophe (‘). Using an apostrophe jumps to the beginning (first non-blank) of the line holding the mark.</p>
+
+<h2 id="macros">Macros</h2>
+
+<ul>
+  <li>qa - record macro a</li>
+  <li>q - stop recording macro</li>
+  <li>@a - run macro a</li>
+  <li>@@ - rerun last run macro</li>
+</ul>
+
+<h2 id="cut-and-paste">Cut and paste</h2>
+
+<ul>
+  <li>yy - yank (copy) a line</li>
+  <li>2yy - yank (copy) 2 lines</li>
+  <li>yw - yank (copy) the characters of the word from the cursor position to the start of the next word</li>
+  <li>yiw - yank (copy) word under the cursor</li>
+  <li>yaw - yank (copy) word under the cursor and the space after or before it</li>
+  <li>y$ or Y - yank (copy) to end of line</li>
+  <li>p - put (paste) the clipboard after cursor</li>
+  <li>P - put (paste) before cursor</li>
+  <li>gp - put (paste) the clipboard after cursor and leave cursor after the new text</li>
+  <li>gP - put (paste) before cursor and leave cursor after the new text</li>
+  <li>dd - delete (cut) a line</li>
+  <li>2dd - delete (cut) 2 lines</li>
+  <li>dw - delete (cut) the characters of the word from the cursor position to the start of the next word</li>
+  <li>diw - delete (cut) word under the cursor</li>
+  <li>daw - delete (cut) word under the cursor and the space after or before it</li>
+  <li>:3,5d - delete lines starting from 3 to 5</li>
+</ul>
+
+<p><strong>Tip</strong> You can also use the following characters to specify the range:<br />
+e.g.</p>
+
+<p>:.,$d - From the current line to the end of the file<br />
+:.,1d - From the current line to the beginning of the file<br />
+:10,$d - From the 10th line to the beginning of the file</p>
+
+<ul>
+  <li>:g/{pattern}/d - delete all lines containing pattern</li>
+  <li>:g!/{pattern}/d - delete all lines not containing pattern</li>
+  <li>d$ or D - delete (cut) to the end of the line</li>
+  <li>x - delete (cut) character</li>
+</ul>
+
+<h2 id="indent-text">Indent text</h2>
+
+<ul>
+  <li>
+    <blockquote>
+      <blockquote>
+        <ul>
+          <li>indent (move right) line one shiftwidth</li>
+        </ul>
+      </blockquote>
+    </blockquote>
+  </li>
+  <li>« - de-indent (move left) line one shiftwidth</li>
+  <li>
+    <blockquote>
+      <p>% - indent a block with () or {} (cursor on brace)</p>
+    </blockquote>
+  </li>
+  <li>&lt;% - de-indent a block with () or {} (cursor on brace)</li>
+  <li>
+    <blockquote>
+      <p>ib - indent inner block with ()</p>
+    </blockquote>
+  </li>
+  <li>
+    <blockquote>
+      <p>at - indent a block with &lt;&gt; tags</p>
+    </blockquote>
+  </li>
+  <li>3== - re-indent 3 lines</li>
+  <li>=% - re-indent a block with () or {} (cursor on brace)</li>
+  <li>=iB - re-indent inner block with {}</li>
+  <li>gg=G - re-indent entire buffer</li>
+  <li>]p - paste and adjust indent to current line</li>
+</ul>
+
+<h2 id="exiting">Exiting</h2>
+
+<ul>
+  <li>:w - write (save) the file, but don’t exit</li>
+  <li>:w !sudo tee % - write out the current file using sudo</li>
+  <li>:wq or :x or ZZ - write (save) and quit</li>
+  <li>:q - quit (fails if there are unsaved changes)</li>
+  <li>:q! or ZQ - quit and throw away unsaved changes</li>
+  <li>:wqa - write (save) and quit on all tabs</li>
+</ul>
+
+<h2 id="search-and-replace">Search and replace</h2>
+
+<ul>
+  <li>/pattern - search for pattern</li>
+  <li>?pattern - search backward for pattern</li>
+  <li>\vpattern - ‘very magic’ pattern: non-alphanumeric characters are interpreted as special regex symbols (no escaping needed)</li>
+  <li>n - repeat search in same direction</li>
+  <li>N - repeat search in opposite direction</li>
+  <li>:%s/old/new/g - replace all old with new throughout file</li>
+  <li>:%s/old/new/gc - replace all old with new throughout file with confirmations</li>
+  <li>:noh[lsearch] - remove highlighting of search matches</li>
+</ul>
+
+<h2 id="search-in-multiple-files">Search in multiple files</h2>
+
+<ul>
+  <li>:vim[grep] /pattern/ {<code class="language-plaintext highlighter-rouge">{file}</code>} - search for pattern in multiple files</li>
+</ul>
+
+<p>e.g. :vim[grep] /foo/ <em>*/</em></p>
+
+<ul>
+  <li>:cn[ext] - jump to the next match</li>
+  <li>:cp[revious] - jump to the previous match</li>
+  <li>:cope[n] - open a window containing the list of matches</li>
+  <li>:ccl[ose] - close the quickfix window</li>
+</ul>
+
+<h2 id="tabs">Tabs</h2>
+
+<ul>
+  <li>:tabnew or :tabnew {page.words.file} - open a file in a new tab</li>
+  <li>Ctrl + wT - move the current split window into its own tab</li>
+  <li>gt or :tabn[ext] - move to the next tab</li>
+  <li>gT or :tabp[revious] - move to the previous tab</li>
+  <li>#gt - move to tab number #</li>
+  <li>:tabm[ove] # - move current tab to the #th position (indexed from 0)</li>
+  <li>:tabc[lose] - close the current tab and all its windows</li>
+  <li>:tabo[nly] - close all tabs except for the current one</li>
+  <li>:tabdo command - run the <code class="language-plaintext highlighter-rouge">command</code> on all tabs (e.g. <code class="language-plaintext highlighter-rouge">:tabdo q</code> - closes all opened tabs)</li>
+</ul>
+                    
+                </section>
+            </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div></div>
+    </div>
+</div>
+
+                        <a href="/Materials-Research-Notes/Chap1-Coding/Python-tricks/" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Python practical tricks">
+                            <i class="fa fa-angle-left"></i>
+                        </a>
+                    
+
+                    
+                        <a href="/Materials-Research-Notes/Chap1-Coding/numpy-tricks/" class="navigation navigation-next navigation-unique" aria-label="Next page: Numpy - practical tricks and code snipets">
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    
+                </div>
+            </div>
+
+            <script>
+            var gitbook = gitbook || [];
+            gitbook.push(function() {
+                gitbook.page.hasChanged({
+    "page": {
+        "title": "Introduction",
+        "level": "1.1",
+        "depth": 1,
+        
+        "next": {
+            "title": "Numpy - practical tricks and code snipets",
+            "level": "1.2",
+            "depth": 1,
+            "path": "_Chap1-Coding/numpy-tricks.markdown",
+            "ref": "_Chap1-Coding/numpy-tricks.markdown",
+            "articles": []
+        },
+        
+        "dir": "ltr"
+    },    "config": {
+        "plugins": ["fontsettings", "highlight", "livereload", "lunr", "search", "sharing", "theme-default", "livereload"],
+        "styles": {
+            "ebook": "styles/ebook.css",
+            "epub": "styles/epub.css",
+            "mobi": "styles/mobi.css",
+            "pdf": "styles/pdf.css",
+            "print": "styles/print.css",
+            "website": "styles/website.css"
+        },
+        "pluginsConfig": {
+            "fontsettings": {
+                "family": "sans",
+                "size": 2,
+                "theme": "white"
+            },
+            "highlight": {},
+            "livereload": {},
+            "lunr": {
+                "ignoreSpecialCharacters": false,
+                "maxIndexSize": 1000000
+            },
+            "search": {},
+            "sharing": {
+                "all": ["facebook", "google", "twitter", "weibo", "instapaper"],
+                "facebook": true,
+                "google": false,
+                "instapaper": false,
+                "twitter": true,
+                "vk": false,
+                "weibo": false
+            },
+            "theme-default": {
+                "showLevel": false,
+                "styles": {
+                    "ebook": "styles/ebook.css",
+                    "epub": "styles/epub.css",
+                    "mobi": "styles/mobi.css",
+                    "pdf": "styles/pdf.css",
+                    "print": "styles/print.css",
+                    "website": "styles/website.css"
+                }
+            }
+        },
+        "theme": "default",
+        "author": "Tao He",
+        "pdf": {
+            "pageNumbers": true,
+            "fontSize": 12,
+            "fontFamily": "Arial",
+            "paperSize": "a4",
+            "chapterMark": "pagebreak",
+            "pageBreaksBefore": "/",
+            "margin": {
+                "right": 62,
+                "left": 62,
+                "top": 56,
+                "bottom": 56
+            }
+        },
+        "structure": {
+            "langs": "LANGS.md",
+            "readme": "README.md",
+        },
+        "variables": {},
+        "title": "Lei's Notes",
+        "language": "en",
+        "gitbook": "*"
+    },
+    "file": {
+        "path": "_Chap1-Coding/Vim_cheatsheet.markdown",
+        "mtime": "",
+        "type": "markdown"
+    },
+    "gitbook": {
+        "version": "",
+        "time": "2023-08-17 12:02:06 +0100"
+    },
+    "basePath": "/Materials-Research-Notes",
+    "book": {
+        "language": ""
+    }
+});
+            });
+            </script>
+        </div><script src="/Materials-Research-Notes/gitbook/gitbook.js"></script>
+<script src="/Materials-Research-Notes/gitbook/theme.js"></script>
+
+<script src="/Materials-Research-Notes/gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+<script src="/Materials-Research-Notes/gitbook/gitbook-plugin-sharing/buttons.js"></script>
+
+<!-- <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+<script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+<script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+<script src="../gitbook/gitbook-plugin-search/search.js"></script> -->
+
+<script src="/Materials-Research-Notes/gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+<script src="/Materials-Research-Notes/gitbook/gitbook-plugin-search-pro/search.js"></script>
+
+<script src="/Materials-Research-Notes/gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</body>
+</html>
