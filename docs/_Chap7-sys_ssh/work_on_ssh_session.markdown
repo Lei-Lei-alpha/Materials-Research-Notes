@@ -53,3 +53,27 @@ find . -name slurm*.out -delete -print
 ```bash
 tail ./*/vasp.log
 ```
+
+## Print contents of file
+
+### Specified lines of a file
+
+If you want lines X to Y inclusive (starting the numbering at 1), use
+
+```shell
+tail -n "+$X" /path/to/file | head -n "$((Y-X+1))"
+```
+
+### Print entire file
+
+Using cat
+
+~~~shell
+cat file.txt
+~~~
+
+Using `echo`
+
+~~~shell
+echo "$(<file.txt )"
+~~~
