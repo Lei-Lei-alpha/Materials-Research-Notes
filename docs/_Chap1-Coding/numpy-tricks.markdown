@@ -24,9 +24,9 @@ The output of np.histogram actually has 10 bins; the last (right-most) bin inclu
 The np.digitize method doesn't make such an exception (since its purpose is different) so the largest element(s) of the list get placed into an extra bin. To get the bin assignments that are consistent with histogram, just clamp the output of digitize by the number of bins, using fmin.
 
 ```python
-A = range(1,94)
+A = range(1, 94)
 bin_count = 10
-hist = np.histogram(A, bins=bin_count)
+hist = np.histogram(A, bins = bin_count)
 np.fmin(np.digitize(A, hist[1]), bin_count)
 ```
 

@@ -622,60 +622,60 @@
 
 <p>Careful measurements of “point” performance (code A vs code B for a specific input) are a part of this extremely costly process, and standard library module <code class="language-plaintext highlighter-rouge">timeit</code> helps here. However, it’s easier to use it at a shell prompt. For example, here’s a short module to showcase the general approach for this problem, save it as <code class="language-plaintext highlighter-rouge">nodup.py</code>:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import itertools
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">itertools</span>
 
-k = [[1, 2], [4], [5, 6, 2], [1, 2], [3], [4]]
+<span class="n">k</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">]]</span>
 
-def doset(k, map=map, list=list, set=set, tuple=tuple):
-  return map(list, set(map(tuple, k)))
+<span class="k">def</span> <span class="nf">doset</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="nb">map</span><span class="o">=</span><span class="nb">map</span><span class="p">,</span> <span class="nb">list</span><span class="o">=</span><span class="nb">list</span><span class="p">,</span> <span class="nb">set</span><span class="o">=</span><span class="nb">set</span><span class="p">,</span> <span class="nb">tuple</span><span class="o">=</span><span class="nb">tuple</span><span class="p">):</span>
+  <span class="k">return</span> <span class="nb">map</span><span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">set</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">tuple</span><span class="p">,</span> <span class="n">k</span><span class="p">)))</span>
 
-def dosort(k, sorted=sorted, xrange=xrange, len=len):
-  ks = sorted(k)
-  return [ks[i] for i in xrange(len(ks)) if i == 0 or ks[i] != ks[i-1]]
+<span class="k">def</span> <span class="nf">dosort</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="nb">sorted</span><span class="o">=</span><span class="nb">sorted</span><span class="p">,</span> <span class="nb">xrange</span><span class="o">=</span><span class="nb">xrange</span><span class="p">,</span> <span class="nb">len</span><span class="o">=</span><span class="nb">len</span><span class="p">):</span>
+  <span class="n">ks</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+  <span class="k">return</span> <span class="p">[</span><span class="n">ks</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ks</span><span class="p">))</span> <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">ks</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">ks</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
 
-def dogroupby(k, sorted=sorted, groupby=itertools.groupby, list=list):
-  ks = sorted(k)
-  return [i for i, _ in itertools.groupby(ks)]
+<span class="k">def</span> <span class="nf">dogroupby</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="nb">sorted</span><span class="o">=</span><span class="nb">sorted</span><span class="p">,</span> <span class="n">groupby</span><span class="o">=</span><span class="n">itertools</span><span class="p">.</span><span class="n">groupby</span><span class="p">,</span> <span class="nb">list</span><span class="o">=</span><span class="nb">list</span><span class="p">):</span>
+  <span class="n">ks</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+  <span class="k">return</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">itertools</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">ks</span><span class="p">)]</span>
 
-def donewk(k):
-  newk = []
-  for i in k:
-    if i not in newk:
-      newk.append(i)
-  return newk
+<span class="k">def</span> <span class="nf">donewk</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+  <span class="n">newk</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">k</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">newk</span><span class="p">:</span>
+      <span class="n">newk</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">newk</span>
 
-# sanity check that all functions compute the same result and don't alter k
-if __name__ == '__main__':
-  savek = list(k)
-  for f in doset, dosort, dogroupby, donewk:
-    resk = f(k)
-    assert k == savek
-    print '%10s %s' % (f.__name__, sorted(resk)) 
+<span class="c1"># sanity check that all functions compute the same result and don't alter k
+</span><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+  <span class="n">savek</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+  <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">doset</span><span class="p">,</span> <span class="n">dosort</span><span class="p">,</span> <span class="n">dogroupby</span><span class="p">,</span> <span class="n">donewk</span><span class="p">:</span>
+    <span class="n">resk</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">k</span> <span class="o">==</span> <span class="n">savek</span>
+    <span class="k">print</span> <span class="s">'%10s %s'</span> <span class="o">%</span> <span class="p">(</span><span class="n">f</span><span class="p">.</span><span class="n">__name__</span><span class="p">,</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">resk</span><span class="p">))</span> 
 </code></pre></div></div>
 
 <p>Note the sanity check (performed when you just do <code class="language-plaintext highlighter-rouge">python nodup.py</code>) and the basic hoisting technique (make constant global names local to each function for speed) to put things on equal footing.</p>
 
 <p>Now we can run checks on the tiny example list:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python -mtimeit -s'import nodup' 'nodup.doset(nodup.k)'
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>python <span class="nt">-mtimeit</span> <span class="nt">-s</span><span class="s1">'import nodup'</span> <span class="s1">'nodup.doset(nodup.k)'</span>
 100000 loops, best of 3: 11.7 usec per loop
-$ python -mtimeit -s'import nodup' 'nodup.dosort(nodup.k)'
+<span class="nv">$ </span>python <span class="nt">-mtimeit</span> <span class="nt">-s</span><span class="s1">'import nodup'</span> <span class="s1">'nodup.dosort(nodup.k)'</span>
 100000 loops, best of 3: 9.68 usec per loop
-$ python -mtimeit -s'import nodup' 'nodup.dogroupby(nodup.k)'
+<span class="nv">$ </span>python <span class="nt">-mtimeit</span> <span class="nt">-s</span><span class="s1">'import nodup'</span> <span class="s1">'nodup.dogroupby(nodup.k)'</span>
 100000 loops, best of 3: 8.74 usec per loop
-$ python -mtimeit -s'import nodup' 'nodup.donewk(nodup.k)'
+<span class="nv">$ </span>python <span class="nt">-mtimeit</span> <span class="nt">-s</span><span class="s1">'import nodup'</span> <span class="s1">'nodup.donewk(nodup.k)'</span>
 100000 loops, best of 3: 4.44 usec per loop 
 </code></pre></div></div>
 
 <p>confirming that the quadratic approach has small-enough constants to make it attractive for tiny lists with few duplicated values. With a short list without duplicates:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python -mtimeit -s'import nodup' 'nodup.donewk([[i] for i in range(12)])'
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>python <span class="nt">-mtimeit</span> <span class="nt">-s</span><span class="s1">'import nodup'</span> <span class="s1">'nodup.donewk([[i] for i in range(12)])'</span>
 10000 loops, best of 3: 25.4 usec per loop
-$ python -mtimeit -s'import nodup' 'nodup.dogroupby([[i] for i in range(12)])'
+<span class="nv">$ </span>python <span class="nt">-mtimeit</span> <span class="nt">-s</span><span class="s1">'import nodup'</span> <span class="s1">'nodup.dogroupby([[i] for i in range(12)])'</span>
 10000 loops, best of 3: 23.7 usec per loop
-$ python -mtimeit -s'import nodup' 'nodup.doset([[i] for i in range(12)])'
+<span class="nv">$ </span>python <span class="nt">-mtimeit</span> <span class="nt">-s</span><span class="s1">'import nodup'</span> <span class="s1">'nodup.doset([[i] for i in range(12)])'</span>
 10000 loops, best of 3: 31.3 usec per loop
-$ python -mtimeit -s'import nodup' 'nodup.dosort([[i] for i in range(12)])'
+<span class="nv">$ </span>python <span class="nt">-mtimeit</span> <span class="nt">-s</span><span class="s1">'import nodup'</span> <span class="s1">'nodup.dosort([[i] for i in range(12)])'</span>
 10000 loops, best of 3: 25 usec per loop 
 </code></pre></div></div>
 
@@ -914,7 +914,7 @@ $ python -mtimeit -s'import nodup' 'nodup.dosort([[i] for i in range(12)])'
     },
     "gitbook": {
         "version": "",
-        "time": "2023-08-17 12:02:06 +0100"
+        "time": "2023-10-03 09:33:30 +0100"
     },
     "basePath": "/Materials-Research-Notes",
     "book": {

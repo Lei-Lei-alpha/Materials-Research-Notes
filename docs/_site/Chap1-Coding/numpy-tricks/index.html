@@ -407,9 +407,9 @@
 
 <p>The np.digitize method doesn’t make such an exception (since its purpose is different) so the largest element(s) of the list get placed into an extra bin. To get the bin assignments that are consistent with histogram, just clamp the output of digitize by the number of bins, using fmin.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">A</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">94</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">A</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">94</span><span class="p">)</span>
 <span class="n">bin_count</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">hist</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bin_count</span><span class="p">)</span>
+<span class="n">hist</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">bin_count</span><span class="p">)</span>
 <span class="n">np</span><span class="p">.</span><span class="n">fmin</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">digitize</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">hist</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">bin_count</span><span class="p">)</span>
 </code></pre></div></div>
 
@@ -544,7 +544,7 @@ array([ 1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  2,  2,  2,  2,  2,  2,  2,
     },
     "gitbook": {
         "version": "",
-        "time": "2023-08-17 12:02:06 +0100"
+        "time": "2023-10-03 09:33:30 +0100"
     },
     "basePath": "/Materials-Research-Notes",
     "book": {

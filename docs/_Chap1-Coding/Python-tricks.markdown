@@ -245,7 +245,7 @@ Functional approach:
 
 Careful measurements of "point" performance (code A vs code B for a specific input) are a part of this extremely costly process, and standard library module `timeit` helps here. However, it's easier to use it at a shell prompt. For example, here's a short module to showcase the general approach for this problem, save it as `nodup.py`:
 
-```
+```python
 import itertools
 
 k = [[1, 2], [4], [5, 6, 2], [1, 2], [3], [4]]
@@ -281,7 +281,7 @@ Note the sanity check (performed when you just do `python nodup.py`) and the bas
 
 Now we can run checks on the tiny example list:
 
-```
+```shell
 $ python -mtimeit -s'import nodup' 'nodup.doset(nodup.k)'
 100000 loops, best of 3: 11.7 usec per loop
 $ python -mtimeit -s'import nodup' 'nodup.dosort(nodup.k)'
@@ -294,7 +294,7 @@ $ python -mtimeit -s'import nodup' 'nodup.donewk(nodup.k)'
 
 confirming that the quadratic approach has small-enough constants to make it attractive for tiny lists with few duplicated values. With a short list without duplicates:
 
-```
+```shell
 $ python -mtimeit -s'import nodup' 'nodup.donewk([[i] for i in range(12)])'
 10000 loops, best of 3: 25.4 usec per loop
 $ python -mtimeit -s'import nodup' 'nodup.dogroupby([[i] for i in range(12)])'

@@ -318,7 +318,7 @@
                             </a>
                             
                                 
-                                    <ul><li><a href="#ssh">SSH</a><ul><li><a href="#set-up">Set up</a><ul><li><a href="#list-of-linux-hpcs-and-workstations">List of Linux HPCs and workstations</a></li><li><a href="#start-session">Start session</a></li><li><a href="#specify-port">Specify port</a></li></ul></li></ul></li><li><a href="#files">Files</a><ul><li><a href="#download-files-from-server">Download files from server</a></li><li><a href="#copy-files-to-multiple-directory">Copy file(s) to multiple directory</a></li><li><a href="#find-files">Find files</a></li><li><a href="#print-tail-of-multiple-files">Print tail of multiple files</a></li><li><a href="#print-contents-of-file">Print contents of file</a><ul><li><a href="#specified-lines-of-a-file">Specified lines of a file</a></li><li><a href="#print-entire-file">Print entire file</a></li></ul></li></ul></li></ul>
+                                    <ul><li><a href="#ssh">SSH</a><ul><li><a href="#set-up">Set up</a><ul><li><a href="#list-of-linux-hpcs-and-workstations">List of Linux HPCs and workstations</a></li><li><a href="#start-session">Start session</a></li><li><a href="#specify-port">Specify port</a></li></ul></li></ul></li><li><a href="#files">Files</a><ul><li><a href="#download-files-from-server">Download files from server</a></li><li><a href="#copy-files-to-multiple-directory">Copy file(s) to multiple directory</a></li><li><a href="#find-files">Find files</a></li><li><a href="#print-tail-of-multiple-files">Print tail of multiple files</a></li><li><a href="#print-contents-of-file">Print contents of file</a><ul><li><a href="#specified-lines-of-a-file">Specified lines of a file</a></li><li><a href="#print-entire-file">Print entire file</a></li></ul></li></ul></li><li><a href="#slurm">Slurm</a><ul><li><a href="#cancel-jobs">Cancel jobs</a></li></ul></li></ul>
 
                                 
                             
@@ -430,8 +430,6 @@
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">tail</span> ./<span class="k">*</span>/vasp.log
 </code></pre></div></div>
-<p>«««&lt; HEAD
-=======</p>
 
 <h2 id="print-contents-of-file">Print contents of file</h2>
 
@@ -453,21 +451,13 @@
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"</span><span class="si">$(</span>&lt;file.txt <span class="si">)</span><span class="s2">"</span>
 </code></pre></div></div>
-<blockquote>
-  <blockquote>
-    <blockquote>
-      <blockquote>
-        <blockquote>
-          <blockquote>
-            <blockquote>
-              <p>1b834d0 (	modified:   docs/_Chap1-Coding/numpy-tricks.markdown)</p>
-            </blockquote>
-          </blockquote>
-        </blockquote>
-      </blockquote>
-    </blockquote>
-  </blockquote>
-</blockquote>
+
+<h1 id="slurm">Slurm</h1>
+
+<h2 id="cancel-jobs">Cancel jobs</h2>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scancel <span class="nt">--state</span><span class="o">=</span>PENDING <span class="nt">--user</span><span class="o">=</span>leilei
+</code></pre></div></div>
                     
                 </section>
             </div><div class="search-results">
@@ -577,7 +567,7 @@
     },
     "gitbook": {
         "version": "",
-        "time": "2023-08-17 12:02:06 +0100"
+        "time": "2023-10-03 09:33:30 +0100"
     },
     "basePath": "/Materials-Research-Notes",
     "book": {
