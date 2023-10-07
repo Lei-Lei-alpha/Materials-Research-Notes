@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="en" >
     <head><meta charset="UTF-8">
-<meta content="text/html; charset=utf-8" http-equiv="Content-Type"><title>Concepts and methods in computational materials science · Lei&#39;s Notes</title><meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"><title>Machine learned potentials · Lei&#39;s Notes</title><meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="description" content="My private lab notes on materials science including several projects on perovskite structure materials and computational research."><meta name="generator" content="Jekyll (using style of GitBook)"><meta name="author" content="Lei Lei"><link rel="stylesheet" href="/Materials-Research-Notes/gitbook/style.css">
 <link rel="stylesheet" href="/Materials-Research-Notes/gitbook/gitbook-plugin-fontsettings/website.css">
 <link rel="stylesheet" href="/Materials-Research-Notes/gitbook/gitbook-plugin-search-pro/search.css">
@@ -29,7 +29,7 @@
     };
 </script>
 
-            <link rel="prev" href="/Materials-Research-Notes/" />
+            <link rel="prev" href="/Materials-Research-Notes/Chap2-ML/committee_models/" />
         
 
         
@@ -134,12 +134,15 @@
 
                     
                         
-                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap2-ML/machine_learned_potential/">
+                        <li class="chapter active" data-level="1.2" data-path="/Materials-Research-Notes/Chap2-ML/machine_learned_potential/">
                         
                             <a href="/Materials-Research-Notes/Chap2-ML/machine_learned_potential/">
                                 Machine learned potentials
                             </a>
                             
+                                
+                                    <ul><li><a href="#first-generation-2007">First generation: 2007</a><ul><li><a href="#behler-and-parrinello-1">Behler and Parrinello<a href="https://doi.org/10.1103/PhysRevLett.98.146401">[ 1]</a></a></li></ul></li></ul>
+
                                 
                             
                         </li>
@@ -209,15 +212,12 @@
 
                     
                         
-                        <li class="chapter active" data-level="1.2" data-path="/Materials-Research-Notes/Chap3-MatNotes/2023-05-12-Comp_Mat_Concep/">
+                        <li class="chapter" data-level="1.1" data-path="/Materials-Research-Notes/Chap3-MatNotes/2023-05-12-Comp_Mat_Concep/">
                         
                             <a href="/Materials-Research-Notes/Chap3-MatNotes/2023-05-12-Comp_Mat_Concep/">
                                 Concepts and methods in computational materials science
                             </a>
                             
-                                
-                                    <ul><li><a href="#stability-of-structure">Stability of structure</a><ul><li><a href="#formation-energy">Formation energy</a></li><li><a href="#energy-above-convex-hull">Energy above convex hull</a></li><li><a href="#preparation">Preparation</a></li><li><a href="#solution-preparation">Solution preparation</a></li><li><a href="#filtration">Filtration</a></li><li><a href="#crystal-growth">Crystal growth</a><ul><li><a href="#apparatus">Apparatus</a></li><li><a href="#clean-vials">Clean vials</a></li><li><a href="#mapbbr3-growth">MAPbBr<sub>3</sub> growth</a></li><li><a href="#first-trial">First trial</a></li><li><a href="#the-second-go">The second go</a></li><li><a href="#mapbi3-growth">MAPbI<sub>3</sub> growth</a></li></ul></li></ul></li></ul>
-
                                 
                             
                         </li>
@@ -390,7 +390,7 @@
                     <h1>
                         <i class="fa fa-circle-o-notch fa-spin"></i>
                         
-                            <a href="." >Concepts and methods in computational materials science</a>
+                            <a href="." >Machine learned potentials</a>
                         
                     </h1>
                 </div>
@@ -402,7 +402,7 @@
                 <section class="normal markdown-section">
 
                     
-                        <h1 id="/Chap3-MatNotes/Comp_Mat_Concep" style="border-style: solid solid solid solid; border-width: 0px 0px 2px 0px; border-color: black black #F1F0F0 black;">Concepts and methods in computational materials science</h1>
+                        <h1 id="/Chap2-ML/machine_learned_potential" style="border-style: solid solid solid solid; border-width: 0px 0px 2px 0px; border-color: black black #F1F0F0 black;">Machine learned potentials</h1>
                     
 
                     
@@ -410,231 +410,13 @@
                     
                     
 
-<blockquote>
-  <p>Author: Lei Lei<br />
-Date: 28-03-2022</p>
-</blockquote>
+<h2 id="first-generation-2007">First generation: 2007</h2>
 
-<h1 id="stability-of-structure">Stability of structure</h1>
-<h2 id="formation-energy">Formation energy</h2>
+<h3 id="behler-and-parrinello-1">Behler and Parrinello<a href="https://doi.org/10.1103/PhysRevLett.98.146401">[ 1]</a></h3>
 
-<h2 id="energy-above-convex-hull">Energy above convex hull</h2>
-<p><strong>Convex hull</strong> is a plot of formation energy with respect to the composition which connects phases that are lower in energy than any other phases or a linear combination of phases at that composition. Phases that lie on the convex hull are thermodynamically stable and the ones above it are either metastable or unstable. This plot can only give an idea about the stability of the structure at 0 K. Higher temperature calculation (Phonopy is one of the codes) can assure the stability of the given structure at the working temperature (mostly greater than 0 K).</p>
+<p>Encode the local (within a certain cutoff radius) chemical environment of each atom in a descriptor, e.g., using symmetry functions<a href="https://doi.org/10.1063/1.3553717">[ 2]</a> as input to predict atomic energies. Total potential energy is modeled as the sum of individual contributions, and forces are obtained by derivation of potential energy with respect to atomic positions.</p>
 
-<p>The convex hull (represented by the lines at the bottom of the phase diagram) represents the set of lowest possible potential energy states you can get from either single materials (at the black points) or mixtures of those materials (along the black lines connecting the points). If a compound is above a line in the convex hull (e.g. the lighter blue dots in the below image), it will spontaneously decompose into products on the endpoints of that line. The “energy_above_hull” for a given material is the distance from its dot in the below image and the lines connecting the black dots at the bottom.</p>
-
-<center>
-<img style="width: 60%;" src="../img/convex_hull.png" />
-</center>
-
-<h2 id="preparation">Preparation</h2>
-<ul class="task-list">
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Thermometer</li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Sand bath</li>
-</ul>
-
-<h2 id="solution-preparation">Solution preparation</h2>
-
-<ul>
-  <li>Chemical quantities</li>
-</ul>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center"> </th>
-      <th style="text-align: center"> </th>
-      <th style="text-align: center"> </th>
-      <th style="text-align: center"> </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center">CH<sub>3</sub>NH<sub>3</sub>PbI<sub>3</sub></td>
-      <td style="text-align: center">PbI<sub>2</sub></td>
-      <td style="text-align: center">CH<sub>3</sub>NH<sub>3</sub>I</td>
-      <td style="text-align: center">GBL</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">Quantity</td>
-      <td style="text-align: center">6.915 g</td>
-      <td style="text-align: center">2.385 g</td>
-      <td style="text-align: center">10 mL</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">CH<sub>3</sub>NH<sub>3</sub>PbBr<sub>3</sub></td>
-      <td style="text-align: center">PbBr<sub>2</sub></td>
-      <td style="text-align: center">CH<sub>3</sub>NH<sub>3</sub>Br</td>
-      <td style="text-align: center">DMF</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">Quantity</td>
-      <td style="text-align: center">4.5876 g</td>
-      <td style="text-align: center">1.3996 g</td>
-      <td style="text-align: center">10 mL</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>The actual quantities of chemicals used are shown in <a href="#fig1">Fig.1</a>.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center"><a id="fig1"> <img id="figure1.1" src="/gitbook/images/img/crys_cw_29032022.jpg" alt="setup" style="width:50%" /> </a></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center"><b>Fig.1</b> The setup of crystal growth apparatus using sand bath within the glovebox.</td>
-    </tr>
-  </tbody>
-</table>
-
-<!-- <figure align = "center">
-<img src="/gitbook/images/img/crys_cw_29032022.jpg" alt="setup" style="width:40%">
-<figcaption align = "center"><b>Fig.1</b> The setup of crystal growth apparatus using sand bath within the glovebox.</figcaption>
-</figure> -->
-
-<ul>
-  <li>Temperatures
-    <ul>
-      <li>GBL has a maximal solubility for MAPbI<sub>3</sub> precursors at 60 °C<a href="https://doi.org/10.1039/C5CC06916E"><sup>1</sup></a>, and the solution is prepared and filtered under 60 °C.</li>
-      <li>DMF has a maximal solubility for MAPbBr<sub>3</sub> precursors at room temperature.</li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="filtration">Filtration</h2>
-<p>The precursor solutions were filtered with a 0.22-0.25 μm PVDF syringe filter (Fig.2).</p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center"><img src="/gitbook/images/img/crys_sf_29032022.jpg" alt="setup" style="width:40%" /></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center"><b>Fig.2</b> Photograph of the syringe filter used.</td>
-    </tr>
-  </tbody>
-</table>
-
-<!-- <figure align = "center">
-<img src="/gitbook/images/img/crys_sf_29032022.jpg" alt="setup" style="width:40%">
-<figcaption align = "center"><b>Fig.2</b> Photograph of the syringe filter used.</figcaption>
-</figure> -->
-
-<h2 id="crystal-growth">Crystal growth</h2>
-<h3 id="apparatus">Apparatus</h3>
-<p>The crystal growth used the retrograde solubility of MAPbX<sub>3</sub> precursors as reported in Ref<a href="https://doi.org/10.1039/C5CC06916E"><sup>1</sup></a>. The apparatus setup is shown in Fig.3 which used sand bath instead of oil bath.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center"><img src="/gitbook/images/img/crys_setup.jpg" alt="setup" style="width:60%" /></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center"><b>Fig.3</b> The setup of crystal growth apparatus using sand bath within the glovebox.</td>
-    </tr>
-  </tbody>
-</table>
-
-<!-- <figure align = "center">
-<img src="/gitbook/images/img/crys_setup.jpg" alt="setup" style="width:60%">
-<figcaption align = "center"><b>Fig.3</b> The setup of crystal growth apparatus using sand bath within the glovebox.</figcaption>
-</figure> -->
-
-<h3 id="clean-vials">Clean vials</h3>
-<p>The vials were cleaned by detergent and deionised water.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center"><img src="/gitbook/images/img/crys_vc_30032022.jpg" alt="setup" style="width:50%" /></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center"><b>Fig.4</b> The cleaned vials to be used for the growth of MAPbX<sub>3</sub> crystals.</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="mapbbr3-growth">MAPbBr<sub>3</sub> growth</h3>
-
-<h3 id="first-trial">First trial</h3>
-
-<p>The temperature of the sand bath was 87.5 °C as shown in Fig.5.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center"><img src="/gitbook/images/img/crys_MAPB_temp_30032022.jpg" alt="setup" style="width:50%" /></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center"><b>Fig.5</b> The cleaned vials to be used for the growth of MAPbX<sub>3</sub> crystals.</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>A MAPBr seed was added to the filtered precursor solution before the growth. The temperature rose to 89 °C at the beginning of crystal growth (19:40).</p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center"><img src="/gitbook/images/img/crys_MAPB_s1_30032022.jpg" alt="setup" style="width:50%" /></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center"><b>Fig.6</b> Photograph of vials immersed in the sand bath for the growth of MAPbBr<sub>3</sub> crystals from the precursor solution.</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>The temperature was too high for growth, a lot of small crystallites form. The vials were taken out for overnight to allow the dissolve of these crystallites. A lower temperature was set for another trial.</p>
-
-<h3 id="the-second-go">The second go</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center"><img src="/gitbook/images/img/crys_MAPB_s1f_30032022.jpg" alt="setup" style="width:50%" /></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center"><b>Fig.7</b> Photograph of the crystallites formed due to the fast nuleation.</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>The sand bath temperature was down to 75 °C and the vials containing the precursor solutions were placed into the bath.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center"><img src="/gitbook/images/img/crys_MAPB_s2_31032022.jpg" alt="setup" style="width:50%" /></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center"><b>Fig.8</b> Photograph of vials immersed in the sand bath (75 °C) for the growth of MAPbBr<sub>3</sub> crystals from the precursor solution.</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>The temperature decreased to ~ 72 °C the second morning.</p>
-
-<p>For Further growth the temperature was increased to 82 °C.</p>
-
-<h3 id="mapbi3-growth">MAPbI<sub>3</sub> growth</h3>
+<p><b>Drawback</b>:</p>
                     
                 </section>
             </div><div class="search-results">
@@ -649,7 +431,7 @@ Date: 28-03-2022</p>
     </div>
 </div>
 
-                        <a href="/Materials-Research-Notes/" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Lei's Notes">
+                        <a href="/Materials-Research-Notes/Chap2-ML/committee_models/" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Committee neural network potentials">
                             <i class="fa fa-angle-left"></i>
                         </a>
                     
@@ -738,8 +520,8 @@ Date: 28-03-2022</p>
         "gitbook": "*"
     },
     "file": {
-        "path": "_Chap3-MatNotes/2023-05-12-Comp_Mat_Concep.markdown",
-        "mtime": "2023-05-12 00:00:00 +0100",
+        "path": "_Chap2-ML/machine_learned_potential.markdown",
+        "mtime": "",
         "type": "markdown"
     },
     "gitbook": {
