@@ -141,7 +141,7 @@
                             </a>
                             
                                 
-                                    <ul><li><a href="#first-generation-2007">First generation: 2007</a><ul><li><a href="#behler-and-parrinello-1">Behler and Parrinello<a href="https://doi.org/10.1103/PhysRevLett.98.146401">[ 1]</a></a></li></ul></li></ul>
+                                    <ul><li><a href="#behler-and-parrinello-1">Behler and Parrinello<a href="https://doi.org/10.1103/PhysRevLett.98.146401">[ 1]</a></a></li><li><a href="#message-passing-neural-networks-mpnns--3">Message-passing neural networks (MPNNs) <a href="https://proceedings.mlr.press/v70/gilmer17a.html">[ 3]</a></a></li></ul>
 
                                 
                             
@@ -410,13 +410,17 @@
                     
                     
 
-<h2 id="first-generation-2007">First generation: 2007</h2>
-
-<h3 id="behler-and-parrinello-1">Behler and Parrinello<a href="https://doi.org/10.1103/PhysRevLett.98.146401">[ 1]</a></h3>
+<h2 id="behler-and-parrinello-1">Behler and Parrinello<a href="https://doi.org/10.1103/PhysRevLett.98.146401">[ 1]</a></h2>
 
 <p>Encode the local (within a certain cutoff radius) chemical environment of each atom in a descriptor, e.g., using symmetry functions<a href="https://doi.org/10.1063/1.3553717">[ 2]</a> as input to predict atomic energies. Total potential energy is modeled as the sum of individual contributions, and forces are obtained by derivation of potential energy with respect to atomic positions.</p>
 
-<p><b>Drawback</b>:</p>
+<p><b>Drawback</b>: An atomic energy decomposition makes predictions size extensive and the learned model applicable to systems of different size.</p>
+
+<h2 id="message-passing-neural-networks-mpnns--3">Message-passing neural networks (MPNNs) <a href="https://proceedings.mlr.press/v70/gilmer17a.html">[ 3]</a></h2>
+
+<p>Alternative to manually designed descriptors, use raw atomic numbers and Cartesian coordinates as input. Suitable atomic representations can be learned from (and adapt to) the reference data automatically. “Passing messages” between atoms to iteratively build up increasingly sophisticated descriptors.</p>
+
+<p><b>Drawback</b>: atomic numbers and Cartesian coordinates (or descriptors derived from them) do not provide an unambiguous description of chemical systems<a href="https://doi.org/10.1073/pnas.0408036102">[ 4]</a>. Contains nuclear degrees of freedom without information on electronic structure (e.g. charge or spin state).</p>
                     
                 </section>
             </div><div class="search-results">
@@ -526,7 +530,7 @@
     },
     "gitbook": {
         "version": "",
-        "time": "2023-10-07 15:11:37 +0100"
+        "time": "2023-10-12 09:44:57 +0100"
     },
     "basePath": "/Materials-Research-Notes",
     "book": {

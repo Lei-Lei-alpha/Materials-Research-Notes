@@ -90,7 +90,7 @@
                             </a>
                             
                                 
-                                    <ul><li><a href="#global">Global</a></li><li><a href="#cursor-movement">Cursor movement</a></li><li><a href="#insert-mode---insertingappending-text">Insert mode - inserting/appending text</a></li><li><a href="#editing">Editing</a></li><li><a href="#marking-text-visual-mode">Marking text (visual mode)</a></li><li><a href="#visual-commands">Visual commands</a></li><li><a href="#registers">Registers</a></li><li><a href="#marks-and-positions">Marks and positions</a></li><li><a href="#macros">Macros</a></li><li><a href="#cut-and-paste">Cut and paste</a></li><li><a href="#indent-text">Indent text</a></li><li><a href="#exiting">Exiting</a></li><li><a href="#search-and-replace">Search and replace</a></li><li><a href="#search-in-multiple-files">Search in multiple files</a></li><li><a href="#tabs">Tabs</a></li></ul>
+                                    <ul><li><a href="#global">Global</a></li><li><a href="#cursor-movement">Cursor movement</a></li><li><a href="#insert-mode---insertingappending-text">Insert mode - inserting/appending text</a></li><li><a href="#editing">Editing</a></li><li><a href="#marking-text-visual-mode">Marking text (visual mode)</a></li><li><a href="#visual-commands">Visual commands</a></li><li><a href="#registers">Registers</a></li><li><a href="#marks-and-positions">Marks and positions</a></li><li><a href="#macros">Macros</a></li><li><a href="#cut-and-paste">Cut and paste</a></li><li><a href="#delete">Delete</a></li><li><a href="#indent-text">Indent text</a></li><li><a href="#exiting">Exiting</a></li><li><a href="#search-and-replace">Search and replace</a></li><li><a href="#search-in-multiple-files">Search in multiple files</a></li><li><a href="#tabs">Tabs</a></li></ul>
 
                                 
                             
@@ -548,13 +548,7 @@
 <h2 id="visual-commands">Visual commands</h2>
 
 <ul>
-  <li>
-    <blockquote>
-      <ul>
-        <li>shift text right</li>
-      </ul>
-    </blockquote>
-  </li>
+  <li>&gt; - shift text right</li>
   <li>&lt; - shift text left</li>
   <li>y - yank (copy) marked text</li>
   <li>d - delete marked text</li>
@@ -630,61 +624,54 @@
   <li>yiw - yank (copy) word under the cursor</li>
   <li>yaw - yank (copy) word under the cursor and the space after or before it</li>
   <li>y$ or Y - yank (copy) to end of line</li>
+  <li>x - delete (cut) character</li>
   <li>p - put (paste) the clipboard after cursor</li>
   <li>P - put (paste) before cursor</li>
   <li>gp - put (paste) the clipboard after cursor and leave cursor after the new text</li>
   <li>gP - put (paste) before cursor and leave cursor after the new text</li>
+</ul>
+
+<div style="border-width: 1px; border-style:solid; border-color: #b2182b; border-radius:3px; background-color: #FFEFEF;">
+    <div style="padding-left: 25px; padding-right: 10px;">
+        <p>
+            <span style="color: #b2182b; font-weight: 550;">TIPS</span>
+            You can also use the following characters to specify the range, e.g.:  
+            <ul>
+                <li>:.,$d - From the current line to the end of the file</li>
+                <li>:.,1d - From the current line to the beginning of the file</li>
+                <li>:10,$d - From the 10th line to the beginning of the file</li>
+            </ul>
+        </p>
+    </div>
+</div>
+
+<h2 id="delete">Delete</h2>
+
+<ul>
   <li>dd - delete (cut) a line</li>
   <li>2dd - delete (cut) 2 lines</li>
   <li>dw - delete (cut) the characters of the word from the cursor position to the start of the next word</li>
+  <li>5dw - delete five words</li>
   <li>diw - delete (cut) word under the cursor</li>
   <li>daw - delete (cut) word under the cursor and the space after or before it</li>
+  <li>d0 - delete to the beginning of the line</li>
+  <li>d$ or D - delete (cut) to the end of the line</li>
+  <li>:1,.d - delete all lines from the beginning of the file to cursor position</li>
+  <li>:.,$d - delete all lines from cursor position to the end of the file</li>
   <li>:3,5d - delete lines starting from 3 to 5</li>
-</ul>
-
-<p><strong>Tip</strong> You can also use the following characters to specify the range:<br />
-e.g.</p>
-
-<p>:.,$d - From the current line to the end of the file<br />
-:.,1d - From the current line to the beginning of the file<br />
-:10,$d - From the 10th line to the beginning of the file</p>
-
-<ul>
   <li>:g/{pattern}/d - delete all lines containing pattern</li>
   <li>:g!/{pattern}/d - delete all lines not containing pattern</li>
-  <li>d$ or D - delete (cut) to the end of the line</li>
-  <li>x - delete (cut) character</li>
 </ul>
 
 <h2 id="indent-text">Indent text</h2>
 
 <ul>
-  <li>
-    <blockquote>
-      <blockquote>
-        <ul>
-          <li>indent (move right) line one shiftwidth</li>
-        </ul>
-      </blockquote>
-    </blockquote>
-  </li>
+  <li>&gt;&gt; - indent (move right) line one shiftwidth</li>
   <li>« - de-indent (move left) line one shiftwidth</li>
-  <li>
-    <blockquote>
-      <p>% - indent a block with () or {} (cursor on brace)</p>
-    </blockquote>
-  </li>
+  <li>&gt;% - indent a block with () or {} (cursor on brace)</li>
   <li>&lt;% - de-indent a block with () or {} (cursor on brace)</li>
-  <li>
-    <blockquote>
-      <p>ib - indent inner block with ()</p>
-    </blockquote>
-  </li>
-  <li>
-    <blockquote>
-      <p>at - indent a block with &lt;&gt; tags</p>
-    </blockquote>
-  </li>
+  <li>&gt;ib - indent inner block with ()</li>
+  <li>&gt;at - indent a block with &lt;&gt; tags</li>
   <li>3== - re-indent 3 lines</li>
   <li>=% - re-indent a block with () or {} (cursor on brace)</li>
   <li>=iB - re-indent inner block with {}</li>
@@ -866,7 +853,7 @@ e.g.</p>
     },
     "gitbook": {
         "version": "",
-        "time": "2023-10-07 15:11:37 +0100"
+        "time": "2023-10-12 09:44:57 +0100"
     },
     "basePath": "/Materials-Research-Notes",
     "book": {

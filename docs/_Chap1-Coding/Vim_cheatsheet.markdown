@@ -134,7 +134,7 @@ Marking text (visual mode)
 Visual commands
 ---------------
 
-*   > - shift text right
+*   \> - shift text right
 *   < - shift text left
 *   y - yank (copy) marked text
 *   d - delete marked text
@@ -206,38 +206,56 @@ Cut and paste
 *   yiw - yank (copy) word under the cursor
 *   yaw - yank (copy) word under the cursor and the space after or before it
 *   y$ or Y - yank (copy) to end of line
+*   x - delete (cut) character
 *   p - put (paste) the clipboard after cursor
 *   P - put (paste) before cursor
 *   gp - put (paste) the clipboard after cursor and leave cursor after the new text
 *   gP - put (paste) before cursor and leave cursor after the new text
+
+<div style="border-width: 1px; border-style:solid; border-color: #b2182b; border-radius:3px; background-color: #FFEFEF;">
+    <div style="padding-left: 25px; padding-right: 10px;">
+        <p>
+            <span style="color: #b2182b; font-weight: 550;">TIPS</span>
+            You can also use the following characters to specify the range, e.g.:  
+            <ul>
+                <li>:.,$d - From the current line to the end of the file</li>
+                <li>:.,1d - From the current line to the beginning of the file</li>
+                <li>:10,$d - From the 10th line to the beginning of the file</li>
+            </ul>
+        </p>
+    </div>
+</div>
+
+Delete
+-------------
+
 *   dd - delete (cut) a line
 *   2dd - delete (cut) 2 lines
 *   dw - delete (cut) the characters of the word from the cursor position to the start of the next word
+* 5dw - delete five words
 *   diw - delete (cut) word under the cursor
 *   daw - delete (cut) word under the cursor and the space after or before it
+* d0 - delete to the beginning of the line
+*   d\$ or D - delete (cut) to the end of the line
+* :1,.d - delete all lines from the beginning of the file to cursor position
+* :.,$d - delete all lines from cursor position to the end of the file
 *   :3,5d - delete lines starting from 3 to 5
-
-**Tip** You can also use the following characters to specify the range:  
-e.g.
-
-:.,$d - From the current line to the end of the file  
-:.,1d - From the current line to the beginning of the file  
-:10,$d - From the 10th line to the beginning of the file  
-
 *   :g/{pattern}/d - delete all lines containing pattern
 *   :g!/{pattern}/d - delete all lines not containing pattern
-*   d$ or D - delete (cut) to the end of the line
-*   x - delete (cut) character
+
+
+
+
 
 Indent text
 -----------
 
-*   >> - indent (move right) line one shiftwidth
+*   \>> - indent (move right) line one shiftwidth
 *   << - de-indent (move left) line one shiftwidth
-*   >% - indent a block with () or {} (cursor on brace)
+*   \>% - indent a block with () or {} (cursor on brace)
 *   <% - de-indent a block with () or {} (cursor on brace)
-*   >ib - indent inner block with ()
-*   >at - indent a block with <> tags
+*   \>ib - indent inner block with ()
+*   \>at - indent a block with <> tags
 *   3== - re-indent 3 lines
 *   =% - re-indent a block with () or {} (cursor on brace)
 *   =iB - re-indent inner block with {}
