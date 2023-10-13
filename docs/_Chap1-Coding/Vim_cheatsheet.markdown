@@ -242,6 +242,9 @@ Delete
 *   :3,5d - delete lines starting from 3 to 5
 *   :g/{pattern}/d - delete all lines containing pattern
 *   :g!/{pattern}/d - delete all lines not containing pattern
+* :$d - delete all lines
+* :%d - delete all lines
+* ggdG - delete all lines
 
 
 
