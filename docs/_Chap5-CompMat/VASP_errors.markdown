@@ -1,5 +1,5 @@
 ---
-title: VASP errors and practical tricks
+title: VASP errors
 author: Lei Lei
 category: notes
 layout: post
