@@ -21,6 +21,10 @@ grep --text "free  energy   TOTEN" OUTCAR | tail -1
 
 ### NBANDS used in calculation
 
+```bash
+grep --text "free  energy   TOTEN" OUTCAR | tail -1
+```
+
 <div style="border-width: 1px; border-style:solid; border-color: #b2182b; border-radius:3px; background-color: #FFEFEF;">
     <div style="padding-left: 25px; padding-right: 10px;">
         <p>
