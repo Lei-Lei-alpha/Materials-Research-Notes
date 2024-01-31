@@ -85,3 +85,16 @@ echo "$(<file.txt )"
 ~~~shell
 scancel --state=PENDING --user=leilei
 ~~~
+
+# Handy bash tricks for input scripts
+## String
+### Get string before or after character
+
+```bash
+$ str="GenFiltEff=7.092200e-01"
+$ var_name=${str%=*} # Get content before =
+$ value=${str#*=}  # Get content after =
+```
+
+#### After specific character
+
