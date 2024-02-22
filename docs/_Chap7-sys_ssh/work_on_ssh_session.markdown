@@ -78,7 +78,7 @@ Using `echo`
 echo "$(<file.txt )"
 ~~~
 
-# Flow contrl
+# Flow control
 
 ## For loop
 
