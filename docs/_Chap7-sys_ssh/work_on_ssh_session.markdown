@@ -78,6 +78,17 @@ Using `echo`
 echo "$(<file.txt )"
 ~~~
 
+# Flow contrl
+
+## For loop
+
+~~~shell
+for i in $(seq 1 10);
+do
+echo $i
+done
+~~~
+
 # Slurm
 
 ## Cancel jobs
@@ -95,6 +106,4 @@ $ str="GenFiltEff=7.092200e-01"
 $ var_name=${str%=*} # Get content before =
 $ value=${str#*=}  # Get content after =
 ```
-
-#### After specific character
 
