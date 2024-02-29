@@ -12,6 +12,22 @@ Using `tail`
 ```bash
 tail ./*/vasp.log
 ```
+#### Tips for faster convergence
+
+<div style="border-width: 1px; border-style:solid; border-color: #b2182b; border-radius:3px; background-color: #FFEFEF;">
+    <div style="padding-left: 25px; padding-right: 10px;">
+        <p>
+            <span style="color: #b2182b; font-weight: 550;">Try linear mixing</span>
+            <ol>
+            <li>Set AMIX = 0.1 - 0.2, BMIX = 0.0001</li>
+            <li>The optimal AMIX is given by the present AMIX &times; GAMMA</li>
+            </ol>
+        </p>
+        <p>
+            For the Kerker scheme ([IMIX](https://www.vasp.at/wiki/index.php/IMIX)=1) either **AMIX** or [BMIX](https://www.vasp.at/wiki/index.php/BMIX) can be optimized, but we recommend to change only [BMIX] (https://www.vasp.at/wiki/index.php/BMIX) and keep **AMIX** fixed (you must decrease [BMIX](https://www.vasp.at/wiki/index.php/BMIX) if the mean eigenvalue is larger than one, and increase [BMIX](https://www.vasp.at/wiki/index.php/BMIX) if the mean eigenvalue Γmean<1). However, the optimal **AMIX** depends very much on the system, for metals this parameter usually has to be rather small, e.g. AMIX= 0.02.
+        </p>
+    </div>
+</div>
 
 ### Final energy
 
@@ -52,21 +68,3 @@ done
 ```bash
 grep --text "NBANDS" OUTCAR
 ```
-
-<div style="border-width: 1px; border-style:solid; border-color: #b2182b; border-radius:3px; background-color: #FFEFEF;">
-    <div style="padding-left: 25px; padding-right: 10px;">
-        <p>
-            <span style="color: #b2182b; font-weight: 550;">Suggested SOLUTIONS</span>
-            <ol>
-            <li>Refine the lattice parameters of your structure,</li>
-            <li>and/or try changing <b>SYMPREC</b></li>
-            </ol>
-        </p>
-        <p>
-            <span style="color: #b2182b; font-weight: 550;">SYMPREC:</span> determines to which accuracy the positions in the <b>POSCAR</b> file must be specified. Default 10<sup style="font-size:75%">&minus;5</sup>.
-        </p>
-    </div>
-</div>
-
-
-## 
