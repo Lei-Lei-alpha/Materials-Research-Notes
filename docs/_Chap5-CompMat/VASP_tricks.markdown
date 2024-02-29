@@ -28,7 +28,22 @@ name=${file##*.} # keep the last content after the last .
 if grep -q "reached required accuracy - stopping structural energy minimisation" $file;
 then grep "free  energy   TOTEN" OUTCAR.${name} | tail -1
 else echo not_converged
+echo $name >> not_converged.$(printf "%(%Y-%m-%d)T")
 fi
+done
+~~~
+
+#### Submit calculations that not converged
+
+~~~shell
+mapfile -t names < not_converged.$(printf "%(%Y-%m-%d)T")
+do
+cp CONTCAR.${name} POSCAR
+timeout 3h srun --distribution=block:block --hint=nomultithread vasp_std > vasp.log.${name}
+mv OUTCAR OUTCAR.${name}
+mv CONTCAR CONTCAR.${name}
+mv OSZICAR OSZICAR.${name}
+mv vasprun.xml vasprun.xml.${name}
 done
 ~~~
 
