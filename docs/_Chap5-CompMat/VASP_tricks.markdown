@@ -24,7 +24,7 @@ tail ./*/vasp.log
             </ol>
         </p>
         <p>
-            For the Kerker scheme ([IMIX][https://www.vasp.at/wiki/index.php/IMIX]=1) either **AMIX** or [BMIX][https://www.vasp.at/wiki/index.php/BMIX] can be optimized, but we recommend to change only [BMIX][https://www.vasp.at/wiki/index.php/BMIX] and keep **AMIX** fixed (you must decrease [BMIX][https://www.vasp.at/wiki/index.php/BMIX] if the mean eigenvalue is larger than one, and increase [BMIX][https://www.vasp.at/wiki/index.php/BMIX] if the mean eigenvalue Γmean<1). However, the optimal **AMIX** depends very much on the system, for metals this parameter usually has to be rather small, e.g. AMIX= 0.02.
+            For the Kerker scheme (<a href="https://www.vasp.at/wiki/index.php/IMIX">IMIX</a> = 1) either **AMIX** or <a href="https://www.vasp.at/wiki/index.php/BMIX">BMIX</a> can be optimized, but we recommend to change only <a href="https://www.vasp.at/wiki/index.php/BMIX">BMIX</a> and keep **AMIX** fixed (you must decrease <a href="https://www.vasp.at/wiki/index.php/BMIX">BMIX</a> if the mean eigenvalue is larger than one, and increase <a href="https://www.vasp.at/wiki/index.php/BMIX">BMIX</a> if the mean eigenvalue Γmean<1). However, the optimal **AMIX** depends very much on the system, for metals this parameter usually has to be rather small, e.g. AMIX= 0.02.
         </p>
     </div>
 </div>
