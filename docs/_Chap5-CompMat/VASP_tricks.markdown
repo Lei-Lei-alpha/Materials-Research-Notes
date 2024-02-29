@@ -19,6 +19,19 @@ tail ./*/vasp.log
 grep --text "free  energy   TOTEN" OUTCAR | tail -1
 ```
 
+Get the energy of a sequence of calculations:
+
+~~~shell
+for file in $(ls vasp.log.*)
+do
+name=${file##*.} # keep the last content after the last .
+if grep -q "reached required accuracy - stopping structural energy minimisation" $file;
+then grep "free  energy   TOTEN" OUTCAR.${name} | tail -1
+else echo not_converged
+fi
+done
+~~~
+
 ### NBANDS used in calculation
 
 ```bash
