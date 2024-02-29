@@ -24,7 +24,7 @@ tail ./*/vasp.log
             </ol>
         </p>
         <p>
-            For the Kerker scheme ([IMIX](https://www.vasp.at/wiki/index.php/IMIX)=1) either **AMIX** or [BMIX](https://www.vasp.at/wiki/index.php/BMIX) can be optimized, but we recommend to change only [BMIX] (https://www.vasp.at/wiki/index.php/BMIX) and keep **AMIX** fixed (you must decrease [BMIX](https://www.vasp.at/wiki/index.php/BMIX) if the mean eigenvalue is larger than one, and increase [BMIX](https://www.vasp.at/wiki/index.php/BMIX) if the mean eigenvalue Γmean<1). However, the optimal **AMIX** depends very much on the system, for metals this parameter usually has to be rather small, e.g. AMIX= 0.02.
+            For the Kerker scheme ([IMIX][https://www.vasp.at/wiki/index.php/IMIX]=1) either **AMIX** or [BMIX][https://www.vasp.at/wiki/index.php/BMIX] can be optimized, but we recommend to change only [BMIX][https://www.vasp.at/wiki/index.php/BMIX] and keep **AMIX** fixed (you must decrease [BMIX][https://www.vasp.at/wiki/index.php/BMIX] if the mean eigenvalue is larger than one, and increase [BMIX][https://www.vasp.at/wiki/index.php/BMIX] if the mean eigenvalue Γmean<1). However, the optimal **AMIX** depends very much on the system, for metals this parameter usually has to be rather small, e.g. AMIX= 0.02.
         </p>
     </div>
 </div>
@@ -38,9 +38,13 @@ grep --text "free  energy   TOTEN" OUTCAR | tail -1
 Get the energy of a sequence of calculations:
 
 ~~~shell
+list=not_converged.$(printf "%(%Y-%m-%d)T")
+if [ -f "$list" ]; then
+    > $list # Clear the content of the list.
+fi
 for file in $(ls vasp.log.*)
 do
-name=${file##*.} # keep the last content after the last .
+name=${file##*.} # keep the last content after the last ".".
 if grep -q "reached required accuracy - stopping structural energy minimisation" $file;
 then grep "free  energy   TOTEN" OUTCAR.${name} | tail -1
 else echo not_converged
