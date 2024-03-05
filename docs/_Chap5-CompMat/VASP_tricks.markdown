@@ -43,7 +43,7 @@ if [ -f "$list" ]; then
     > $list # Clear the content of the list.
 fi
 files=$(ls vasp.log.*)
-for file in files
+for file in $files
 do
 echo ${file##*.}
 done
