@@ -42,7 +42,12 @@ list=not_converged.$(printf "%(%Y-%m-%d)T")
 if [ -f "$list" ]; then
     > $list # Clear the content of the list.
 fi
-for file in $(ls vasp.log.*)
+files=$(ls vasp.log.*)
+for file in files
+do
+echo ${file##*.}
+done
+for file in $files
 do
 name=${file##*.} # keep the last content after the last ".".
 if grep -q "reached required accuracy - stopping structural energy minimisation" $file;
