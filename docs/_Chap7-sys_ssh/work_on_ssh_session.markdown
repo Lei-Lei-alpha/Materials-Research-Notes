@@ -104,8 +104,12 @@ sef "6s/.*/new text/" file > newfile
 Sort `csv` file based on the second column:
 
 ~~~shell
-sort -t, -k2 -n relaxed_energy.csv
+sort -t, -k2 -nr relaxed_energy.csv
 ~~~
+
+-t, - field delimiter
+-k2, - sort by 4th field only
+-n - sort numerically (use -nr to sort in reverse order)
 
 # Flow control
 
