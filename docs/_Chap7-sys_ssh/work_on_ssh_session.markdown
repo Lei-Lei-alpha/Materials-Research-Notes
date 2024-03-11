@@ -105,6 +105,7 @@ Sort `csv` file based on the second column:
 
 ~~~shell
 sort -t, -k2 -n relaxed_energy.csv
+~~~
 
 # Flow control
 
