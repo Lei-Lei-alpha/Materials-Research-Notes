@@ -83,6 +83,16 @@ Sort `csv` file based on the second column:
 
 ~~~shell
 sort -t, -k2 -n relaxed_energy.csv
+
+# Flow control
+
+## For loop
+
+~~~shell
+for i in $(seq 1 10);
+do
+echo $i
+done
 ~~~
 
 # Slurm
@@ -92,3 +102,14 @@ sort -t, -k2 -n relaxed_energy.csv
 ~~~shell
 scancel --state=PENDING --user=leilei
 ~~~
+
+# Handy bash tricks for input scripts
+## String
+### Get string before or after character
+
+```bash
+$ str="GenFiltEff=7.092200e-01"
+$ var_name=${str%=*} # Get content before =
+$ value=${str#*=}  # Get content after =
+```
+
