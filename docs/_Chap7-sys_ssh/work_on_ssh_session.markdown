@@ -78,6 +78,28 @@ Using `echo`
 echo "$(<file.txt )"
 ~~~
 
+### Print specific line of file
+
+Use `awk`, the following command prints line 6 of `file` out:
+
+~~~shell
+awk "NR==6" file
+~~~
+
+### Replace specific line of a file
+
+Use `sed`, the following command replaces line 6 of file with "new text":
+
+~~~shell
+sef -i "6s/.*/new text/" file
+~~~
+
+The above code replace the line in place, if you want to keep the original file and save the replaced file into a new file:
+
+~~~shell
+sef "6s/.*/new text/" file > newfile
+~~~
+
 ### Sort file
 Sort `csv` file based on the second column:
 
