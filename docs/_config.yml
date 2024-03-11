@@ -45,6 +45,7 @@ collections:
   - Chap5-CompMat
   - Chap6-Visualisation
   - Chap7-sys_ssh
+  - Chap8-Git
   - ChapX-Info
 
 collections:
@@ -67,6 +68,9 @@ collections:
     output: true
     permalink: /:collection/:path/
   Chap7-sys_ssh:
+    output: true
+    permalink: /:collection/:path/
+  Chap8-Git:
     output: true
     permalink: /:collection/:path/
   ChapX-Info:

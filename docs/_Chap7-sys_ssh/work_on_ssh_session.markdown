@@ -78,6 +78,13 @@ Using `echo`
 echo "$(<file.txt )"
 ~~~
 
+### Sort file
+Sort `csv` file based on the second column:
+
+~~~shell
+sort -t, -k2 -n relaxed_energy.csv
+~~~
+
 # Slurm
 
 ## Cancel jobs
