@@ -91,13 +91,13 @@ awk "NR==6" file
 Use `sed`, the following command replaces line 6 of file with "new text":
 
 ~~~shell
-sef -i "6s/.*/new text/" file
+sed -i "6s/.*/new text/" file
 ~~~
 
 The above code replace the line in place, if you want to keep the original file and save the replaced file into a new file:
 
 ~~~shell
-sef "6s/.*/new text/" file > newfile
+sed "6s/.*/new text/" file > newfile
 ~~~
 
 ### Sort file
