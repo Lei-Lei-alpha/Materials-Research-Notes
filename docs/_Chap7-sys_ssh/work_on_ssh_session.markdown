@@ -125,10 +125,17 @@ done
 # Slurm
 
 ## Cancel jobs
+Cancel all pending jobs
+~~~shell
+scancel --state=PENDING --user=$USER
+~~~
+
+Cancel all jobs in `compute` partition
 
 ~~~shell
-scancel --state=PENDING --user=leilei
+scancel -p compute -u $USER
 ~~~
+
 
 # Handy bash tricks for input scripts
 ## String

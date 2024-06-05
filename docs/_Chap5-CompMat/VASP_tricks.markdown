@@ -5,6 +5,43 @@ category: notes
 layout: post
 ---
 
+## Set up to run VASP from ASE
+> Refer to ASE VASP calculator doc: [VASP Calculator](https://wiki.fysik.dtu.dk/ase/ase/calculators/vasp.html#id2)
+### Execute command
+ASE has to know the command to call and run vasp. This can be done by one of the following methods:
+- Add an environment variable that contains the command to execute VASP. 
+    ```shell
+    export ASE_VASP_COMMAND="mpirun vasp_std"
+    ```
+
+- Specify the `command` keyword in the `Vasp` calculator. This will overwrite the environment variable.
+    ```python
+    calc = Vasp(command = "mpirun vasp_std")
+    ```
+
+- Alternatively, you can use the following script with the name `run_vasp.py`.
+    ```python
+    import os
+    exitcode = os.system("vasp")
+    ```
+    In this case, the environment variable `VASP_SCRIPT` must point to the above file.
+
+### Pseudopotentials
+Pseudopotential directory has to be specified through the environment variable `VASP_PP_PATH`. You can set both environment variables in `.bashrc`:
+```shell
+export ASE_VASP_COMMAND="mpirun vasp_std"
+# Alternatively, use something like this
+#export VASP_SCRIPT=$HOME/vasp/run_vasp.py
+export VASP_PP_PATH=$HOME/vasp/mypps
+```
+The following environment variable can be used to automatically copy the van der Waals kernel to the calculation directory. The kernel is needed for vdW calculations, see [VASP vdW wiki](https://www.vasp.at/wiki/index.php/Nonlocal_vdW-DF_functionals), for more details. The kernel is looked for whenever `luse_vdw=True`.
+
+```shell
+export ASE_VASP_VDW=$HOME/<path-to-vdw_kernel.bindat-folder>
+```
+The environment variable `ASE_VASP_VDW` should point to the folder where the `vdw_kernel.bindat` file is located.
+
+
 ## Check results
 ### Convergence
 Using `tail`
@@ -62,6 +99,7 @@ done
 
 ~~~shell
 mapfile -t names < not_converged.$(printf "%(%Y-%m-%d)T")
+for name in ${names[@]}
 do
 cp CONTCAR.${name} POSCAR
 timeout 3h srun --distribution=block:block --hint=nomultithread vasp_std > vasp.log.${name}

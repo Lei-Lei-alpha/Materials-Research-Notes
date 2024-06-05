@@ -242,3 +242,5 @@ Origin in simple words means from where something is originated or derived.
 *   When a new repository is initialised using “**git init**” command, git creates a single branch by default such as the “**Main**” branch.
 *   When multiple developers collaborate on a single feature/development work, developers create a pull request to merge the changes to Main branch. After the review is done by the senior developer, changes are merged to the Main branch.
 *   The Main branch is the most up-to-date branch and has production-ready code.
+
+##
