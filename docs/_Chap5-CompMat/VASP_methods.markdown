@@ -16,7 +16,7 @@ layout: post
    ```
    NSW = 0 #(don't change geometry)
    Prec = Accurate #(use accurate integration grids)
-   LAECHG = T #(generate the AECCAR0 and AECCAR2 files
+   LAECHG = T #(generate the AECCAR0 and AECCAR2 files)
    LCHARG = T #(generate the CHGCAR file)
    ENCUT = 600 # value equal to or larger than 400 eV.
    ```
@@ -34,12 +34,12 @@ layout: post
 5. Use this equation to compute the Bader net atomic charges:
 
    $$
-   z - num_frozen_core - Bader population = Bader net atomic charge
+   z - \text{num\_frozen\_core} - \text{Bader population} = \text{Bader net atomic charge}
    $$
 
-   where:
-   $z$: atomic number
-   num_frozen_core: number of frozen core electrons for that atom in the PAW potential used
+   where:  
+   $z$: atomic number  
+   num_frozen_core: number of frozen core electrons for that atom in the PAW potential used  
    Bader population: number printed in the `ACF.dat` file.
 
 ### Use [Chargemol](https://www.researchgate.net/deref/http%3A%2F%2Fddec.sourceforge.net)
