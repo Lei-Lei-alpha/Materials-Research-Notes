@@ -86,6 +86,13 @@ Use `awk`, the following command prints line 6 of `file` out:
 awk "NR==6" file
 ~~~
 
+### Delete lines matching pattern
+Use `sed`, the following command deletes lines of file contains "pattern"
+
+~~~shell
+sed -i '/pattern/d' file
+~~~
+
 ### Replace specific line of a file
 
 Use `sed`, the following command replaces line 6 of file with "new text":
