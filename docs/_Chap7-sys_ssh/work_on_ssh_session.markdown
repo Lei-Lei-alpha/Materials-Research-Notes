@@ -48,13 +48,13 @@ Delete files found and print the file name
 find . -name slurm*.out -delete -print
 ~~~
 
-## Print tail of multiple files
+## Print contents of file
+
+### Print tail of multiple files
 
 ```bash
 tail ./*/vasp.log
 ```
-
-## Print contents of file
 
 ### Specified lines of a file
 
@@ -86,6 +86,12 @@ Use `awk`, the following command prints line 6 of `file` out:
 awk "NR==6" file
 ~~~
 
+Use `sed`:
+
+~~~shell
+sed -n "6p" file
+~~~
+
 ### Delete lines matching pattern
 Use `sed`, the following command deletes lines of file contains "pattern"
 
@@ -106,6 +112,13 @@ The above code replace the line in place, if you want to keep the original file 
 ~~~shell
 sed "6s/.*/new text/" file > newfile
 ~~~
+
+#### Replace string matching pattern in line
+~~~shell
+sed -i "6s/txt_to_replace/new_text/" file
+~~~
+
+
 
 ### Sort file
 Sort `csv` file based on the second column:
