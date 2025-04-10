@@ -53,7 +53,7 @@ layout: post
    
    $$
    \text{atomic number} - \text{num frozen core} - \text{Bader population} = \text{Bader net atomic charge} \\ 
-   \text{atomic number} - \text{num frozen core} = \text{ZVAL} in POTCAR \\ 
+   \text{atomic number} - \text{num frozen core} = \text{ZVAL in POTCAR} \\ 
    \text{Bader net atomic charge} = \text{ZVAL} - \text{Bader population}
    $$
    
