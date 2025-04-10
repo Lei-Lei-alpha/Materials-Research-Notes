@@ -82,6 +82,32 @@ The DDEC6 methodology is described in the following publications:
 (3) [T. A. Manz, "Introducing DDEC6 atomic population analysis: part 3. Comprehensive method to compute bond orders," RSC Advances, 7 (2017) 45552-45581](http://dx.doi.org/10.1039/C7RA07400J)
 
 ## Charge difference calculation
+1. Get desired geometry, either through geometry relaxation or experiments or any other method of your choice.
 
+   ```
+   PREC = ACC
+   NSW = 500 #(don't change geometry)
+   ENCUT = 520 # value equal to or larger than 400 eV.
+   EDIFF = 1e-6
+   EDIFFG = -0.01
+   IBRION = 2
+   ISIF = 3
+      .
+      .
+      .
+   ```
+2. Do single point calculations for defferent fragment A, B and AB. Generate the POSCARs of fragment A and B from AB and do not optimise the atomic positions.
+   ```
+   NSW = 0 #(don't change geometry)
+   PREC = ACC #(use accurate integration grids)
+   LCHARG = T #(generate the CHGCAR file)
+   ENCUT = 600 # value equal to or larger than 400 eV.
+      .
+      .
+      .
+   ```
+3. Get CHGDIFF file using VASPKIT and the CHGCARs obtained from previous calculation.
+4. Plot the electron density difference with VESTA
+   
 ## Density of States calculation
 
