@@ -52,7 +52,7 @@ layout: post
 5. Use this equation to compute the Bader net atomic charges:
    
    $$
-   \text{atomic number} -- \text{num_frozen_core} -- \text{Bader population} = \text{Bader net atomic charge}
+   \text{atomic number} - \text{num\_frozen\_core} - \text{Bader population} = \text{Bader net atomic charge}
    $$
    
    $$
