@@ -41,7 +41,7 @@ layout: post
    chgsum.pl AECCAR0 AECCAR2
    ```
    
-4. Run the Bader charge analysis program using the following command:
+4. Run the Bader charge analysis program using the following command:ZVAL
 
    ```shell
    bader CHGCAR -ref CHGCAR_sum
@@ -52,15 +52,9 @@ layout: post
 5. Use this equation to compute the Bader net atomic charges:
    
    $$
-   \text{atomic number} - \text{num\_frozen\_core} - \text{Bader population} = \text{Bader net atomic charge}
-   $$
-   
-   $$
-   \text{atomic number} - \text{num_frozen_core} = \text{ZVAL} in POTCAR
-   $$
-   
-   $$
-   \text{Bader net atomic charge} = ZVAL - \text{Bader population}
+   \text{atomic number} - \text{num\_frozen\_core} - \text{Bader population} = \text{Bader net atomic charge} \
+   \text{atomic number} - \text{num_frozen_core} = \text{ZVAL} in POTCAR \
+   \text{Bader net atomic charge} = \text{ZVAL} - \text{Bader population}
    $$
    
    where:  
