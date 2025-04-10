@@ -11,18 +11,36 @@ layout: post
 
 1. Get desired geometry, either through geometry relaxation or experiments or any other method of your choice.
 
-2. Prepare an INCAR file with the following keywords: 
+      ```
+   PREC = ACC
+   NSW = 500 #(don't change geometry)
+   ENCUT = 520 # value equal to or larger than 400 eV.
+   EDIFF = 1e-6
+   EDIFFG = -0.01
+   IBRION = 2
+   ISIF = 3
+      .
+      .
+      .
+   ```
 
+3. Prepare an INCAR file with the following keywords:
+   
    ```
    NSW = 0 #(don't change geometry)
-   Prec = Accurate #(use accurate integration grids)
+   PREC = ACC #(use accurate integration grids)
    LAECHG = T #(generate the AECCAR0 and AECCAR2 files)
    LCHARG = T #(generate the CHGCAR file)
    ENCUT = 600 # value equal to or larger than 400 eV.
    ```
 
-3. Sum the output charge files AECCAR0 AECCAR2 using the the [chgsum.pl](https://www.researchgate.net/deref/http%3A%2F%2Fchgsum.pl) script to generate the CHGCAR_sum file.
-
+4. Sum the output charge files AECCAR0 AECCAR2 using the the [chgsum.pl](https://www.researchgate.net/deref/http%3A%2F%2Fchgsum.pl) script to generate the CHGCAR_sum file.
+   Electron charge density = core charge density + valance charge density
+        CHGCAR_sum                AECCAR0                  AECCAR2
+```shell
+chgsum.pl AECCAR0 AECCAR2
+```
+   
 4. Run the Bader charge analysis program using the following command:
 
    ```shell
