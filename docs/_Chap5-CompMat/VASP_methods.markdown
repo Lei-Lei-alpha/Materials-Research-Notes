@@ -11,7 +11,7 @@ layout: post
 
 1. Get desired geometry, either through geometry relaxation or experiments or any other method of your choice.
 
-      ```
+   ```
    PREC = ACC
    NSW = 500 #(don't change geometry)
    ENCUT = 520 # value equal to or larger than 400 eV.
@@ -37,9 +37,9 @@ layout: post
 4. Sum the output charge files AECCAR0 AECCAR2 using the the [chgsum.pl](https://www.researchgate.net/deref/http%3A%2F%2Fchgsum.pl) script to generate the CHGCAR_sum file.
    Electron charge density = core charge density + valance charge density
         CHGCAR_sum                AECCAR0                  AECCAR2
-```shell
-chgsum.pl AECCAR0 AECCAR2
-```
+   ```shell
+   chgsum.pl AECCAR0 AECCAR2
+   ```
    
 4. Run the Bader charge analysis program using the following command:
 
@@ -52,13 +52,16 @@ chgsum.pl AECCAR0 AECCAR2
 5. Use this equation to compute the Bader net atomic charges:
 
    $$
-   z - \text{num_frozen_core} - \text{Bader population} = \text{Bader net atomic charge}
+   \text{atomic number} - \text{num_frozen_core} - \text{Bader population} = \text{Bader net atomic charge}
+   \text{atomic number} - \text{num_frozen_core} = \text{ZVAL} in POTCAR
+   \text{Bader net atomic charge} = ZVAL - \text{Bader population}
    $$
-
+   
    where:  
-   $z$: atomic number  
    num_frozen_core: number of frozen core electrons for that atom in the PAW potential used  
    Bader population: number printed in the `ACF.dat` file.
+
+Note: increase NG(X, Y, Z) F until the total charge is correct!
 
 ### Use [Chargemol](https://www.researchgate.net/deref/http%3A%2F%2Fddec.sourceforge.net)
 
@@ -73,3 +76,8 @@ The DDEC6 methodology is described in the following publications:
 (2) [N. Gabaldon Limas and T. A. Manz, “Introducing DDEC6 atomic population analysis: part 2. Computed results for a wide range of periodic and nonperiodic materials,” RSC Advances, 6 (2016) 45727-45747](http://dx.doi.org/10.1039/C6RA05507A)
 
 (3) [T. A. Manz, "Introducing DDEC6 atomic population analysis: part 3. Comprehensive method to compute bond orders," RSC Advances, 7 (2017) 45552-45581](http://dx.doi.org/10.1039/C7RA07400J)
+
+## Charge difference calculation
+
+## Density of States calculation
+
