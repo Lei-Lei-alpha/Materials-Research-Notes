@@ -118,8 +118,6 @@ sed "6s/.*/new text/" file > newfile
 sed -i "6s/txt_to_replace/new_text/" file
 ~~~
 
-
-
 ### Sort file
 Sort `csv` file based on the second column:
 
