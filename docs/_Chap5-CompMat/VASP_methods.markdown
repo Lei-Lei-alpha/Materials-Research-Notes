@@ -110,4 +110,54 @@ The DDEC6 methodology is described in the following publications:
 4. Plot the electron density difference with VESTA
    
 ## Density of States calculation
+1. Get desired geometry, either through geometry relaxation or experiments or any other method of your choice.
 
+   ```
+   PREC = ACC
+   NSW = 500 #(don't change geometry)
+   ENCUT = 520 # value equal to or larger than 400 eV.
+   EDIFF = 1e-6
+   EDIFFG = -0.01
+   IBRION = 2
+   ISIF = 3
+      .
+      .
+      .
+   ```
+2. Do single point calculation SCF and save the CHGCAR file.
+   ```
+   PREC = ACC #(use accurate integration grids)
+   ISTART = 0
+   ICHARG = 2
+   NSW = 0 #(don't change geometry)
+   IBRION = -1
+   EDIFF = 1e-6
+   LCHARG = T #(generate the CHGCAR file)
+   ENCUT = 600 # value equal to or larger than 130 % in the POTCAR file.
+   ISMEAR = 0
+   SIGMA = 0.1
+      .
+      .
+      .
+   ```
+3. Density of states calculation
+   ```
+   PREC = ACC #(use accurate integration grids)
+   ISTART = 1
+   ICHARG = 11
+   NSW = 0 #(don't change geometry)
+   IBRION = -1
+   EDIFF = 1e-6
+   ENCUT = 600 # value equal to or larger than 130 % in the POTCAR file.
+   ISMEAR = -5
+   SIGMA = 0.1
+   LCHARG = T #(generate the CHGCAR file)
+   LORBIT = 11
+   NEDOS = 10000
+   # EMIN = -5
+   # EMAX = 15
+   # NBANDS = 320 # Can find in the OUTCAR file
+      .
+      .
+      .
+   ```
