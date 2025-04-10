@@ -50,7 +50,7 @@ layout: post
    As described on [http://theory.cm.utexas.edu/henkelman/code/bader/](https://www.researchgate.net/deref/http%3A%2F%2Ftheory.cm.utexas.edu%2Fhenkelman%2Fcode%2Fbader%2F), this procedure uses all electrons (CHGCAR_sum) to draw the compartments, then integrates the valence pseudodensity (CHGCAR) over these compartments to get the valence electron populations. This will avoid any need to iterate between steps # 2 & 5 in your procedure and will avoid the need to use such a fine integration grid or to add extra spheres the procedure in your original post requires.
 
 5. Use this equation to compute the Bader net atomic charges:
-
+   
    $$
    \text{atomic number} - \text{num_frozen_core} - \text{Bader population} = \text{Bader net atomic charge}
    \text{atomic number} - \text{num_frozen_core} = \text{ZVAL} in POTCAR
