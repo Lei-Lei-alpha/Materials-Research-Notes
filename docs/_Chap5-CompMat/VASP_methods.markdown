@@ -52,13 +52,13 @@ layout: post
 5. Use this equation to compute the Bader net atomic charges:
    
    $$
-   \text{atomic number} - \text{num\_frozen\_core} - \text{Bader population} = \text{Bader net atomic charge} \
-   \text{atomic number} - \text{num_frozen_core} = \text{ZVAL} in POTCAR \
+   \text{atomic number} - \text{num frozen core} - \text{Bader population} = \text{Bader net atomic charge} \
+   \text{atomic number} - \text{num frozen core} = \text{ZVAL} in POTCAR \
    \text{Bader net atomic charge} = \text{ZVAL} - \text{Bader population}
    $$
    
    where:  
-   num_frozen_core: number of frozen core electrons for that atom in the PAW potential used  
+   num frozen core: number of frozen core electrons for that atom in the PAW potential used  
    Bader population: number printed in the `ACF.dat` file.
 
 Note: increase NG(X, Y, Z) F until the total charge is correct!
