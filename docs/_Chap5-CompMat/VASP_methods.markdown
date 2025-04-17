@@ -34,7 +34,7 @@ layout: post
    ENCUT = 600 # value equal to or larger than 400 eV.
    ```
 
-4. Sum the output charge files AECCAR0 AECCAR2 using the the [chgsum.pl](https://www.researchgate.net/deref/http%3A%2F%2Fchgsum.pl) script to generate the CHGCAR_sum file.
+4. Sum the output charge files AECCAR0 AECCAR2 using the the [chgsum.pl](https://chgsum.pl) script to generate the CHGCAR_sum file.
    Electron charge density = core charge density + valance charge density
         CHGCAR_sum                AECCAR0                  AECCAR2
    ```shell
@@ -47,7 +47,7 @@ layout: post
    bader CHGCAR -ref CHGCAR_sum
    ```
 
-   As described on [http://theory.cm.utexas.edu/henkelman/code/bader/](https://www.researchgate.net/deref/http%3A%2F%2Ftheory.cm.utexas.edu%2Fhenkelman%2Fcode%2Fbader%2F), this procedure uses all electrons (CHGCAR_sum) to draw the compartments, then integrates the valence pseudodensity (CHGCAR) over these compartments to get the valence electron populations. This will avoid any need to iterate between steps # 2 & 5 in your procedure and will avoid the need to use such a fine integration grid or to add extra spheres the procedure in your original post requires.
+   As described on [http://theory.cm.utexas.edu/henkelman/code/bader/](http://theory.cm.utexas.edu/henkelman/code/bader/), this procedure uses all electrons (CHGCAR_sum) to draw the compartments, then integrates the valence pseudodensity (CHGCAR) over these compartments to get the valence electron populations. This will avoid any need to iterate between steps # 2 & 5 in your procedure and will avoid the need to use such a fine integration grid or to add extra spheres the procedure in your original post requires.
 
 5. Use this equation to compute the Bader net atomic charges:
    
